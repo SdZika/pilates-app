@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, } from "lucide-react"; // X
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ThemeToggle } from "@/components/theme-toggle";
+//import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 interface User {
@@ -77,7 +77,7 @@ export function Navbar({ user }: { user: User | null }) {
               </Link>
             ))}
             <div className="pl-4">
-              <ThemeToggle />
+              {/*<ThemeToggle />*/}
             </div>
             {!user ? (
               <Button asChild variant="default" size="sm">
@@ -92,7 +92,7 @@ export function Navbar({ user }: { user: User | null }) {
 
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
+            {/*<ThemeToggle />*/}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
