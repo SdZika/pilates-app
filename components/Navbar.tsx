@@ -8,12 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 //import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
+import { useAuth } from "../context/supabase-auth-provider";
 
-interface User {
-  isAdmin?: boolean;
-}
-
-export function Navbar({ user }: { user: User | null }) {
+export function Navbar() {
+  const { user } = useAuth();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,8 +35,13 @@ export function Navbar({ user }: { user: User | null }) {
     routes.push({ name: "My Bookings", path: "/my-bookings" });
   }
 
-  if (user?.isAdmin) {
-    routes.push({ name: "Admin", path: "/admin" });
+  // if (user?.isAdmin) {
+  //   routes.push({ name: "Admin", path: "/admin" });
+  // }
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut()
+    location.reload()
   }
 
   return (
@@ -57,6 +60,7 @@ export function Navbar({ user }: { user: User | null }) {
               <div className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
                 PilatesFlow
               </div>
+              <p>{user?.email}</p>
             </Link>
           </div>
 
