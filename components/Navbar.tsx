@@ -1,20 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, } from "lucide-react"; // X
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle  } from "@/components/ui/sheet";
 //import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useAuth } from "../context/supabase-auth-provider";
+import { createClientClient } from "@/lib/supabase";
+
+const supabase = createClientClient();
 
 export function Navbar() {
   const { user } = useAuth();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,9 +44,13 @@ export function Navbar() {
   // }
 
   const handleLogout = async () => {
-    await supabase.auth.signOut()
-    location.reload()
-  }
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Logout failed:", error.message);
+    } else {
+      router.push("/login"); // Optional: redirect after logout
+    }
+  };
 
   return (
     <header
@@ -88,8 +96,8 @@ export function Navbar() {
                 <Link href="/login">Login</Link>
               </Button>
             ) : (
-              <Button asChild variant="outline" size="sm">
-                <Link href="/api/auth/signout">Logout</Link>
+              <Button variant="outline" size="sm" onClick={handleLogout}>
+                Logout
               </Button>
             )}
           </nav>
@@ -105,6 +113,7 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <nav className="flex flex-col space-y-4 mt-8">
                   {routes.map((route) => (
                     <Link
@@ -129,16 +138,11 @@ export function Navbar() {
                     </Button>
                   ) : (
                     <Button
-                      asChild
                       variant="outline"
                       className="mt-4"
+                      onClick={() => {setIsOpen(false); handleLogout();}}
                     >
-                      <Link
-                        href="/api/auth/signout"
-                        onClick={() => setIsOpen(false)}
-                      >
                         Logout
-                      </Link>
                     </Button>
                   )}
                 </nav>

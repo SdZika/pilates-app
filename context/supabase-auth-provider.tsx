@@ -10,7 +10,7 @@ const supabase = createClientClient()
 type AuthContextType = {
   user: User | null
   session: Session | null
-  signOut: () => Promise<void>
+  //signOut: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
