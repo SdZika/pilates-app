@@ -1,60 +1,44 @@
 "use client";
 
 import { useState } from "react";
-import { createClientClient } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "../../context/supabase-auth-provider";
 
 export default function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    fullName: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const supabase = createClientClient();
+
+  const { signUp } = useAuth();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
-    const { data, error: signUpError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name: fullName,
-        },
-      },
-    });
-
-    if (signUpError) {
-      setError(signUpError.message);
+    try {
+      await signUp(formData);
+      router.push("/login?registered=true");
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : "An error occurred during sign up.");
+    } finally {
       setIsLoading(false);
-      return;
     }
-
-    if (data.user) {
-      const { error: profileError } = await supabase
-        .from('profiles')
-        .insert([
-          { id: data.user.id, full_name: fullName },
-        ]);
-
-      if (profileError) {
-        setError(profileError.message);
-        setIsLoading(false);
-        return;
-      }
-    }
-
-    router.push("/login?registered=true");
-    setIsLoading(false);
   };
 
   return (
@@ -73,10 +57,11 @@ export default function Signup() {
                 <Label htmlFor="fullName">Full Name</Label>
                 <Input
                   id="fullName"
+                  name="fullName"
                   type="text"
                   placeholder="John Smith"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  value={formData.fullName}
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -84,10 +69,11 @@ export default function Signup() {
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -95,9 +81,10 @@ export default function Signup() {
                 <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
+                  name="password"
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.password}
+                  onChange={handleInputChange}
                   required
                 />
                 <p className="text-xs text-gray-500">

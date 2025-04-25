@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils";
 import { useAuth } from "../context/supabase-auth-provider";
 
 export function Navbar() {
-  const { user, signOut } = useAuth();
+  const { user, isLoggedIn, isAdmin, signOut } = useAuth();
+
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,13 +33,13 @@ export function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
-  if (user) {
+  if (isLoggedIn) {
     routes.push({ name: "My Bookings", path: "/my-bookings" });
   }
 
-  // if (user?.isAdmin) {
-  //   routes.push({ name: "Admin", path: "/admin" });
-  // }
+  if (isAdmin) {
+    routes.push({ name: "Admin", path: "/admin" });
+  }
 
   const handleLogout = async () => {
     try {
@@ -88,7 +89,7 @@ export function Navbar() {
             <div className="pl-4">
               {/*<ThemeToggle />*/}
             </div>
-            {!user ? (
+            {!isLoggedIn ? (
               <Button asChild variant="default" size="sm">
                 <Link href="/login">Login</Link>
               </Button>
@@ -127,7 +128,7 @@ export function Navbar() {
                       {route.name}
                     </Link>
                   ))}
-                  {!user ? (
+                  {!isLoggedIn ? (
                     <Button asChild className="mt-4">
                       <Link href="/login" onClick={() => setIsOpen(false)}>
                         Login
