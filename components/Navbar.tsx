@@ -9,12 +9,9 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle  } from "@/components/ui/
 //import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useAuth } from "../context/supabase-auth-provider";
-import { createClientClient } from "@/lib/supabase";
-
-const supabase = createClientClient();
 
 export function Navbar() {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,11 +41,11 @@ export function Navbar() {
   // }
 
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error("Logout failed:", error.message);
-    } else {
-      router.push("/login"); // Optional: redirect after logout
+    try {
+      await signOut()
+      router.push("/login")
+    } catch (error) {
+      console.error("Logout failed: ", error)
     }
   };
 

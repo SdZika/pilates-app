@@ -10,7 +10,7 @@ const supabase = createClientClient()
 type AuthContextType = {
   user: User | null
   session: Session | null
-  //signOut: () => Promise<void>
+  signOut: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -35,8 +35,13 @@ export const SupabaseAuthProvider = ({ children }: { children: React.ReactNode }
     return () => subscription.unsubscribe()
   }, [])
 
+  const signOut = async () => {
+    await supabase.auth.signOut()
+    setSession(null)
+  }
+
   return (
-    <AuthContext.Provider value={{ session, user: session?.user ?? null }}>
+    <AuthContext.Provider value={{ session, user: session?.user ?? null, signOut }}>
       {children}
     </AuthContext.Provider>
   )
