@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { createClientClient } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useAuth } from "../../context/supabase-auth-provider";
 
 interface ClassType {
   id: string;
@@ -29,6 +30,7 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
   const [currentWeek, setCurrentWeek] = useState(startOfWeek(new Date(), { weekStartsOn: 1 }));
   const [isBooking, setIsBooking] = useState<string | null>(null);
   const router = useRouter();
+  const { session } = useAuth();
   const supabase = createClientClient();
   
   const daysOfWeek = Array.from({ length: 7 }, (_, i) => addDays(currentWeek, i));
@@ -42,9 +44,9 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
   };
 
   const handleBookClass = async (classId: string) => {
-    const { data, error: sessionError } = await supabase.auth.getSession();
     
-    if (!data.session) {
+    
+    if (!session) {
       router.push("/login");
       return;
     }
@@ -54,7 +56,7 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
     const { error } = await supabase
       .from("bookings")
       .insert([
-        { class_id: classId, user_id: data.session.user.id }
+        { class_id: classId, user_id: session.user.id }
       ]);
       
     if (error) {
@@ -74,9 +76,8 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
   };
 
   const handleCancelBooking = async (classId: string) => {
-    const { data, error: sessionError } = await supabase.auth.getSession();
     
-    if (!data.session) {
+    if (!session) {
       router.push("/login");
       return;
     }
@@ -87,7 +88,7 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
       .from("bookings")
       .delete()
       .eq("class_id", classId)
-      .eq("user_id", data.session.user.id);
+      .eq("user_id", session.user.id);
       
     if (error) {
       toast.error("Cancellation Failed",{
