@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 //import { ThemeProvider } from "@/lib/theme-provider";
 import { Navbar } from "@/components/Navbar";
-import { SupabaseAuthProvider } from "../context/supabase-auth-provider";
+import { UserProvider } from "@/context/UserContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,10 +37,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/*<ThemeProvider attribute="class" defaultTheme="system" enableSystem>*/}
-          <SupabaseAuthProvider>
+          <UserProvider>
             <Navbar />
             {children}
-          </SupabaseAuthProvider>
+          </UserProvider>
         {/*</ThemeProvider>*/}
       </body>
     </html>

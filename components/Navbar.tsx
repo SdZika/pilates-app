@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle  } from "@/components/ui/sheet";
 //import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
-import { useAuth } from "../context/supabase-auth-provider";
+import { useUser } from "@/context/UserContext";
 
 export function Navbar() {
-  const { user, isLoggedIn, isAdmin, signOut } = useAuth();
+  const { user, loading } = useUser();
 
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -33,18 +33,19 @@ export function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
-  if (isLoggedIn) {
+  if (user) {
     routes.push({ name: "My Bookings", path: "/my-bookings" });
   }
 
-  if (isAdmin) {
-    routes.push({ name: "Admin", path: "/admin" });
-  }
+  // if (isAdmin) {
+  //   routes.push({ name: "Admin", path: "/admin" });
+  // }
 
   const handleLogout = async () => {
     try {
-      await signOut()
-      router.push("/login")
+      await fetch("/api/auth/logout", { method: "POST" });
+      //router.push("/login")
+      router.refresh();
     } catch (error) {
       console.error("Logout failed: ", error)
     }
@@ -89,7 +90,7 @@ export function Navbar() {
             <div className="pl-4">
               {/*<ThemeToggle />*/}
             </div>
-            {!isLoggedIn ? (
+            {!loading ? (
               <Button asChild variant="default" size="sm">
                 <Link href="/login">Login</Link>
               </Button>
@@ -128,7 +129,7 @@ export function Navbar() {
                       {route.name}
                     </Link>
                   ))}
-                  {!isLoggedIn ? (
+                  {!loading ? (
                     <Button asChild className="mt-4">
                       <Link href="/login" onClick={() => setIsOpen(false)}>
                         Login

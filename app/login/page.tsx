@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useAuth } from "../../context/supabase-auth-provider"; 
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -23,7 +22,7 @@ export default function Login() {
   const [error, setError] = useState<string | null>(null);
 
   const router = useRouter();
-  const { signIn } = useAuth(); 
+  
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,11 +30,25 @@ export default function Login() {
     setError(null);
 
     try {
-      await signIn({ email, password });
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        const message = data?.message || data?.error || "Failed to sign in. Please try again.";
+        throw new Error(message);
+      }
+  
       router.push("/");
       router.refresh();
-    } catch (error) {
-      setError(error instanceof Error ? error.message : "An error occurred during sign in");
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Unexpected error during login.";
+      setError(message);
     } finally {
       setIsLoading(false);
     }
