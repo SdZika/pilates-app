@@ -6,9 +6,10 @@ import { useState, useEffect } from "react";
 import { Menu, } from "lucide-react"; // X
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle  } from "@/components/ui/sheet";
-//import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/context/UserContext";
+import { createClient } from '@/lib/supabase/client';
 
 export function Navbar() {
   const { user, loading } = useUser();
@@ -17,6 +18,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
+
+  const supabase = createClient();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,14 +45,25 @@ export function Navbar() {
   // }
 
   const handleLogout = async () => {
-    try {
-      await fetch("/api/auth/logout", { method: "POST" });
-      //router.push("/login")
-      router.refresh();
-    } catch (error) {
-      console.error("Logout failed: ", error)
-    }
+    // try {
+    //   await fetch("/api/auth/logout", { method: "POST" });
+    //   router.push("/login")
+    //   //router.refresh();
+    // } catch (error) {
+    //   console.error("Logout failed: ", error)
+    // }
+
+    await supabase.auth.signOut();
+    router.refresh(); // Updates context and rerenders UI
   };
+
+  if (loading) {
+    return (
+      <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm h-16 flex items-center justify-center">
+        <span className="text-sm text-muted-foreground">Loading...</span>
+      </header>
+    );
+  }
 
   return (
     <header
@@ -88,9 +102,9 @@ export function Navbar() {
               </Link>
             ))}
             <div className="pl-4">
-              {/*<ThemeToggle />*/}
+              <ThemeToggle />
             </div>
-            {!loading ? (
+            {!user ? (
               <Button asChild variant="default" size="sm">
                 <Link href="/login">Login</Link>
               </Button>
@@ -103,7 +117,7 @@ export function Navbar() {
 
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-2">
-            {/*<ThemeToggle />*/}
+            <ThemeToggle />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -129,7 +143,7 @@ export function Navbar() {
                       {route.name}
                     </Link>
                   ))}
-                  {!loading ? (
+                  {!user ? (
                     <Button asChild className="mt-4">
                       <Link href="/login" onClick={() => setIsOpen(false)}>
                         Login
