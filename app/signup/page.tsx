@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useAuth } from "../../context/supabase-auth-provider";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -18,8 +17,6 @@ export default function Signup() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-
-  const { signUp } = useAuth();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,7 +29,7 @@ export default function Signup() {
     setError(null);
 
     try {
-      await signUp(formData);
+      await fetch("/api/auth/signup", { method: "POST"});
       router.push("/login?registered=true");
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred during sign up.");

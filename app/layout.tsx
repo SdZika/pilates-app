@@ -18,13 +18,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Pilates App',
   description: 'Schedule and manage your pilates sessions',
-  themeColor: '#6366f1',
+  
   icons: {
     icon: '/icon-192.png',
     apple: '/icon-192.png',
   },
   manifest: '/manifest.json',
 };
+
+export const viewport = {
+  width: 1,
+  themeColor: '#6366f1',
+}
 
 export default function RootLayout({
   children,
