@@ -1,17 +1,31 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { User } from '@supabase/supabase-js'; // Import User type from Supabase
+import { User } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
 
 const supabase = createClient();
 
-type UserContextType = { user: User | null; loading: boolean };
-const UserContext = createContext<UserContextType>({ user: null, loading: true });
+type UserContextType = {
+  user: User | null;
+  loading: boolean;
+  refreshUser: () => Promise<void>;
+};
+
+const UserContext = createContext<UserContextType>({
+  user: null,
+  loading: true,
+  refreshUser: async () => {},
+});
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const refreshUser = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    setUser(user);
+  };
 
   useEffect(() => {
     const getSession = async () => {
@@ -30,7 +44,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, loading }}>
+    <UserContext.Provider value={{ user, loading, refreshUser }}>
       {children}
     </UserContext.Provider>
   );

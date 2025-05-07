@@ -9,18 +9,16 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle  } from "@/components/ui/
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/context/UserContext";
-import { createClient } from '@/lib/supabase/client';
 
 export function Navbar() {
-  const { user, loading } = useUser();
+  const { user, loading, refreshUser } = useUser();
 
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
 
-  const supabase = createClient();
-
+ 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -45,16 +43,14 @@ export function Navbar() {
   // }
 
   const handleLogout = async () => {
-    // try {
-    //   await fetch("/api/auth/logout", { method: "POST" });
-    //   router.push("/login")
-    //   //router.refresh();
-    // } catch (error) {
-    //   console.error("Logout failed: ", error)
-    // }
-
-    await supabase.auth.signOut();
-    router.refresh(); // Updates context and rerenders UI
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      await refreshUser(); // refresh context immediately
+      router.push("/login");
+      router.refresh(); // optional, only if you need server components to re-render
+    } catch (error) {
+      console.error("Logout failed: ", error);
+    }
   };
 
   if (loading) {

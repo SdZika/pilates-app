@@ -14,13 +14,14 @@ import {
 } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useUser } from "@/context/UserContext"; 
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+  const { refreshUser } = useUser();
   const router = useRouter();
   
 
@@ -28,7 +29,7 @@ export default function Login() {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
-
+  
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
@@ -43,8 +44,11 @@ export default function Login() {
         throw new Error(message);
       }
   
+      await refreshUser(); // Update UserContext after successful login
+  
       router.push("/");
-      router.refresh();
+      // Optionally keep router.refresh() if you have server components that need re-rendering
+      router.refresh(); 
     } catch (err) {
       const message =
         err instanceof Error ? err.message : "Unexpected error during login.";
