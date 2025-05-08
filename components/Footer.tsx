@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Instagram, Facebook, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { FaInstagram, FaFacebook, FaTwitter, FaEnvelope, FaMapPin, FaPhone } from "react-icons/fa";
 //import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -46,7 +46,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
               >
-                <Instagram className="w-5 h-5" />
+                <FaInstagram className="w-5 h-5" />
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link 
@@ -55,7 +55,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
               >
-                <Facebook className="w-5 h-5" />
+                <FaFacebook className="w-5 h-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
               <Link 
@@ -64,7 +64,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
               >
-                <Twitter className="w-5 h-5" />
+                <FaTwitter className="w-5 h-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
             </div>
@@ -109,19 +109,19 @@ export function Footer() {
             <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0 mt-0.5" />
+                <FaMapPin className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
                   123 Pilates Way, Wellness District, NY 10001
                 </span>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
+                <FaPhone className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
                   (555) 123-4567
                 </span>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
+                <FaEnvelope className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
                   info@pilatesflow.com
                 </span>
