@@ -1,4 +1,4 @@
-import { createServerClient } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/server";
 import { UserBookingsClient } from "./user-bookings-client"; // New small client component
 
 interface ClassType {
@@ -15,7 +15,7 @@ interface ClassType {
 export const dynamic = "force-dynamic";
 
 async function getClasses(): Promise<ClassType[]> {
-  const supabase = createServerClient();
+  const supabase = await createClient();
   
   const { data: classes, error } = await supabase
     .from("classes")

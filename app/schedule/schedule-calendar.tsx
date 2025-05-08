@@ -5,10 +5,10 @@ import { format, parseISO, startOfWeek, addDays, isSameDay } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { createClientClient } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { useAuth } from "../../context/supabase-auth-provider";
+import { useUser } from "../../context/UserContext";
 
 interface ClassType {
   id: string;
@@ -30,8 +30,8 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
   const [currentWeek, setCurrentWeek] = useState(startOfWeek(new Date(), { weekStartsOn: 1 }));
   const [isBooking, setIsBooking] = useState<string | null>(null);
   const router = useRouter();
-  const { session } = useAuth();
-  const supabase = createClientClient();
+  const { user } = useUser();
+  const supabase = createClient();
   
   const daysOfWeek = Array.from({ length: 7 }, (_, i) => addDays(currentWeek, i));
 
@@ -44,40 +44,41 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
   };
 
   const handleBookClass = async (classId: string) => {
-    
-    
-    if (!session) {
+    if (!user) {
       router.push("/login");
       return;
     }
-
+  
     setIsBooking(classId);
-    
+  
     const { error } = await supabase
       .from("bookings")
-      .insert([
-        { class_id: classId, user_id: session.user.id }
-      ]);
-      
+      .insert([{ class_id: classId, user_id: user.id }]);
+  
     if (error) {
-          toast.error("Booking Failed", {
-            description: error.message
-          });
+      if (error.code === "23505") {
+        toast.error("You have already booked this class.");
+      } else {
+        toast.error("Booking Failed", {
+          description: error.message,
+        });
+      }
     } else {
-          toast.success("You have successfully booked this class.", {
-            description: "Your booking has been confirmed."
-          });
-      // Add the newly booked class to the local userBookings state
-      userBookings.push(classId);
+      toast.success("You have successfully booked this class.", {
+        description: "Your booking has been confirmed.",
+      });
+  
+      userBookings.push(classId); // Add to local state
     }
-    
+  
     setIsBooking(null);
     router.refresh();
   };
+  
 
   const handleCancelBooking = async (classId: string) => {
     
-    if (!session) {
+    if (!user) {
       router.push("/login");
       return;
     }
@@ -88,7 +89,7 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
       .from("bookings")
       .delete()
       .eq("class_id", classId)
-      .eq("user_id", session.user.id);
+      .eq("user_id", user.id);
       
     if (error) {
       toast.error("Cancellation Failed",{

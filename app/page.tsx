@@ -2,7 +2,7 @@
 
 //import { useState } from 'react';
 import Link from "next/link";
-import { Calendar, Clock, User, Bell, ChevronRight, Bookmark } from 'lucide-react';
+import { Calendar, Clock, User,  ChevronRight, Bookmark } from 'lucide-react'; //Bell, ?
 //import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 

@@ -1,4 +1,3 @@
-// app/schedule/user-bookings-client.tsx
 "use client";
 
 import { useEffect, useState } from "react";
