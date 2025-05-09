@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { UserBookingsClient } from "./user-bookings-client"; // New small client component
+import { UserBookingsClient } from "./user-bookings-client";
 
 interface ClassType {
   id: string;
@@ -44,7 +44,7 @@ async function getClasses(): Promise<ClassType[]> {
     
     return {
       ...classItem,
-      profiles: Array.isArray(classItem.profiles) ? classItem.profiles[0] : classItem.profiles, // Ensure profiles is a single object
+      profiles: Array.isArray(classItem.profiles) ? classItem.profiles[0] : classItem.profiles,
       current_bookings: bookingError ? 0 : (count || 0),
     };
   }));
@@ -56,18 +56,22 @@ export default async function SchedulePage() {
   const classes = await getClasses();
 
   return (
-    <div className="container mx-auto px-4 py-24">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">
-          Class Schedule
-        </h1>
-        <p className="text-gray-600 dark:text-gray-300 text-center mb-12">
-          Browse available classes and book your spot. Each class has a maximum capacity of 15 participants.
-        </p>
+    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-950 pt-20">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+        <section className="mb-8 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+            Class Schedule
+          </h1>
+          <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+            Browse available classes and book your spot. Each class has a maximum capacity of 15 participants.
+          </p>
+        </section>
 
-        {/* ScheduleCalendar expects userBookings */}
-        <UserBookingsClient classes={classes} />
-      </div>
+        {/* Schedule Client Component */}
+        <section className="mb-8">
+          <UserBookingsClient classes={classes} />
+        </section>
+      </main>
     </div>
   );
 }

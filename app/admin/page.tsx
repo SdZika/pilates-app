@@ -9,7 +9,9 @@ import { Button } from "@/components/ui/button";
 import AddClassForm from "./add-class-form";
 import { DeleteClassButton } from "./delete-class-button";
 
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
+
+//export const marko = "force-dynamic";  
 
 type Attendee = {
   user_id: string;
@@ -235,7 +237,9 @@ export default async function AdminPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {cls.attendees.map((attendee: Attendee) => (
                           <div key={attendee.user_id} className="text-sm p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <p className="font-medium">{attendee.profiles.full_name}</p>
+                            {/*TODO: Add link to attendee profile*/} 
+                            <p className="font-medium">{attendee?.profiles?.full_name ? attendee.profiles.full_name : "you didn't add full name"}</p>
+                            
                           </div>
                         ))}
                       </div>
