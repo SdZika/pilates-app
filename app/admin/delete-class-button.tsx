@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { createClientClient } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
@@ -20,7 +20,7 @@ import {
 export function DeleteClassButton({ classId }: { classId: string }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const supabase = createClientClient();
+  const supabase = createClient();
 
   const handleDelete = async () => {
     setIsLoading(true);

@@ -40,15 +40,24 @@ export default function Login() {
       const data = await response.json();
   
       if (!response.ok) {
-        const message = data?.message || data?.error || "Failed to sign in. Please try again.";
+        const message =
+          data?.message || data?.error || "Failed to sign in. Please try again.";
         throw new Error(message);
       }
   
-      await refreshUser(); // Update UserContext after successful login
+      // Now fetch profile
+      const res = await fetch("/api/profile");
+      const profile = await res.json();
   
-      router.push("/");
-      // Optionally keep router.refresh() if you have server components that need re-rendering
-      router.refresh(); 
+      await refreshUser(); // optionally refresh context if needed elsewhere
+  
+      if (profile?.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/");
+      }
+  
+      router.refresh();
     } catch (err) {
       const message =
         err instanceof Error ? err.message : "Unexpected error during login.";
@@ -57,6 +66,7 @@ export default function Login() {
       setIsLoading(false);
     }
   };
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4">

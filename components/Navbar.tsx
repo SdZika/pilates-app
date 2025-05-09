@@ -38,9 +38,9 @@ export function Navbar() {
     routes.push({ name: "My Bookings", path: "/my-bookings" });
   }
 
-  // if (isAdmin) {
-  //   routes.push({ name: "Admin", path: "/admin" });
-  // }
+  if (user?.role === 'admin') {
+    routes.push({ name: "Admin", path: "/admin" });
+  }
 
   const handleLogout = async () => {
     try {

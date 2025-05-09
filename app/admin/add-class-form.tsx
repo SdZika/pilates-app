@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { createClientClient } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { CalendarIcon } from "lucide-react";
@@ -25,7 +25,7 @@ export default function AddClassForm() {
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const supabase = createClientClient();
+  const supabase = createClient();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
