@@ -23,9 +23,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { MapPin, Phone, Mail, Clock, InstagramIcon } from "lucide-react";
-
-// You would replace this with your actual Supabase client setup
-//import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -45,18 +43,16 @@ export default function ContactPage() {
     
     try {
       // This would be your actual Supabase client initialization
-      // const supabase = createClient('your-supabase-url', 'your-anon-key');
+      const supabase = createClient();
       
-      // Example Supabase insertion (commented out - would need your actual configuration)
-      /*
-      const { data, error } = await supabase
-        .from('contact_submissions')
+      const { error } = await supabase
+        .from('messages')
         .insert([
           { name, email, phone, subject, message }
         ]);
       
       if (error) throw error;
-      */
+     
       
       // For now, we'll simulate a successful submission after a delay
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -326,7 +322,7 @@ export default function ContactPage() {
             
             <Card>
               <CardContent className="pt-6">
-                <h3 className="text-lg font-semibold mb-2">What's your cancellation policy?</h3>
+                <h3 className="text-lg font-semibold mb-2">What&#39;s your cancellation policy?</h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   We require a 12-hour notice for class cancellations to avoid being charged. For private sessions, we require a 24-hour notice.
                 </p>
@@ -351,7 +347,7 @@ export default function ContactPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Message Sent Successfully!</AlertDialogTitle>
             <AlertDialogDescription>
-              Thank you for reaching out. We've received your message and will get back to you as soon as possible.
+              Thank you for reaching out. We&#39;ve received your message and will get back to you as soon as possible.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

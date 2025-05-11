@@ -9,9 +9,7 @@ import { Button } from "@/components/ui/button";
 import AddClassForm from "./add-class-form";
 import { DeleteClassButton } from "./delete-class-button";
 
-//export const dynamic = "force-dynamic";
-
-//export const marko = "force-dynamic";  
+export const dynamic = "force-dynamic";
 
 type Attendee = {
   user_id: string;
