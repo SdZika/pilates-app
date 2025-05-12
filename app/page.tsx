@@ -1,12 +1,17 @@
-"use client";
-
 //import { useState } from 'react';
 import Link from "next/link";
 import { Calendar, Clock, User,  ChevronRight, Bookmark } from 'lucide-react'; //Bell, ?
 //import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/server";
 
-export default function HomePage({ user }: { user?: { name: string } }) {
+export default async function HomePage() {
+
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   const upcomingClasses = [
     {
       id: 1,
@@ -55,7 +60,7 @@ export default function HomePage({ user }: { user?: { name: string } }) {
         {/* Welcome Section */}
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-1 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-            Welcome back{user ? `, ${user.name}` : ""}!
+            Welcome back{user ? `, ${user.email}` : ""}!
           </h2>
           <p className="text-gray-700 dark:text-gray-300">Ready for your next Pilates session?</p>
         </section>

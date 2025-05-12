@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaInstagram, FaFacebook, FaTwitter, FaEnvelope, FaMapPin, FaPhone } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaEnvelope, FaMapPin, FaPhone } from "react-icons/fa"; //FaTwitter,
 //import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -58,7 +58,7 @@ export function Footer() {
                 <FaFacebook className="w-5 h-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link 
+              {/*<Link 
                 href="https://twitter.com/pilatesflow" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -66,7 +66,7 @@ export function Footer() {
               >
                 <FaTwitter className="w-5 h-5" />
                 <span className="sr-only">Twitter</span>
-              </Link>
+              </Link>*/}
             </div>
           </div>
 
@@ -111,13 +111,13 @@ export function Footer() {
               <li className="flex items-start space-x-3">
                 <FaMapPin className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
-                  123 Pilates Way, Wellness District, NY 10001
+                  Djure Danicica 6, Smederevo (Teretana Zlatan Gym - Sportska hala)<br />
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <FaPhone className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
-                  (555) 123-4567
+                  (+381) 064 1932-069
                 </span>
               </li>
               <li className="flex items-center space-x-3">
