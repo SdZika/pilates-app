@@ -1,24 +1,37 @@
 import { createClient } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
 import { format, parseISO } from "date-fns";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CalendarIcon, Clock } from "lucide-react";
+import { CancelBookingButton } from "./cancel-button"; 
 
 export const dynamic = "force-dynamic";
 
+type SupabaseBookingResponse = {
+  id: string;
+  created_at: string;
+  classes: {
+    id: string;
+    date: string;
+    time: string;
+    description: string;
+    profiles: {
+      full_name: string;
+    }[];
+  };
+}[];
+
 async function getUserBookings() {
-  const cookieStore = cookies();
   const supabase = await createClient();
   
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { user } } = await supabase.auth.getUser();
   
-  if (!session) {
+  if (!user) {
     return { upcoming: [], past: [] };
   }
   
-  const { data: bookings, error } = await supabase
+  const { data, error } = await supabase
     .from("bookings")
     .select(`
       id,
@@ -33,7 +46,9 @@ async function getUserBookings() {
         )
       )
     `)
-    .eq("user_id", session.user.id);
+    .eq("user_id", user.id);
+
+  const bookings = data as SupabaseBookingResponse | null;
     
   if (error) {
     console.error("Error fetching user bookings:", error);
@@ -42,7 +57,7 @@ async function getUserBookings() {
   
   const now = new Date();
   
-  const upcoming = bookings
+  const upcoming = (bookings ?? [])
     .filter(booking => {
       const classDate = parseISO(`${booking.classes.date}T${booking.classes.time}`);
       return classDate >= now;
@@ -53,7 +68,7 @@ async function getUserBookings() {
       return dateA.getTime() - dateB.getTime();
     });
     
-  const past = bookings
+  const past = (bookings ?? [])
     .filter(booking => {
       const classDate = parseISO(`${booking.classes.date}T${booking.classes.time}`);
       return classDate < now;
@@ -79,7 +94,7 @@ export default async function MyBookingsPage() {
         
         {upcoming.length === 0 && past.length === 0 ? (
           <div className="text-center py-12">
-            <h2 className="text-xl font-medium mb-4">You haven't booked any classes yet!</h2>
+            <h2 className="text-xl font-medium mb-4">You haven&#39;t booked any classes yet!</h2>
             <Button asChild>
               <Link href="/schedule">Browse Classes</Link>
             </Button>
@@ -124,7 +139,21 @@ export default async function MyBookingsPage() {
   );
 }
 
-function BookingCard({ booking, isPast }) {
+type Booking = {
+  id: string;
+  created_at: string;
+  classes: {
+    id: string;
+    date: string;
+    time: string;
+    description: string;
+    profiles: {
+      full_name: string;
+    }[];
+  };
+};
+
+function BookingCard({ booking, isPast }: { booking: Booking; isPast: boolean }) {
   const classDate = parseISO(`${booking.classes.date}T${booking.classes.time}`);
   
   return (
@@ -144,7 +173,7 @@ function BookingCard({ booking, isPast }) {
               <span>{format(classDate, "h:mm a")}</span>
             </div>
             <div className="text-gray-700 dark:text-gray-300">
-              Instructor: {booking.classes.profiles.full_name}
+              Instructor: {booking.classes.profiles[0]?.full_name || "Unknown"}
             </div>
           </div>
           

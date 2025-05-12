@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { createClientClient } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export function CancelBookingButton({ bookingId }: { bookingId: string }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const supabase = createClientClient();
+  const supabase = createClient();
   
 
   const handleCancel = async () => {
