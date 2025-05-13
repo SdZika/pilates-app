@@ -1,6 +1,6 @@
 //import { useState } from 'react';
 import Link from "next/link";
-import { Calendar, Clock, User,  ChevronRight, Bookmark } from 'lucide-react'; //Bell, ?
+import { Calendar, Clock, User,  ChevronRight,  } from 'lucide-react'; //Bell, Bookmark?
 //import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
@@ -66,12 +66,15 @@ export default async function HomePage() {
         </section>
 
         {/* Quick Actions */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-          <Button 
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          
+          <Button asChild
             className="h-auto py-6 flex flex-col items-center justify-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white"
           >
+            <Link href="/schedule">
             <Calendar className="h-6 w-6" />
             <span className="font-medium">Book Class</span>
+            </Link>
           </Button>
           
           <Button 
@@ -82,13 +85,13 @@ export default async function HomePage() {
             <span className="font-medium">My Schedule</span>
           </Button>
           
-          <Button 
+          {/*<Button 
             variant="outline" 
             className="h-auto py-6 flex flex-col items-center justify-center gap-2 border-gray-200 dark:border-gray-800"
           >
             <Bookmark className="h-6 w-6" />
             <span className="font-medium">Saved Classes</span>
-          </Button>
+          </Button>*/} 
         </section>
 
         {/* Upcoming Classes */}

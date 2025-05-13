@@ -102,12 +102,12 @@ export default function AboutPage() {
               {
                 title: "State-of-the-Art Equipment",
                 desc: "Our studio features premium Pilates reformers, towers, chairs, and other specialized equipment to enhance your practice.",
-                image: "/api/placeholder/600/400",
+                image: "/facility.webp",
               },
               {
                 title: "Tranquil Environment",
                 desc: "Designed with serenity in mind, our space provides the perfect atmosphere for focusing on your practice and wellness journey.",
-                image: "/api/placeholder/600/400",
+                image: "/equipment.webp",
               },
             ].map((studio) => (
               <Card key={studio.title} className="rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
