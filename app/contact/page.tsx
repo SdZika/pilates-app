@@ -22,7 +22,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { MapPin, Phone, Mail, Clock, InstagramIcon } from "lucide-react";
+import { FaMapPin, FaPhone, FaEnvelope, FaClock, FaInstagram } from "react-icons/fa";
 import { createClient } from "@/lib/supabase/client";
 
 export default function ContactPage() {
@@ -76,18 +76,12 @@ export default function ContactPage() {
 
   const studioLocations = [
     {
-      name: "Downtown Studio",
-      address: "123 Main Street, Downtown, City, ZIP",
-      phone: "(555) 123-4567",
-      email: "downtown@pilatesflow.com",
-      hours: "Mon-Fri: 6am-9pm, Sat-Sun: 8am-6pm"
-    },
-    {
-      name: "Uptown Studio",
-      address: "456 Oak Avenue, Uptown, City, ZIP",
-      phone: "(555) 987-6543",
-      email: "uptown@pilatesflow.com",
-      hours: "Mon-Fri: 7am-8pm, Sat-Sun: 9am-5pm"
+      name: "Bilja Pilates",
+      address: "Djure Danicica 6, Smederevo (Teretana Zlatan Gym - Sportska hala",
+      phone: "(+381) 064 1932-069",
+      email: "info@pilatesflow.com",
+      hours: "Mon-Fri: 7am-8pm, Sat-Sun: 9am-5pm",
+      pin: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.902252656889!2d20.931291199999997!3d44.66034870000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4750939530efbb99%3A0xae7f7f99ac7a159d!2sGYM%20I%20FITNESS%20KLUB%20ZLATAN!5e0!3m2!1ssr!2srs!4v1747123108706!5m2!1ssr!2srs"
     }
   ];
 
@@ -203,7 +197,7 @@ export default function ContactPage() {
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <Mail className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
+                    <FaEnvelope className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
                     <div>
                       <p className="font-medium">Email</p>
                       <a 
@@ -216,20 +210,20 @@ export default function ContactPage() {
                   </div>
                   
                   <div className="flex items-start">
-                    <Phone className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
+                    <FaPhone className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
                     <div>
                       <p className="font-medium">Phone</p>
                       <a 
-                        href="tel:+15551234567" 
+                        href="tel:+381641932069" 
                         className="text-sm text-gray-700 dark:text-gray-300 hover:underline"
                       >
-                        (555) 123-4567
+                        (+381) 064 1932-069
                       </a>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
-                    <Clock className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
+                    <FaClock className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
                     <div>
                       <p className="font-medium">Business Hours</p>
                       <p className="text-sm text-gray-700 dark:text-gray-300">
@@ -245,7 +239,7 @@ export default function ContactPage() {
                   <div className="flex space-x-3">
                     <a href="#" className="text-gray-600 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400">
                       <span className="sr-only">Instagram</span>
-                      <InstagramIcon className="h-6 w-6" />
+                      <FaInstagram className="h-6 w-6" />
                     </a>
                     <a href="#" className="text-gray-600 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400">
                       <span className="sr-only">Facebook</span>
@@ -267,29 +261,38 @@ export default function ContactPage() {
               <Card key={location.name} className="overflow-hidden">
                 <div className="aspect-video relative bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
                   {/* Placeholder for a map - in production you'd use a real map integration */}
-                  <MapPin className="h-12 w-12 text-gray-400" />
+                  {/*<MapPin className="h-12 w-12 text-gray-400" />*/}
+                  <iframe
+                    src={location.pin}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
                 <CardContent className="pt-6">
                   <h3 className="text-xl font-semibold mb-3">{location.name}</h3>
                   
                   <div className="space-y-3">
                     <div className="flex items-start">
-                      <MapPin className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
+                      <FaMapPin className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
                       <p className="text-sm text-gray-700 dark:text-gray-300">{location.address}</p>
                     </div>
                     
                     <div className="flex items-start">
-                      <Phone className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
+                      <FaPhone className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
                       <p className="text-sm text-gray-700 dark:text-gray-300">{location.phone}</p>
                     </div>
                     
                     <div className="flex items-start">
-                      <Mail className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
+                      <FaEnvelope className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
                       <p className="text-sm text-gray-700 dark:text-gray-300">{location.email}</p>
                     </div>
                     
                     <div className="flex items-start">
-                      <Clock className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
+                      <FaClock className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
                       <p className="text-sm text-gray-700 dark:text-gray-300">{location.hours}</p>
                     </div>
                   </div>
