@@ -4,6 +4,7 @@ import { Calendar, Clock, User,  ChevronRight,  } from 'lucide-react'; //Bell, B
 //import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
+import { getAllClassAttendees } from "./admin/page";
 
 export default async function HomePage() {
 
@@ -12,46 +13,49 @@ export default async function HomePage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const upcomingClasses = [
-    {
-      id: 1,
-      title: "Mat Pilates",
-      instructor: "Emma Johnson",
-      time: "Today, 10:00 AM",
-      spots: 3
-    },
-    {
-      id: 2,
-      title: "Reformer Flow",
-      instructor: "Michael Stevens",
-      time: "Tomorrow, 9:30 AM",
-      spots: 1
-    },
-    {
-      id: 3,
-      title: "Core Strength",
-      instructor: "Sophie Chen",
-      time: "May 9, 8:15 AM",
-      spots: 5
-    }
-  ];
+  // const upcomingClasses = [
+  //   {
+  //     id: 1,
+  //     title: "Mat Pilates",
+  //     instructor: "Emma Johnson",
+  //     time: "Today, 10:00 AM",
+  //     spots: 3
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Reformer Flow",
+  //     instructor: "Michael Stevens",
+  //     time: "Tomorrow, 9:30 AM",
+  //     spots: 1
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Core Strength",
+  //     instructor: "Sophie Chen",
+  //     time: "May 9, 8:15 AM",
+  //     spots: 5
+  //   }
+  // ];
+
+  const upcoming = await getAllClassAttendees();
+  const upcomingThree = upcoming.slice(0, 3);
   
-  const recommendations = [
-    {
-      id: 1,
-      title: "Pilates for Back Pain",
-      instructor: "Dr. Lisa Adams",
-      duration: "45 min",
-      level: "Beginner"
-    },
-    {
-      id: 2,
-      title: "Advanced Reformer",
-      instructor: "James Wilson",
-      duration: "60 min",
-      level: "Advanced"
-    }
-  ];
+  // const recommendations = [
+  //   {
+  //     id: 1,
+  //     title: "Pilates for Back Pain",
+  //     instructor: "Dr. Lisa Adams",
+  //     duration: "45 min",
+  //     level: "Beginner"
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Advanced Reformer",
+  //     instructor: "James Wilson",
+  //     duration: "60 min",
+  //     level: "Advanced"
+  //   }
+  // ];
 
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-gray-950 pt-20">
@@ -72,8 +76,8 @@ export default async function HomePage() {
             className="h-auto py-6 flex flex-col items-center justify-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white"
           >
             <Link href="/schedule">
-            <Calendar className="h-6 w-6" />
-            <span className="font-medium">Book Class</span>
+              <Calendar className="h-6 w-6" />
+              <span className="font-medium">Book Class</span>
             </Link>
           </Button>
           
@@ -81,8 +85,10 @@ export default async function HomePage() {
             variant="outline" 
             className="h-auto py-6 flex flex-col items-center justify-center gap-2 border-gray-200 dark:border-gray-800"
           >
-            <Clock className="h-6 w-6" />
-            <span className="font-medium">My Schedule</span>
+            <Link href="/my-bookings">
+              <Clock className="h-6 w-6" />
+              <span className="font-medium">My Bookings</span>
+            </Link>
           </Button>
           
           {/*<Button 
@@ -107,25 +113,23 @@ export default async function HomePage() {
           </div>
           
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {upcomingClasses.map(item => (
+            {upcomingThree.map(item => (
               <div 
                 key={item.id} 
                 className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow"
               >
                 <div className="flex flex-col h-full">
                   <div className="flex justify-between items-start">
-                    <h4 className="font-medium text-gray-900 dark:text-gray-100">{item.title}</h4>
-                    <span className="bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 text-xs px-2 py-1 rounded-full">
-                      {item.spots} spots left
-                    </span>
+                    <h4 className="font-medium text-gray-900 dark:text-gray-100">{item.description}</h4>
+                  
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{item.instructor}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{item.profiles?.[0]?.full_name || "Instructor"}</p>
                   <p className="text-sm flex items-center mt-auto pt-3 text-gray-500 dark:text-gray-400">
-                    <Clock className="h-4 w-4 mr-1" /> {item.time}
+                    <Clock className="h-4 w-4 mr-1" /> {item.date} at {item.time}
                   </p>
-                  <Button className="w-full mt-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700">
+                  {/*<Button className="w-full mt-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700">
                     Book Now
-                  </Button>
+                  </Button>*/}
                 </div>
               </div>
             ))}
@@ -133,7 +137,7 @@ export default async function HomePage() {
         </section>
 
         {/* Recommended for You */}
-        <section className="mb-8">
+        {/*<section className="mb-8">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Recommended for You</h3>
             <Link 
@@ -170,7 +174,7 @@ export default async function HomePage() {
               </div>
             ))}
           </div>
-        </section>
+        </section>*/} 
 
         {/* Featured Instructors */}
         <section className="mb-8">

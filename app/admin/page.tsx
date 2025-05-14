@@ -118,7 +118,7 @@ async function getClassAttendees(classId: string): Promise<Attendee[]> {
   })) as Attendee[];
 }
 
-async function getAllClassAttendees() {
+export async function getAllClassAttendees() {
   const { upcoming } = await getClasses();
   
   // For each upcoming class, get the attendees
@@ -236,7 +236,7 @@ export default async function AdminPage() {
                         {cls.attendees.map((attendee: Attendee) => (
                           <div key={attendee.user_id} className="text-sm p-2 bg-gray-50 dark:bg-gray-800 rounded">
                             {/*TODO: Add link to attendee profile*/} 
-                            <p className="font-medium">{attendee?.profiles?.full_name ? attendee.profiles.full_name : "you didn't add full name"}</p>
+                            <p className="font-medium">{attendee?.profiles?.full_name ? attendee.profiles.full_name : "you didn't add trainer name"}</p>
                             
                           </div>
                         ))}
