@@ -1,34 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { trainers } from "@/constants/trainers";
 
 export default function AboutPage() {
-  const trainers = [
-    {
-      name: "Jane Smith",
-      role: "Lead Pilates Instructor",
-      bio: "Jane has been teaching Pilates for over 10 years and is certified in both mat and reformer Pilates. She specializes in rehabilitation and pre/post-natal Pilates.",
-      image: "/api/placeholder/300/300",
-    },
-    {
-      name: "Michael Johnson",
-      role: "Pilates & Yoga Instructor",
-      bio: "Michael brings his background in dance and physical therapy to create dynamic and mindful Pilates sequences that focus on building core strength and flexibility.",
-      image: "/api/placeholder/300/300",
-    },
-    {
-      name: "Sarah Williams",
-      role: "Reformer Specialist",
-      bio: "Sarah is our Pilates reformer expert with extensive knowledge in using equipment to enhance the traditional Pilates experience for all fitness levels.",
-      image: "/api/placeholder/300/300",
-    },
-  ];
 
   return (
     <div className="container mx-auto px-4 py-24">
       <div className="max-w-5xl mx-auto space-y-20">
         {/* Intro */}
         <section className="text-center space-y-6">
-          <h1 className="text-3xl md:text-4xl font-bold">About PilatesFlow</h1>
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">About PilatesFlow</h1>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
             PilatesFlow is a premium Pilates studio dedicated to helping you achieve your fitness goals through mindful movement and expert instruction.
           </p>
@@ -71,7 +52,7 @@ export default function AboutPage() {
         </section>
 
         {/* Trainers */}
-        <section>
+        <section id="trainers">
           <h2 className="text-2xl font-bold mb-10 text-center">Meet Our Trainers</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {trainers.map((trainer) => (

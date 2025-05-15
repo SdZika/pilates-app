@@ -88,7 +88,7 @@ export default function ContactPage() {
   return (
     <div className="container mx-auto px-4 py-24">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
           Contact PilatesFlow
         </h1>
         

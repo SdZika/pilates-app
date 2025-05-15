@@ -29,7 +29,13 @@ export default function Signup() {
     setError(null);
 
     try {
-      await fetch("/api/auth/signup", { method: "POST"});
+      await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
       router.push("/login?registered=true");
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred during sign up.");

@@ -5,6 +5,7 @@ import { Calendar, Clock, User,  ChevronRight,  } from 'lucide-react'; //Bell, B
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
 import { getAllClassAttendees } from "./admin/page";
+import { trainers } from "@/constants/trainers";
 
 export default async function HomePage() {
 
@@ -60,7 +61,7 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-gray-950 pt-20">
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
         {/* Welcome Section */}
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-1 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
@@ -181,7 +182,7 @@ export default async function HomePage() {
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Featured Instructors</h3>
             <Link 
-              href="/instructors" 
+              href="/about#trainers" 
               className="text-sm font-medium flex items-center text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300"
             >
               View all <ChevronRight className="h-4 w-4" />
@@ -189,17 +190,17 @@ export default async function HomePage() {
           </div>
           
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-            {[1, 2, 3, 4].map(id => (
+            {trainers.slice(0,4).map((trainer, index) => (
               <div 
-                key={id} 
+                key={index} 
                 className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow flex flex-col items-center text-center"
               >
                 <div className="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center text-white mb-3">
                   <User className="h-8 w-8" />
                 </div>
-                <h4 className="font-medium text-gray-900 dark:text-gray-100">Sarah Wilson</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Reformer Specialist</p>
-                <Link href={`/instructors/${id}`}>
+                <h4 className="font-medium text-gray-900 dark:text-gray-100">{trainer.name}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{trainer.role}</p>
+                <Link href={"/about#trainers"}>
                   <Button variant="outline" size="sm" className="mt-3">
                     View Profile
                   </Button>
