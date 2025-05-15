@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FaInstagram, FaFacebook, FaEnvelope, FaMapPin, FaPhone } from "react-icons/fa"; //FaTwitter,
 //import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+//import { Button } from "@/components/ui/button";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,24 +11,23 @@ export function Footer() {
   const quickLinks = [
     { name: "Home", path: "/" },
     { name: "Schedule", path: "/schedule" },
-    { name: "Instructors", path: "/instructors" },
-    { name: "About Us", path: "/about" },
+    { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
-    { name: "FAQ", path: "/faq" },
+    { name: "My Bookings", path: "/my-bookings" },
   ];
 
-  const services = [
-    { name: "Private Sessions", path: "/services/private" },
-    { name: "Group Classes", path: "/services/group" },
-    { name: "Corporate Wellness", path: "/services/corporate" },
-    { name: "Online Training", path: "/services/online" },
-    { name: "Workshops", path: "/services/workshops" },
-  ];
+  // const services = [
+  //   { name: "Private Sessions", path: "/services/private" },
+  //   { name: "Group Classes", path: "/services/group" },
+  //   { name: "Corporate Wellness", path: "/services/corporate" },
+  //   { name: "Online Training", path: "/services/online" },
+  //   { name: "Workshops", path: "/services/workshops" },
+  // ];
 
   return (
     <footer className="bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Brand and Social */}
           <div className="flex flex-col space-y-4">
             <Link href="/">
@@ -88,7 +87,7 @@ export function Footer() {
           </div>
 
           {/* Services */}
-          <div>
+          {/*<div>
             <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Our Services</h3>
             <ul className="space-y-2">
               {services.map((service) => (
@@ -102,7 +101,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div>*/}
 
           {/* Contact & Newsletter */}
           <div>
@@ -128,7 +127,7 @@ export function Footer() {
               </li>
             </ul>
             
-            <div className="mt-6">
+            {/*<div className="mt-6">
               <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
                 Subscribe to our newsletter
               </h4>
@@ -144,7 +143,7 @@ export function Footer() {
                   Join
                 </Button>
               </div>
-            </div>
+            </div>*/}
           </div>
         </div>
 
@@ -153,7 +152,7 @@ export function Footer() {
             <p className="text-sm text-gray-500 dark:text-gray-400">
               © {currentYear} PilatesFlow. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            {/*<div className="flex space-x-6 mt-4 md:mt-0">
               <Link 
                 href="/privacy"
                 className="text-sm text-gray-500 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
@@ -172,7 +171,7 @@ export function Footer() {
               >
                 Cookie Policy
               </Link>
-            </div>
+            </div>*/} 
           </div>
         </div>
       </div>
