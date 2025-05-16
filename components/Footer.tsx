@@ -40,7 +40,7 @@ export function Footer() {
             </p>
             <div className="flex space-x-4 mt-4">
               <Link 
-                href="https://instagram.com/pilatesflow" 
+                href="https://www.instagram.com/pilates_smederevo/?utm_source=qr&igsh=MTI0cWhyazVpc25sZw%3D%3D#" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
@@ -49,7 +49,7 @@ export function Footer() {
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link 
-                href="https://facebook.com/pilatesflow" 
+                href="https://www.facebook.com/pilatesfitnes?rdid=atBzbEXiyOybAYKY&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6Biik1xc%2F#" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
@@ -122,7 +122,7 @@ export function Footer() {
               <li className="flex items-center space-x-3">
                 <FaEnvelope className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
-                  info@pilatesflow.com
+                  biljanazivkovic2411@gmail.com
                 </span>
               </li>
             </ul>
