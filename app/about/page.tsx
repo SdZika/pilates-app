@@ -9,9 +9,9 @@ export default function AboutPage() {
       <div className="max-w-5xl mx-auto space-y-20">
         {/* Intro */}
         <section className="text-center space-y-6">
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">About PilatesFlow</h1>
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">About Pilates Smederevo</h1>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-            PilatesFlow is a premium Pilates studio dedicated to helping you achieve your fitness goals through mindful movement and expert instruction.
+            Pilates Smederevo is a premium Pilates studio dedicated to helping you achieve your fitness goals through mindful movement and expert instruction.
           </p>
           <div className="aspect-video relative rounded-2xl overflow-hidden shadow-lg">
             <Image

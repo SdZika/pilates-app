@@ -32,7 +32,7 @@ export function Footer() {
           <div className="flex flex-col space-y-4">
             <Link href="/">
               <div className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                PilatesFlow
+                Pilates Smederevo
               </div>
             </Link>
             <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">
@@ -150,7 +150,7 @@ export function Footer() {
         <div className="border-t border-gray-200 dark:border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              © {currentYear} PilatesFlow. All rights reserved.
+              © {currentYear} Pilates Smederevo. All rights reserved.
             </p>
             {/*<div className="flex space-x-6 mt-4 md:mt-0">
               <Link 

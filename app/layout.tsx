@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Pilates App',
+  title: 'Pilates Smederevo App',
   description: 'Schedule and manage your pilates sessions',
   
   icons: {

@@ -76,10 +76,10 @@ export default function ContactPage() {
 
   const studioLocations = [
     {
-      name: "Bilja Pilates",
+      name: "Pilates Smederevo",
       address: "Djure Danicica 6, Smederevo (Teretana Zlatan Gym - Sportska hala",
       phone: "(+381) 064 1932-069",
-      email: "info@pilatesflow.com",
+      email: "biljanazivkovic2411@gmail.com",
       hours: "Mon-Fri: 7am-8pm, Sat-Sun: 9am-5pm",
       pin: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2837.902252656889!2d20.931291199999997!3d44.66034870000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4750939530efbb99%3A0xae7f7f99ac7a159d!2sGYM%20I%20FITNESS%20KLUB%20ZLATAN!5e0!3m2!1ssr!2srs!4v1747123108706!5m2!1ssr!2srs"
     }
@@ -89,7 +89,7 @@ export default function ContactPage() {
     <div className="container mx-auto px-4 py-24">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-          Contact PilatesFlow
+          Contact Pilates Smederevo
         </h1>
         
         <div className="mb-12 text-center">
