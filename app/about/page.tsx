@@ -56,7 +56,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold mb-10 text-center">Meet Our Trainers</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {trainers.map((trainer) => (
-              <Card key={trainer.name} className="overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition">
+              <Card id={`trainer-${trainer.id}`} key={trainer.name} className="overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition">
                 <div className="aspect-square relative">
                   <Image
                     src={trainer.image}
@@ -82,7 +82,7 @@ export default function AboutPage() {
             {[
               {
                 title: "State-of-the-Art Equipment",
-                desc: "Our studio features premium Pilates reformers, towers, chairs, and other specialized equipment to enhance your practice.",
+                desc: "Our studio features premium Pilates towers, chairs, and other specialized equipment to enhance your practice.",
                 image: "/facility.webp",
               },
               {

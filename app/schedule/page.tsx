@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { UserBookingsClient } from "./user-bookings-client";
+import { WeeklyScheduleTable } from "@/components/WeeklyScheduleTable";
 
 interface ClassType {
   id: string;
@@ -65,6 +66,11 @@ export default async function SchedulePage() {
           <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
             Browse available classes and book your spot. Each class has a maximum capacity of 15 participants.
           </p>
+        </section>
+
+         {/* Weekly Schedule Table */}
+        <section className="mb-8">
+          <WeeklyScheduleTable />
         </section>
 
         {/* Schedule Client Component */}

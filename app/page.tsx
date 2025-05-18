@@ -65,7 +65,7 @@ export default async function HomePage() {
         {/* Welcome Section */}
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-1 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-            Welcome back{user ? `, ${user.email}` : ""}!
+            Welcome back{user ? `, ${user.user_metadata.full_name}` : ""}!
           </h2>
           <p className="text-gray-700 dark:text-gray-300">Ready for your next Pilates session?</p>
         </section>
@@ -200,7 +200,7 @@ export default async function HomePage() {
                 </div>
                 <h4 className="font-medium text-gray-900 dark:text-gray-100">{trainer.name}</h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{trainer.role}</p>
-                <Link href={"/about#trainers"}>
+                <Link href={`/about#trainer-${trainer.id}`}>
                   <Button variant="outline" size="sm" className="mt-3">
                     View Profile
                   </Button>
