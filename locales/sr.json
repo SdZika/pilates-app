@@ -1,0 +1,14 @@
+{
+  "Navbar": {
+    "home": "Početna",
+    "schedule": "Raspored",
+    "about": "O nama",
+    "contact": "Kontakt",
+    "myBookings": "Moje prijave",
+    "admin": "Admin",
+    "login": "Prijava",
+    "logout": "Odjava",
+    "loading": "Učitavanje...",
+    "appName": "Pilates Smederevo"
+  }
+}
