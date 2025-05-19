@@ -1,0 +1,14 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "schedule": "Schedule",
+    "about": "About",
+    "contact": "Contact",
+    "myBookings": "My Bookings",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout",
+    "loading": "Loading...",
+    "appName": "Pilates Smederevo"
+  }
+}

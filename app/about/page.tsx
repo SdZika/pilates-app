@@ -115,13 +115,13 @@ export default function AboutPage() {
           <Card className="rounded-2xl shadow-md">
             <CardContent className="pt-6 space-y-4 text-gray-700 dark:text-gray-300 text-sm">
               <p>
-                Founded in 2018, PilatesFlow began with a simple mission: to create a space where people of all fitness levels could experience the transformative power of Pilates in a supportive, non-intimidating environment.
+                Founded in 2018, Pilates Smederevo began with a simple mission: to create a space where people of all fitness levels could experience the transformative power of Pilates in a supportive, non-intimidating environment.
               </p>
               <p>
-                What started as a small studio with just two reformers has grown into a thriving community dedicated to mindful movement and holistic wellness. Our instructors bring diverse backgrounds in dance, physical therapy, and athletics to create a unique approach to Pilates that honors traditional methods while embracing innovation.
+                What started as a small studio with fewer equipment has grown into a thriving community dedicated to mindful movement and holistic wellness. Our instructors bring diverse backgrounds in dance, physical therapy, and athletics to create a unique approach to Pilates that honors traditional methods while embracing innovation.
               </p>
               <p>
-                Today, PilatesFlow continues to evolve, but our core values remain the same: attention to proper form, personalized instruction, and a commitment to helping each client discover their strongest self.
+                Today, Pilates Smederevo continues to evolve, but our core values remain the same: attention to proper form, personalized instruction, and a commitment to helping each client discover their strongest self.
               </p>
             </CardContent>
           </Card>
