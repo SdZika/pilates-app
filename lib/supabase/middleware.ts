@@ -1,5 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
+import { locales, Locale } from '@/lib/i18n-config'
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
@@ -37,19 +38,28 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  const path = request.nextUrl.pathname;
+  const url = request.nextUrl.clone();
+  const path = url.pathname;
+
+  // ✅ Extract locale and path without locale prefix
+  const segments = path.split('/');
+  const possibleLocale = segments[1];
+  const locale = locales.includes(possibleLocale as Locale) ? possibleLocale : null;
+
+  // Remove locale from path if it's present (e.g. /en/my-bookings -> /my-bookings)
+  const normalizedPath = locale ? `/${segments.slice(2).join('/')}` : path;
   const protectedRoutes = ['/my-bookings', '/admin'];
   const adminRoutes = ['/admin'];
 
   // Not authenticated
-  if (protectedRoutes.some(route => path.startsWith(route)) && !user) {
+  if (protectedRoutes.some(route => normalizedPath.startsWith(route)) && !user) {
     const url = request.nextUrl.clone();
-    url.pathname = '/login';
+      url.pathname = `/${locale ?? 'sr'}/login`;
     return NextResponse.redirect(url);
   }
 
   // Admin access check
-  if (adminRoutes.some(route => path.startsWith(route)) && user) {
+  if (adminRoutes.some(route => normalizedPath.startsWith(route)) && user) {
     const { data: profile } = await supabase
       .from('profiles')
       .select('role')
@@ -57,8 +67,7 @@ export async function updateSession(request: NextRequest) {
       .single();
 
     if (!profile?.role) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/';
+      url.pathname = `/${locale ?? 'sr'}`; // fallback to locale home
       return NextResponse.redirect(url);
     }
   }
