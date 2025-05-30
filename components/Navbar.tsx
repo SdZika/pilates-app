@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle  } from "@/components/ui/
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/context/UserContext";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Navbar() {
   const { user, loading, refreshUser } = useUser();
@@ -100,6 +101,9 @@ export function Navbar() {
             <div className="pl-4">
               <ThemeToggle />
             </div>
+            <div className="pl-4">
+              <LanguageSwitcher />
+            </div>
             {!user ? (
               <Button asChild variant="default" size="sm">
                 <Link href="/login">Login</Link>
@@ -114,6 +118,7 @@ export function Navbar() {
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
+            <LanguageSwitcher />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -124,6 +129,7 @@ export function Navbar() {
               <SheetContent side="right">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <nav className="flex flex-col space-y-4 mt-8">
+                  
                   {routes.map((route) => (
                     <Link
                       key={route.path}
