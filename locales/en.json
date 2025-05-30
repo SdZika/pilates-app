@@ -10,5 +10,16 @@
     "logout": "Logout",
     "loading": "Loading...",
     "appName": "Pilates Smederevo"
+  },
+  "HomePage": {
+    "welcome": "Welcome back",
+    "ready": "Ready for your next Pilates session?",
+    "bookClass": "Book Class",
+    "myBookings": "My Bookings",
+    "upcoming": "Upcoming Classes",
+    "viewAll": "View all",
+    "featured": "Featured Instructors",
+    "viewProfile": "View Profile",
+    "instructor": "Instructor"
   }
 }

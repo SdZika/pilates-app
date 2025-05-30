@@ -6,8 +6,13 @@ import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
 import { getAllClassAttendees } from "../admin/page";
 import { trainers } from "@/constants/trainers";
+import { getDictionary } from "@/lib/i18n";
+import { Locale } from "@/lib/i18n-config";
 
-export default async function HomePage() {
+export default async function HomePage({params}: { params: {locale: Locale}}) {
+
+  const dictionary = await getDictionary(params.locale)
+  const t = dictionary.HomePage;
 
   const supabase = await createClient();
   const {
@@ -25,9 +30,9 @@ export default async function HomePage() {
         {/* Welcome Section */}
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-1 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-            Welcome back{user ? `, ${user.user_metadata.full_name}` : ""}!
+            {t.welcome}{user ? `, ${user.user_metadata.full_name}` : ""}!
           </h2>
-          <p className="text-gray-700 dark:text-gray-300">Ready for your next Pilates session?</p>
+          <p className="text-gray-700 dark:text-gray-300">{t.ready}</p>
         </section>
 
         {/* Quick Actions */}
@@ -38,7 +43,7 @@ export default async function HomePage() {
           >
             <Link href="/schedule">
               <Calendar className="h-6 w-6" />
-              <span className="font-medium">Book Class</span>
+              <span className="font-medium">{t.bookClass}</span>
             </Link>
           </Button>
           
@@ -48,7 +53,7 @@ export default async function HomePage() {
           >
             <Link href="/my-bookings">
               <Clock className="h-6 w-6" />
-              <span className="font-medium">My Bookings</span>
+              <span className="font-medium">{t.myBookings}</span>
             </Link>
           </Button>
           
@@ -64,12 +69,12 @@ export default async function HomePage() {
         {/* Upcoming Classes */}
         <section className="mb-8">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Upcoming Classes</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{t.upcoming}</h3>
             <Link 
               href="/schedule" 
               className="text-sm font-medium flex items-center text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300"
             >
-              View all <ChevronRight className="h-4 w-4" />
+              {t.viewAll} <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
           
@@ -84,7 +89,7 @@ export default async function HomePage() {
                     <h4 className="font-medium text-gray-900 dark:text-gray-100">{item.description}</h4>
                   
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{item.profiles?.[0]?.full_name || "Instructor"}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{item.profiles?.[0]?.full_name || t.instructor}</p>
                   <p className="text-sm flex items-center mt-auto pt-3 text-gray-500 dark:text-gray-400">
                     <Clock className="h-4 w-4 mr-1" /> {item.date} at {item.time}
                   </p>
@@ -100,12 +105,12 @@ export default async function HomePage() {
         {/* Featured Instructors */}
         <section className="mb-8">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Featured Instructors</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{t.featured}</h3>
             <Link 
               href="/about#trainers" 
               className="text-sm font-medium flex items-center text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300"
             >
-              View all <ChevronRight className="h-4 w-4" />
+              {t.viewAll}<ChevronRight className="h-4 w-4" />
             </Link>
           </div>
           
@@ -122,7 +127,7 @@ export default async function HomePage() {
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{trainer.role}</p>
                 <Link href={`/about#trainer-${trainer.id}`}>
                   <Button variant="outline" size="sm" className="mt-3">
-                    View Profile
+                    {t.viewProfile}
                   </Button>
                 </Link>
               </div>

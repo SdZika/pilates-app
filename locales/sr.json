@@ -10,5 +10,16 @@
     "logout": "Odjava",
     "loading": "Učitavanje...",
     "appName": "Pilates Smederevo"
+  },
+  "HomePage": {
+    "welcome": "Dobrodošli nazad",
+    "ready": "Spremni za sledeći Pilates trening?",
+    "bookClass": "Zakaži čas",
+    "myBookings": "Moje prijave",
+    "upcoming": "Predstojeći časovi",
+    "viewAll": "Prikaži sve",
+    "featured": "Istaknuti instruktori",
+    "viewProfile": "Pogledaj profil",
+    "instructor": "Instruktor"
   }
 }
