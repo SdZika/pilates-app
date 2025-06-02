@@ -22,6 +22,43 @@
     "viewProfile": "View Profile",
     "instructor": "Instructor"
   },
+  "About": {
+    "title": "About Pilates Smederevo",
+    "description": "Pilates Smederevo is a premium Pilates studio dedicated to helping you achieve your fitness goals through mindful movement and expert instruction.",
+    "philosophyTitle": "Our Philosophy",
+    "philosophy": [
+      {
+        "title": "Mind-Body Connection",
+        "desc": "We believe in strengthening the connection between mind and body for overall wellness and improved quality of life."
+      },
+      {
+        "title": "Personalized Approach",
+        "desc": "Every body is different, which is why we tailor our instruction to meet your unique needs and goals."
+      },
+      {
+        "title": "Supportive Community",
+        "desc": "We foster a welcoming environment where members feel supported and inspired to achieve their best."
+      }
+    ],
+    "trainersTitle": "Meet Our Trainers",
+    "studioTitle": "Our Studio",
+    "studio": [
+      {
+        "title": "State-of-the-Art Equipment",
+        "desc": "Our studio features premium Pilates towers, chairs, and other specialized equipment to enhance your practice."
+      },
+      {
+        "title": "Tranquil Environment",
+        "desc": "Designed with serenity in mind, our space provides the perfect atmosphere for focusing on your practice and wellness journey."
+      }
+    ],
+    "storyTitle": "Our Story",
+    "story": [
+      "Founded in 2018, Pilates Smederevo began with a simple mission: to create a space where people of all fitness levels could experience the transformative power of Pilates in a supportive, non-intimidating environment.",
+      "What started as a small studio with fewer equipment has grown into a thriving community dedicated to mindful movement and holistic wellness. Our instructors bring diverse backgrounds in dance, physical therapy, and athletics to create a unique approach to Pilates that honors traditional methods while embracing innovation.",
+      "Today, Pilates Smederevo continues to evolve, but our core values remain the same: attention to proper form, personalized instruction, and a commitment to helping each client discover their strongest self."
+    ]
+  },
   "Footer": {
     "description": "Discover the transformative power of Pilates with our expert instructors and state-of-the-art facilities.",
     "quickLinks": "Quick Links",

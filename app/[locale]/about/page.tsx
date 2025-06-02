@@ -1,15 +1,21 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { trainers } from "@/constants/trainers";
+import { getDictionary } from "@/lib/i18n";
+import { Locale } from "@/lib/i18n-config";
 
-export default function AboutPage() {
+export default async function AboutPage({params}: { params: Promise<{locale: Locale}>}) {
+
+   const { locale } = await params
+  const dictionary = await getDictionary(locale)
+  const t = dictionary.About;
 
   return (
     <div className="container mx-auto px-4 py-24">
       <div className="max-w-5xl mx-auto space-y-20">
         {/* Intro */}
         <section className="text-center space-y-6">
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">About Pilates Smederevo</h1>
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">{t.title}</h1>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
             Pilates Smederevo is a premium Pilates studio dedicated to helping you achieve your fitness goals through mindful movement and expert instruction.
           </p>

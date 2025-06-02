@@ -22,6 +22,43 @@
     "viewProfile": "Pogledaj profil",
     "instructor": "Instruktor"
   },
+  "About": {
+    "title": "O Pilates Smederevo",
+    "description": "Pilates Smederevo je premium pilates studio posvećen postizanju vaših ciljeva kroz svesne pokrete i stručnu obuku.",
+    "philosophyTitle": "Naša Filozofija",
+    "philosophy": [
+      {
+        "title": "Veza Uma i Tela",
+        "desc": "Verujemo u jačanje veze između uma i tela radi celokupnog blagostanja i poboljšanog kvaliteta života."
+      },
+      {
+        "title": "Personalizovan Pristup",
+        "desc": "Svako telo je jedinstveno, zato prilagođavamo našu obuku vašim individualnim potrebama i ciljevima."
+      },
+      {
+        "title": "Podržavajuća Zajednica",
+        "desc": "Negujemo prijateljsko okruženje u kojem se članovi osećaju podržano i inspirisano da ostvare svoj maksimum."
+      }
+    ],
+    "trainersTitle": "Upoznajte Naše Trenere",
+    "studioTitle": "Naš Studio",
+    "studio": [
+      {
+        "title": "Vrhunsku Oprema",
+        "desc": "Naš studio poseduje pilates tornjeve, stolice i drugu specijalizovanu opremu za unapređenje vaše prakse."
+      },
+      {
+        "title": "Mirno Okruženje",
+        "desc": "Naš prostor je dizajniran za spokoj i pruža idealnu atmosferu za fokusiranje na praksu i put ka zdravlju."
+      }
+    ],
+    "storyTitle": "Naša Priča",
+    "story": [
+      "Osnovan 2018. godine, Pilates Smederevo je započeo sa jednostavnom misijom: da stvori prostor gde ljudi svih nivoa kondicije mogu iskusiti transformativnu moć pilatesa u podržavajućem i nenametljivom okruženju.",
+      "Ono što je počelo kao mali studio sa malo opreme, izraslo je u snažnu zajednicu posvećenu svesnom pokretu i holističkom zdravlju. Naši instruktori imaju različito iskustvo iz plesa, fizikalne terapije i sporta, što doprinosi jedinstvenom pristupu pilatesu koji kombinuje tradiciju i inovaciju.",
+      "Danas se Pilates Smederevo i dalje razvija, ali naše osnovne vrednosti ostaju iste: pažnja na pravilnu formu, personalizovana obuka i posvećenost da svaki klijent otkrije svoju najjaču verziju."
+    ]
+  },
     "Footer": {
     "description": "Otkrijte transformativnu moć pilatesa uz naše stručne instruktore i vrhunske uslove za vežbanje.",
     "quickLinks": "Brzi Linkovi",
