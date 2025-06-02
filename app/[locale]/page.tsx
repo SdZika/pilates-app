@@ -9,9 +9,10 @@ import { trainers } from "@/constants/trainers";
 import { getDictionary } from "@/lib/i18n";
 import { Locale } from "@/lib/i18n-config";
 
-export default async function HomePage({params}: { params: {locale: Locale}}) {
+export default async function HomePage({params}: { params: Promise<{locale: Locale}>}) {
 
-  const dictionary = await getDictionary(params.locale)
+  const { locale } = await params
+  const dictionary = await getDictionary(locale)
   const t = dictionary.HomePage;
 
   const supabase = await createClient();

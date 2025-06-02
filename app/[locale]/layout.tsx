@@ -12,13 +12,14 @@ export default async function LocaleLayout({
   params,
 }: {
   children: ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
   // ✅ Load dictionary on the server here
-  const dictionary = await getDictionary(params.locale);
+  const { locale } = await params
+  const dictionary = await getDictionary(locale);
 
   return (
-    <LocaleProvider locale={params.locale} dictionary={dictionary}>
+    <LocaleProvider locale={locale} dictionary={dictionary}>
       {children}
     </LocaleProvider>
   );
