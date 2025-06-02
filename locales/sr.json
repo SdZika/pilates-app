@@ -1,15 +1,15 @@
 {
   "Navbar": {
-    "home": "Početna",
+    "home": "Pilates",
+    "homePage": "Početna",
     "schedule": "Raspored",
     "about": "O nama",
     "contact": "Kontakt",
-    "myBookings": "Moje prijave",
+    "myBookings": "Moje rezervacije",
     "admin": "Admin",
     "login": "Prijava",
     "logout": "Odjava",
-    "loading": "Učitavanje...",
-    "appName": "Pilates Smederevo"
+    "loading": "Učitavanje..."
   },
   "HomePage": {
     "welcome": "Dobrodošli nazad",
@@ -21,5 +21,21 @@
     "featured": "Istaknuti instruktori",
     "viewProfile": "Pogledaj profil",
     "instructor": "Instruktor"
+  },
+    "Footer": {
+    "description": "Otkrijte transformativnu moć pilatesa uz naše stručne instruktore i vrhunske uslove za vežbanje.",
+    "quickLinks": "Brzi Linkovi",
+    "contact": "Kontakt",
+    "address": "Đure Daničića 6, Smederevo (Teretana Zlatan Gym - Sportska hala)",
+    "phone": "(+381) 064 1932-069",
+    "email": "biljanazivkovic2411@gmail.com",
+    "copyright": "Sva prava zadržana.",
+    "links": {
+      "home": "Početna",
+      "schedule": "Raspored",
+      "about": "O Nama",
+      "contact": "Kontakt",
+      "myBookings": "Moje Rezervacije"
+    }
   }
 }

@@ -4,18 +4,24 @@ import Link from "next/link";
 import { FaInstagram, FaFacebook, FaEnvelope, FaMapPin, FaPhone } from "react-icons/fa"; //FaTwitter,
 //import { cn } from "@/lib/utils";
 //import { Button } from "@/components/ui/button";
+import { useUser } from "@/context/UserContext";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export function Footer() {
+  const { user } = useUser();
+  const { t } = useTranslation()
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: "Home", path: "/" },
-    { name: "Schedule", path: "/schedule" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
-    { name: "My Bookings", path: "/my-bookings" },
+    { name: t("Footer.links.home"), path: "/" },
+    { name: t("Footer.links.schedule"), path: "/schedule" },
+    { name: t("Footer.links.about"), path: "/about" },
+    { name: t("Footer.links.contact"), path: "/contact" },
   ];
 
+  if (user) {
+    quickLinks.push({ name: t("Footer.links.myBookings"), path: "/my-bookings" });
+  }
   // const services = [
   //   { name: "Private Sessions", path: "/services/private" },
   //   { name: "Group Classes", path: "/services/group" },
@@ -36,7 +42,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">
-              Discover the transformative power of Pilates with our expert instructors and state-of-the-art facilities.
+              {t("Footer.description")}
             </p>
             <div className="flex space-x-4 mt-4">
               <Link 
@@ -71,7 +77,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">{t("Footer.quickLinks")}</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.path}>
@@ -105,12 +111,12 @@ export function Footer() {
 
           {/* Contact & Newsletter */}
           <div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Contact Us</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">{t("Footer.contact")}</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <FaMapPin className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
-                  Djure Danicica 6, Smederevo (Teretana Zlatan Gym - Sportska hala)<br />
+                  {t("Footer.address")}<br />
                 </span>
               </li>
               <li className="flex items-center space-x-3">
@@ -150,7 +156,7 @@ export function Footer() {
         <div className="border-t border-gray-200 dark:border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              © {currentYear} Pilates Smederevo. All rights reserved.
+              © {currentYear} Pilates Smederevo. {t("Footer.copyright")}
             </p>
             {/*<div className="flex space-x-6 mt-4 md:mt-0">
               <Link 

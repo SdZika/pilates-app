@@ -1,6 +1,7 @@
 {
-  "Navbar": {
-    "home": "Home",
+   "Navbar": {
+    "home": "Pilates",
+    "homePage": "Home",
     "schedule": "Schedule",
     "about": "About",
     "contact": "Contact",
@@ -8,8 +9,7 @@
     "admin": "Admin",
     "login": "Login",
     "logout": "Logout",
-    "loading": "Loading...",
-    "appName": "Pilates Smederevo"
+    "loading": "Loading..."
   },
   "HomePage": {
     "welcome": "Welcome back",
@@ -21,5 +21,21 @@
     "featured": "Featured Instructors",
     "viewProfile": "View Profile",
     "instructor": "Instructor"
+  },
+  "Footer": {
+    "description": "Discover the transformative power of Pilates with our expert instructors and state-of-the-art facilities.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact Us",
+    "address": "Djure Danicica 6, Smederevo (Zlatan Gym - Sports Hall)",
+    "phone": "(+381) 064 1932-069",
+    "email": "biljanazivkovic2411@gmail.com",
+    "copyright": "All rights reserved.",
+    "links": {
+      "home": "Home",
+      "schedule": "Schedule",
+      "about": "About",
+      "contact": "Contact",
+      "myBookings": "My Bookings"
+    }
   }
 }

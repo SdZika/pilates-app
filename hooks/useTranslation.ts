@@ -10,13 +10,15 @@ export const useTranslation = () => {
 
   const { dictionary } = context;
 
-  const t = (key: string) => {
-    return key.split('.').reduce<unknown>((obj, k) => {
+  const t = (key: string): string => {
+    const result = key.split('.').reduce<unknown>((obj, k) => {
       if (obj && typeof obj === 'object' && k in obj) {
         return (obj as Record<string, unknown>)[k];
       }
       return undefined;
-    }, dictionary) ?? key;
+    }, dictionary);
+
+    return typeof result === 'string' ? result : key; // fallback to key
   };
 
   return { t };
