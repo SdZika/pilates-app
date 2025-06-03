@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { useUser } from "../../context/UserContext";
+import { useUser } from "../../../context/UserContext";
 
 interface ClassType {
   id: string;

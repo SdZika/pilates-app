@@ -22,6 +22,21 @@
     "viewProfile": "Pogledaj profil",
     "instructor": "Instruktor"
   },
+  "schedule": {
+    "titleTable": "Nedeljni raspored časova",
+    "day": "Dan",
+    "timeSlots": "Termini",
+    "noClasses": "Nema časova",
+    "days": {
+      "Monday": "Ponedeljak",
+      "Tuesday": "Utorak",
+      "Wednesday": "Sreda",
+      "Thursday": "Četvrtak",
+      "Friday": "Petak",
+      "Saturday": "Subota",
+      "Sunday": "Nedelja"
+    }
+  },
   "About": {
     "title": "O Pilates Smederevo",
     "description": "Pilates Smederevo je premium pilates studio posvećen postizanju vaših ciljeva kroz svesne pokrete i stručnu obuku.",

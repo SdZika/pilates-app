@@ -22,6 +22,21 @@
     "viewProfile": "View Profile",
     "instructor": "Instructor"
   },
+  "schedule": {
+    "titleTable": "Weekly Class Times",
+    "day": "Day",
+    "timeSlots": "Time Slots",
+    "noClasses": "No classes",
+    "days": {
+      "Monday": "Monday",
+      "Tuesday": "Tuesday",
+      "Wednesday": "Wednesday",
+      "Thursday": "Thursday",
+      "Friday": "Friday",
+      "Saturday": "Saturday",
+      "Sunday": "Sunday"
+    }
+  },
   "About": {
     "title": "About Pilates Smederevo",
     "description": "Pilates Smederevo is a premium Pilates studio dedicated to helping you achieve your fitness goals through mindful movement and expert instruction.",

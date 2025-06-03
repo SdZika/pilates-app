@@ -1,7 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { UserBookingsClient } from "./user-bookings-client";
 import { WeeklyScheduleTable } from "@/components/WeeklyScheduleTable";
-
+import { Locale } from "@/lib/i18n-config";
+import { getDictionary } from "@/lib/i18n";
 interface ClassType {
   id: string;
   date: string;
@@ -16,6 +17,7 @@ interface ClassType {
 export const dynamic = "force-dynamic";
 
 async function getClasses(): Promise<ClassType[]> {
+   
   const supabase = await createClient();
   
   const { data: classes, error } = await supabase
@@ -53,7 +55,11 @@ async function getClasses(): Promise<ClassType[]> {
   return classesWithBookings;
 }
 
-export default async function SchedulePage() {
+export default async function SchedulePage({params}: {params: Promise<{locale: Locale}>}) {
+  
+  const { locale } = await params
+  const t = await getDictionary(locale)
+  
   const classes = await getClasses();
 
   return (
@@ -70,7 +76,7 @@ export default async function SchedulePage() {
 
          {/* Weekly Schedule Table */}
         <section className="mb-8">
-          <WeeklyScheduleTable />
+          <WeeklyScheduleTable locale={locale}/>
         </section>
 
         {/* Schedule Client Component */}
