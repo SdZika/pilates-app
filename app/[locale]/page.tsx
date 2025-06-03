@@ -42,7 +42,7 @@ export default async function HomePage({params}: { params: Promise<{locale: Loca
           <Button asChild
             className="h-auto py-6 flex flex-col items-center justify-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white"
           >
-            <Link href="/schedule">
+            <Link href={`/${locale}/schedule`}>
               <Calendar className="h-6 w-6" />
               <span className="font-medium">{t.bookClass}</span>
             </Link>
@@ -72,7 +72,7 @@ export default async function HomePage({params}: { params: Promise<{locale: Loca
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{t.upcoming}</h3>
             <Link 
-              href="/schedule" 
+              href={`/${locale}/schedule`} 
               className="text-sm font-medium flex items-center text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300"
             >
               {t.viewAll} <ChevronRight className="h-4 w-4" />
@@ -108,7 +108,7 @@ export default async function HomePage({params}: { params: Promise<{locale: Loca
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{t.featured}</h3>
             <Link 
-              href="/about#trainers" 
+              href={`/${locale}/about#trainers`} 
               className="text-sm font-medium flex items-center text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300"
             >
               {t.viewAll}<ChevronRight className="h-4 w-4" />
@@ -126,7 +126,7 @@ export default async function HomePage({params}: { params: Promise<{locale: Loca
                 </div>
                 <h4 className="font-medium text-gray-900 dark:text-gray-100">{trainer.name}</h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{trainer.role}</p>
-                <Link href={`/about#trainer-${trainer.id}`}>
+                <Link href={`/${locale}/about#trainer-${trainer.id}`}>
                   <Button variant="outline" size="sm" className="mt-3">
                     {t.viewProfile}
                   </Button>
