@@ -10,7 +10,7 @@ interface Props {
 export async function WeeklyScheduleTable({locale}: Props) {
 
   const dictionary = await getDictionary(locale)
-    const t = dictionary.Schedule;
+  const t = dictionary.Schedule;
 
   return (
     <Card className="mb-8">
@@ -27,16 +27,18 @@ export async function WeeklyScheduleTable({locale}: Props) {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(weeklySchedule).map(([day, times]) => (
+                  {Object.entries(weeklySchedule).map(([dayKey, dayData]) => (
                 <tr
-                  key={day}
+                  key={dayKey}
                   className="border-t border-gray-200 dark:border-gray-700"
                 >
                   <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">
-                    {t.days.day}
+                    {dayData[locale]}
                   </td>
                   <td className="px-4 py-3 text-gray-700 dark:text-gray-300">
-                    {times.length > 0 ? times.join(", ") : "No classes"}
+                    {dayData.times.length > 0
+                      ? dayData.times.join(", ")
+                      : t.noClasses}
                   </td>
                 </tr>
               ))}

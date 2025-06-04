@@ -58,7 +58,8 @@ async function getClasses(): Promise<ClassType[]> {
 export default async function SchedulePage({params}: {params: Promise<{locale: Locale}>}) {
   
   const { locale } = await params
-  const t = await getDictionary(locale)
+  const dictionary = await getDictionary(locale)
+  const t = dictionary.Schedule;
   
   const classes = await getClasses();
 
@@ -67,10 +68,10 @@ export default async function SchedulePage({params}: {params: Promise<{locale: L
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
         <section className="mb-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-            Class Schedule
+            {t.heading}
           </h1>
           <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-            Browse available classes and book your spot. Each class has a maximum capacity of 15 participants.
+            {t.description}
           </p>
         </section>
 

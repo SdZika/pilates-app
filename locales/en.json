@@ -22,20 +22,13 @@
     "viewProfile": "View Profile",
     "instructor": "Instructor"
   },
-  "schedule": {
+  "Schedule": {
+    "heading": "Class Schedule",
+    "description": "Browse available classes and book your spot. Each class has a maximum capacity of 15 participants.",
     "titleTable": "Weekly Class Times",
     "day": "Day",
     "timeSlots": "Time Slots",
-    "noClasses": "No classes",
-    "days": {
-      "Monday": "Monday",
-      "Tuesday": "Tuesday",
-      "Wednesday": "Wednesday",
-      "Thursday": "Thursday",
-      "Friday": "Friday",
-      "Saturday": "Saturday",
-      "Sunday": "Sunday"
-    }
+    "noClasses": "No classes"
   },
   "About": {
     "title": "About Pilates Smederevo",

@@ -22,20 +22,13 @@
     "viewProfile": "Pogledaj profil",
     "instructor": "Instruktor"
   },
-  "schedule": {
+  "Schedule": {
+    "heading": "Raspored Časova",
+    "description": "Pregledajte dostupne časove i rezervišite svoje mesto. Maksimalni broj učesnika po času je 15.",
     "titleTable": "Nedeljni raspored časova",
     "day": "Dan",
     "timeSlots": "Termini",
-    "noClasses": "Nema časova",
-    "days": {
-      "Monday": "Ponedeljak",
-      "Tuesday": "Utorak",
-      "Wednesday": "Sreda",
-      "Thursday": "Četvrtak",
-      "Friday": "Petak",
-      "Saturday": "Subota",
-      "Sunday": "Nedelja"
-    }
+    "noClasses": "Nema časova"
   },
   "About": {
     "title": "O Pilates Smederevo",

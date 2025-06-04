@@ -1,4 +1,4 @@
-type Trainer = {
+interface Trainer {
   id: string;
   image: string;
   name: {
