@@ -28,7 +28,25 @@
     "titleTable": "Nedeljni raspored časova",
     "day": "Dan",
     "timeSlots": "Termini",
-    "noClasses": "Nema časova"
+    "noClasses": "Nema časova",
+    "days": {
+      "Monday": "Ponedeljak",
+      "Tuesday": "Utorak",
+      "Wednesday": "Sreda",
+      "Thursday": "Četvrtak",
+      "Friday": "Petak",
+      "Saturday": "Subota",
+      "Sunday": "Nedelja"
+    },
+       "times": {
+      "Monday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
+      "Tuesday": ["19:00-20:00", "20:00-21:00"],
+      "Wednesday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
+      "Thursday": ["19:00-20:00", "20:00-21:00"],
+      "Friday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
+      "Saturday": ["10:00-11:00"],
+      "Sunday": []
+    }
   },
   "About": {
     "title": "O Pilates Smederevo",

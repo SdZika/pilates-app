@@ -77,7 +77,7 @@ export default async function SchedulePage({params}: {params: Promise<{locale: L
 
          {/* Weekly Schedule Table */}
         <section className="mb-8">
-          <WeeklyScheduleTable locale={locale}/>
+          <WeeklyScheduleTable t={t}/>
         </section>
 
         {/* Schedule Client Component */}

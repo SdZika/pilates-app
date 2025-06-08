@@ -1,16 +1,26 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { weeklySchedule } from "@/constants/weeklySchedule";
-import { Locale } from "@/lib/i18n-config";
-import { getDictionary } from "@/lib/i18n";
 
-interface Props {
-  locale: Locale;
+interface T {
+  t: {
+    titleTable: string;
+    day: string;
+    timeSlots: string;
+    noClasses: string;
+    days: Record<string, string>;
+    times: Record<string, string[]>;
+  };
 }
 
-export async function WeeklyScheduleTable({locale}: Props) {
-
-  const dictionary = await getDictionary(locale)
-  const t = dictionary.Schedule;
+export async function WeeklyScheduleTable({ t }: T) {
+  const orderedDays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
   return (
     <Card className="mb-8">
@@ -27,21 +37,26 @@ export async function WeeklyScheduleTable({locale}: Props) {
               </tr>
             </thead>
             <tbody>
-                  {Object.entries(weeklySchedule).map(([dayKey, dayData]) => (
-                <tr
-                  key={dayKey}
-                  className="border-t border-gray-200 dark:border-gray-700"
-                >
-                  <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">
-                    {dayData[locale]}
-                  </td>
-                  <td className="px-4 py-3 text-gray-700 dark:text-gray-300">
-                    {dayData.times.length > 0
-                      ? dayData.times.join(", ")
-                      : t.noClasses}
-                  </td>
-                </tr>
-              ))}
+              {orderedDays.map((day) => {
+                const translatedDay = t.days[day];
+                const timeSlots = t.times[day] || [];
+
+                return (
+                  <tr
+                    key={day}
+                    className="border-t border-gray-200 dark:border-gray-700"
+                  >
+                    <td className="px-4 py-3 font-medium text-gray-900 dark:text-gray-100">
+                      {translatedDay}
+                    </td>
+                    <td className="px-4 py-3 text-gray-700 dark:text-gray-300">
+                      {timeSlots.length > 0
+                        ? timeSlots.join(", ")
+                        : t.noClasses}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

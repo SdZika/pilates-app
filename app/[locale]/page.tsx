@@ -124,8 +124,8 @@ export default async function HomePage({params}: { params: Promise<{locale: Loca
                 <div className="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center text-white mb-3">
                   <User className="h-8 w-8" />
                 </div>
-                <h4 className="font-medium text-gray-900 dark:text-gray-100">{trainer.name}</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{trainer.role}</p>
+                <h4 className="font-medium text-gray-900 dark:text-gray-100">{trainer.name[locale]}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{trainer.role[locale]}</p>
                 <Link href={`/${locale}/about#trainer-${trainer.id}`}>
                   <Button variant="outline" size="sm" className="mt-3">
                     {t.viewProfile}
