@@ -1,30 +1,39 @@
-import { ReactNode } from 'react';
-import { getDictionary } from '@/lib/i18n';
-import { locales, Locale } from '@/lib/i18n-config';
-import { LocaleProvider } from '@/lib/LocaleProvider';
+import {setRequestLocale} from 'next-intl/server';
+import {NextIntlClientProvider, hasLocale} from 'next-intl';
+import {notFound} from 'next/navigation';
+import {routing} from '@/i18n/routing';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-
-export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+ 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
 }
-
+ 
 export default async function LocaleLayout({
   children,
-  params,
+  params
 }: {
-  children: ReactNode;
-  params: Promise<{ locale: Locale }>;
+  children: React.ReactNode;
+  params: Promise<{locale: string}>;
 }) {
-  // ✅ Load dictionary on the server here
-  const { locale } = await params
-  const dictionary = await getDictionary(locale);
+  // Ensure that the incoming `locale` is valid
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
+   // Enable static rendering
+  setRequestLocale(locale);
+ 
   return (
-    <LocaleProvider locale={locale} dictionary={dictionary}>
-      <Navbar />
-      {children}
-      <Footer />
-    </LocaleProvider>
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

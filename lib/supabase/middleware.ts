@@ -1,76 +1,51 @@
-import { createServerClient } from '@supabase/ssr'
-import { NextResponse, type NextRequest } from 'next/server'
-import { locales, Locale } from '@/lib/i18n-config'
+import { createServerClient } from '@supabase/ssr';
+import { NextResponse, type NextRequest } from 'next/server';
 
 export async function updateSession(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({
-    request,
-  })
+  const response = NextResponse.next();
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() {
-          return request.cookies.getAll()
-        },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({
-            request,
-          })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
+        getAll: () => request.cookies.getAll(),
+        setAll: (cookiesToSet) => {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            response.cookies.set(name, value, options);
+          });
         },
       },
     }
-  )
+  );
 
-  // Do not run code between createServerClient and
-  // supabase.auth.getUser(). A simple mistake could make it very hard to debug
-  // issues with users being randomly logged out.
+  const { data: { user } } = await supabase.auth.getUser();
+  const path = request.nextUrl.pathname;
 
-  // IMPORTANT: DO NOT REMOVE auth.getUser()
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  const url = request.nextUrl.clone();
-  const path = url.pathname;
-
-  // ✅ Extract locale and path without locale prefix
-  const segments = path.split('/');
-  const possibleLocale = segments[1];
-  const locale = locales.includes(possibleLocale as Locale) ? possibleLocale : null;
-
-  // Remove locale from path if it's present (e.g. /en/my-bookings -> /my-bookings)
-  const normalizedPath = locale ? `/${segments.slice(2).join('/')}` : path;
   const protectedRoutes = ['/my-bookings', '/admin'];
   const adminRoutes = ['/admin'];
 
-  // Not authenticated
-  if (protectedRoutes.some(route => normalizedPath.startsWith(route)) && !user) {
-    const url = request.nextUrl.clone();
-      url.pathname = `/${locale ?? 'sr'}/login`;
-    return NextResponse.redirect(url);
+  // Redirect unauthenticated users trying to access protected routes
+  if (protectedRoutes.some(route => path.startsWith(route)) && !user) {
+    const loginUrl = request.nextUrl.clone();
+    loginUrl.pathname = '/login';
+    return NextResponse.redirect(loginUrl);
   }
 
-  // Admin access check
-  if (adminRoutes.some(route => normalizedPath.startsWith(route)) && user) {
+  // Admin role check
+  if (adminRoutes.some(route => path.startsWith(route)) && user) {
     const { data: profile } = await supabase
       .from('profiles')
       .select('role')
       .eq('id', user.id)
       .single();
 
-    if (!profile?.role) {
-      url.pathname = `/${locale ?? 'sr'}`; // fallback to locale home
-      return NextResponse.redirect(url);
+    if (profile?.role !== 'admin') {
+      const homeUrl = request.nextUrl.clone();
+      homeUrl.pathname = '/';
+      return NextResponse.redirect(homeUrl);
     }
   }
 
-  return supabaseResponse;
+  return response;
 }

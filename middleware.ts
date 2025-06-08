@@ -1,33 +1,44 @@
-import { NextRequest, NextResponse } from 'next/server';
+import createIntlMiddleware from 'next-intl/middleware';
 import { updateSession } from '@/lib/supabase/middleware';
-import { locales, defaultLocale } from '@/lib/i18n-config';
+import { routing } from './i18n/routing';
+import { NextRequest } from 'next/server';
+
+const intlMiddleware = createIntlMiddleware(routing);
+
+// Add your protected routes here (without locale prefix)
+const protectedRoutes = ['/my-bookings', '/admin'];
+
+function stripLocaleFromPath(pathname: string, locales: readonly string[]) {
+  for (const locale of locales) {
+    if (pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)) {
+      return pathname.replace(`/${locale}`, '') || '/';
+    }
+  }
+  return pathname;
+}
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  // Always run next-intl localization middleware first
+  const intlResponse = intlMiddleware(request);
 
-  // ✅ 1. Redirect from `/` to `/en` or `/sr`
-  if (pathname === '/') {
-    const preferredLocale = getPreferredLocale(request) ?? defaultLocale;
-    return NextResponse.redirect(new URL(`/${preferredLocale}`, request.url));
+  // Check if current route (without locale) is protected
+  const pathname = request.nextUrl.pathname;
+  const strippedPath = stripLocaleFromPath(pathname, routing.locales);
+  const isProtected = protectedRoutes.some(route => strippedPath.startsWith(route));
+
+  // If it's protected, apply auth middleware
+  if (isProtected) {
+    return await updateSession(request);
   }
 
-  // ✅ 2. Proceed with Supabase session + auth logic
-  return await updateSession(request);
+  // Otherwise, proceed with only intl response
+  return intlResponse;
 }
 
-// ✅ 3. Match ALL localized routes (e.g. /en/my-bookings), skip static files and APIs
+
 export const config = {
   matcher: [
-    '/',
-    '/((?!api|_next|.*\\..*).*)',
+    // Match all paths for localization
+    '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
   ],
 };
-
-// ✅ 4. Helper: detect browser language
-function getPreferredLocale(request: NextRequest): string | undefined {
-  const acceptLang = request.headers.get('accept-language');
-  if (!acceptLang) return;
-
-  const preferred = acceptLang.split(',').map(lang => lang.trim().slice(0, 2));
-  return locales.find((locale) => preferred.includes(locale));
-}
