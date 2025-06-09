@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Menu, } from "lucide-react"; // X
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle  } from "@/components/ui/sheet";
@@ -10,17 +10,17 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/context/UserContext";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { useTranslation } from "@/hooks/useTranslation";
+import {useTranslations} from 'next-intl';
 
 export function Navbar() {
+
+  const t = useTranslations("Navbar")
   const { user, loading, refreshUser } = useUser();
 
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
-
-  const { t } = useTranslation()
 
  
   useEffect(() => {
@@ -32,18 +32,18 @@ export function Navbar() {
   }, []);
 
   const routes = [
-    { name: t("Navbar.homePage"), path: "/" },
-    { name: t("Navbar.schedule"), path: "/schedule" },
-    { name: t("Navbar.about"), path: "/about" },
-    { name: t("Navbar.contact"), path: "/contact" },
+    { name: t("homePage"), path: "/" },
+    { name: t("schedule"), path: "/schedule" },
+    { name: t("about"), path: "/about" },
+    { name: t("contact"), path: "/contact" },
   ];
 
   if (user) {
-    routes.push({ name: t("Navbar.myBookings"), path: "/my-bookings" });
+    routes.push({ name: t("myBookings"), path: "/my-bookings" });
   }
 
   if (user?.role === 'admin') {
-    routes.push({ name: t("Navbar.admin"), path: "/admin" });;
+    routes.push({ name: "Admin", path: "/admin" });
   }
 
   const handleLogout = async () => {
@@ -60,7 +60,7 @@ export function Navbar() {
   if (loading) {
     return (
       <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm h-16 flex items-center justify-center">
-        <span className="text-sm text-muted-foreground">{t("Navbar.loading")}</span>
+        <span className="text-sm text-muted-foreground">{t("loading")}</span>
       </header>
     );
   }
@@ -109,11 +109,11 @@ export function Navbar() {
             </div>
             {!user ? (
               <Button asChild variant="default" size="sm">
-                <Link href="/login">{t("Navbar.login")}</Link>
+                <Link href="/login">{t("login")}</Link>
               </Button>
             ) : (
               <Button variant="outline" size="sm" onClick={handleLogout}>
-                {t("Navbar.logout")}
+                {t("logout")}
               </Button>
             )}
           </nav>
@@ -132,7 +132,6 @@ export function Navbar() {
               <SheetContent side="right">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <nav className="flex flex-col space-y-4 mt-8">
-                  
                   {routes.map((route) => (
                     <Link
                       key={route.path}
@@ -151,7 +150,7 @@ export function Navbar() {
                   {!user ? (
                     <Button asChild className="mt-4">
                       <Link href="/login" onClick={() => setIsOpen(false)}>
-                        {t("Navbar.login")}
+                        {t("login")}
                       </Link>
                     </Button>
                   ) : (
@@ -160,7 +159,7 @@ export function Navbar() {
                       className="mt-4"
                       onClick={() => {setIsOpen(false); handleLogout();}}
                     >
-                        {t("Navbar.logout")}
+                        {t("logout")}
                     </Button>
                   )}
                 </nav>

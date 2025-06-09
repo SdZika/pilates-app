@@ -67,15 +67,47 @@
       }
     ],
     "trainersTitle": "Meet Our Trainers",
+    "trainersList": [
+      {
+        "id": "1",
+        "image": "/biljana_zivkovic.webp",
+        "name": "Biljana Zivkovic",
+        "role": "Lead Pilates Instructor",
+        "bio": "Biljana has been teaching Pilates for over 10 years and is certified in mat Pilates. She specializes in using equipment to enhance the traditional Pilates experience for all fitness levels."
+      },
+      {
+        "id": "2",
+        "image": "/aleksandra_sikirica.webp",
+        "name": "Aleksandra Sikirica",
+        "role": "Pilates & Aerobic Instructor",
+        "bio": "Aleksandra brings her background in dance and physical therapy to create dynamic and mindful Pilates sequences that focus on building core strength and flexibility."
+      },
+      {
+        "id": "3",
+        "image": "/aleksandra_pavic.webp",
+        "name": "Andjela Pavic",
+        "role": "Pilates & Aerobic Instructor",
+        "bio": "Andjela is our Pilates expert with extensive knowledge in using equipment for traditional Pilates."
+      },
+      {
+        "id": "4",
+        "image": "/bojana_milic.webp",
+        "name": "Bojana Milic",
+        "role": "Pilates & Aerobic Instructor",
+        "bio": "Bojana is our Pilates instructor with experience for all fitness levels."
+      }
+    ],
     "studioTitle": "Our Studio",
     "studio": [
       {
         "title": "State-of-the-Art Equipment",
-        "desc": "Our studio features premium Pilates towers, chairs, and other specialized equipment to enhance your practice."
+        "desc": "Our studio features premium Pilates towers, chairs, and other specialized equipment to enhance your practice.",
+        "image": "/facility.webp"
       },
       {
         "title": "Tranquil Environment",
-        "desc": "Designed with serenity in mind, our space provides the perfect atmosphere for focusing on your practice and wellness journey."
+        "desc": "Designed with serenity in mind, our space provides the perfect atmosphere for focusing on your practice and wellness journey.",
+        "image": "/equipment.webp"
       }
     ],
     "storyTitle": "Our Story",

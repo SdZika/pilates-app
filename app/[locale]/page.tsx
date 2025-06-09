@@ -10,7 +10,7 @@ import { Link } from '@/i18n/navigation'; // ✅ Use localized Link
 
 export default async function HomePage() {
   const t = await getTranslations("HomePage");
-
+  
   const supabase = await createClient();
   const {
     data: { user },

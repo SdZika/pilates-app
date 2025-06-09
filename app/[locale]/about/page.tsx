@@ -1,23 +1,23 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { trainers } from "@/constants/trainers";
-import { getDictionary } from "@/lib/i18n";
-import { Locale } from "@/lib/i18n-config";
+import { getTranslations } from 'next-intl/server';
 
-export default async function AboutPage({params}: { params: Promise<{locale: Locale}>}) {
+export default async function AboutPage() {
 
-  const { locale } = await params
-  const dictionary = await getDictionary(locale)
-  const t = dictionary.About;
+  const t = await getTranslations("About")
+  const tStudio = t.raw("studio")
+  const tPhilosophy = t.raw("philosophy")
+  const tTrainersList = t.raw("trainersList")
+  const tStory = t.raw("story")
 
   return (
     <div className="container mx-auto px-4 py-24">
       <div className="max-w-5xl mx-auto space-y-20">
         {/* Intro */}
         <section className="text-center space-y-6">
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">{t.title}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">{t("title")}</h1>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-            {t.description}
+            {t("description")}
           </p>
           <div className="aspect-video relative rounded-2xl overflow-hidden shadow-lg">
             <Image
@@ -31,9 +31,9 @@ export default async function AboutPage({params}: { params: Promise<{locale: Loc
 
         {/* Philosophy */}
         <section>
-          <h2 className="text-2xl font-bold mb-10 text-center">{t.philosophyTitle}</h2>
+          <h2 className="text-2xl font-bold mb-10 text-center">{t("philosophyTitle")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.philosophy.map((item: { title: string; desc: string }) => (
+            {tPhilosophy.map((item: { title: string; desc: string }) => (
               <Card key={item.title} className="rounded-2xl shadow-md hover:shadow-xl transition">
                 <CardContent className="pt-6">
                   <h3 className="text-xl font-semibold mb-2 text-center">{item.title}</h3>
@@ -46,22 +46,22 @@ export default async function AboutPage({params}: { params: Promise<{locale: Loc
 
         {/* Trainers */}
         <section id="trainers">
-          <h2 className="text-2xl font-bold mb-10 text-center">{t.trainersTitle}</h2>
+          <h2 className="text-2xl font-bold mb-10 text-center">{t("trainersTitle")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {trainers.map((trainer) => (
-              <Card id={`trainer-${trainer.id}`} key={trainer.name[locale]} className="overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition">
+            {tTrainersList.map((trainer: {id: string; name: string; image: string; role: string; bio: string;}) => (
+              <Card id={`trainer-${trainer.id}`} key={trainer.name} className="overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition">
                 <div className="aspect-square relative">
                   <Image
                     src={trainer.image}
-                    alt={trainer.name[locale]}
+                    alt={trainer.name}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <CardContent className="pt-6 space-y-2">
-                  <h3 className="text-lg font-semibold">{trainer.name[locale]}</h3>
-                  <p className="text-pink-600 dark:text-pink-400 text-sm">{trainer.role[locale]}</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">{trainer.bio[locale]}</p>
+                  <h3 className="text-lg font-semibold">{trainer.name}</h3>
+                  <p className="text-pink-600 dark:text-pink-400 text-sm">{trainer.role}</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">{trainer.bio}</p>
                 </CardContent>
               </Card>
             ))}
@@ -70,13 +70,13 @@ export default async function AboutPage({params}: { params: Promise<{locale: Loc
 
         {/* Studio */}
         <section>
-          <h2 className="text-2xl font-bold mb-10 text-center">{t.studioTitle}</h2>
+          <h2 className="text-2xl font-bold mb-10 text-center">{t("studioTitle")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {t.studio.map((item: { title: string; desc: string }, index: number) => (
+            {tStudio.map((item: { title: string; desc: string; image: string; }) => (
               <Card key={item.title} className="rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
                 <div className="aspect-video relative">
                   <Image
-                    src={index === 0 ? "/facility.webp" : "/equipment.webp"}
+                    src={item.image}
                     alt={item.title}
                     fill
                     className="object-cover"
@@ -93,10 +93,10 @@ export default async function AboutPage({params}: { params: Promise<{locale: Loc
 
         {/* Story */}
         <section>
-          <h2 className="text-2xl font-bold mb-10 text-center">{t.storyTitle}</h2>
+          <h2 className="text-2xl font-bold mb-10 text-center">{t("storyTitle")}</h2>
           <Card className="rounded-2xl shadow-md">
             <CardContent className="pt-6 space-y-4 text-gray-700 dark:text-gray-300 text-sm">
-              {t.story.map((item: string, index: number) => (
+              {tStory.map((item: string, index: number) => (
                 <p key={index}>
                   {item}
               </p>))}

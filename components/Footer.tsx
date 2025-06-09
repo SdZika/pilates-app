@@ -1,34 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { FaInstagram, FaFacebook, FaEnvelope, FaMapPin, FaPhone } from "react-icons/fa"; //FaTwitter,
-//import { cn } from "@/lib/utils";
-//import { Button } from "@/components/ui/button";
+import { FaInstagram, FaFacebook, FaEnvelope, FaMapPin, FaPhone } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 import { useUser } from "@/context/UserContext";
-import { useTranslation } from "@/hooks/useTranslation";
 
 export function Footer() {
+  const t = useTranslations("Footer");
   const { user } = useUser();
-  const { t } = useTranslation()
+  const tLinks = t.raw("links"); // Access nested object
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: t("Footer.links.home"), path: "/" },
-    { name: t("Footer.links.schedule"), path: "/schedule" },
-    { name: t("Footer.links.about"), path: "/about" },
-    { name: t("Footer.links.contact"), path: "/contact" },
+    { name: tLinks.home, path: "/" },
+    { name: tLinks.schedule, path: "/schedule" },
+    { name: tLinks.about, path: "/about" },
+    { name: tLinks.contact, path: "/contact" },
   ];
 
-  if (user) {
-    quickLinks.push({ name: t("Footer.links.myBookings"), path: "/my-bookings" });
+ if (user) {
+    quickLinks.push({ name: tLinks.myBookings, path: "/my-bookings" });
   }
-  // const services = [
-  //   { name: "Private Sessions", path: "/services/private" },
-  //   { name: "Group Classes", path: "/services/group" },
-  //   { name: "Corporate Wellness", path: "/services/corporate" },
-  //   { name: "Online Training", path: "/services/online" },
-  //   { name: "Workshops", path: "/services/workshops" },
-  // ];
 
   return (
     <footer className="bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
@@ -42,7 +34,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">
-              {t("Footer.description")}
+              {t("description")}
             </p>
             <div className="flex space-x-4 mt-4">
               <Link 
@@ -63,21 +55,12 @@ export function Footer() {
                 <FaFacebook className="w-5 h-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
-              {/*<Link 
-                href="https://twitter.com/pilatesflow" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
-              >
-                <FaTwitter className="w-5 h-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>*/}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">{t("Footer.quickLinks")}</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">{t("quickLinks")}</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.path}>
@@ -92,92 +75,38 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
-          {/*<div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Our Services</h3>
-            <ul className="space-y-2">
-              {services.map((service) => (
-                <li key={service.path}>
-                  <Link 
-                    href={service.path}
-                    className="text-gray-600 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400 text-sm transition-colors"
-                  >
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>*/}
-
-          {/* Contact & Newsletter */}
+          {/* Contact */}
           <div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">{t("Footer.contact")}</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">{t("contact")}</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <FaMapPin className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
-                  {t("Footer.address")}<br />
+                  {t("address")}
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <FaPhone className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
-                  (+381) 064 1932-069
+                  {t("phone")}
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <FaEnvelope className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
-                  biljanazivkovic2411@gmail.com
+                  {t("email")}
                 </span>
               </li>
             </ul>
-            
-            {/*<div className="mt-6">
-              <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
-                Subscribe to our newsletter
-              </h4>
-              <div className="flex mt-2">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="flex-1 min-w-0 px-3 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-l-md bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-pink-500"
-                />
-                <Button 
-                  className="rounded-l-none bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700"
-                >
-                  Join
-                </Button>
-              </div>
-            </div>*/}
           </div>
         </div>
 
+        {/* Copyright */}
         <div className="border-t border-gray-200 dark:border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              © {currentYear} Pilates Smederevo. {t("Footer.copyright")}
+              © {currentYear} Pilates Smederevo. {t("copyright")}
             </p>
-            {/*<div className="flex space-x-6 mt-4 md:mt-0">
-              <Link 
-                href="/privacy"
-                className="text-sm text-gray-500 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link 
-                href="/terms"
-                className="text-sm text-gray-500 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
-              >
-                Terms of Service
-              </Link>
-              <Link 
-                href="/cookies"
-                className="text-sm text-gray-500 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
-              >
-                Cookie Policy
-              </Link>
-            </div>*/} 
           </div>
         </div>
       </div>
