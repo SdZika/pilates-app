@@ -46,6 +46,29 @@
       "Friday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
       "Saturday": ["10:00-11:00"],
       "Sunday": []
+    },
+    "bookNow": "Book Now",
+    "booking": "Booking...",
+    "cancelBooking": "Cancel Booking",
+    "cancelling": "Cancelling...",
+    "classFull": "Class Full",
+    "noClassesSchedule": "No classes scheduled",
+    "trainer": "Trainer",
+    "success": "Success!",
+    "cancelSuccess": "You have successfully cancelled this booking.",
+    "bookingSuccess": "You have successfully booked this class.",
+    "bookingDescription": "Your booking has been confirmed.",
+    "alreadyBooked": "You have already booked this class.",
+    "bookingFailed": "Booking Failed",
+    "cancellationFailed": "Cancellation Failed",
+    "shortDays": {
+      "Mon": "Mon",
+      "Tue": "Tue",
+      "Wed": "Wed",
+      "Thu": "Thu",
+      "Fri": "Fri",
+      "Sat": "Sat",
+      "Sun": "Sun"
     }
   },
   "About": {

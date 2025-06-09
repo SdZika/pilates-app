@@ -26,14 +26,12 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
  
   return (
-    <html lang={locale}>
-      <body>
-        <NextIntlClientProvider>
+    
+        <NextIntlClientProvider locale={locale}>
           <Navbar />
           {children}
           <Footer />
         </NextIntlClientProvider>
-      </body>
-    </html>
+    
   );
 }

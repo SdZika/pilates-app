@@ -1,8 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { UserBookingsClient } from "./user-bookings-client";
 import { WeeklyScheduleTable } from "@/components/WeeklyScheduleTable";
-import { Locale } from "@/lib/i18n-config";
-import { getDictionary } from "@/lib/i18n";
+import { getTranslations } from "next-intl/server"; 
+
 interface ClassType {
   id: string;
   date: string;
@@ -55,11 +55,9 @@ async function getClasses(): Promise<ClassType[]> {
   return classesWithBookings;
 }
 
-export default async function SchedulePage({params}: {params: Promise<{locale: Locale}>}) {
+export default async function SchedulePage() {
   
-  const { locale } = await params
-  const dictionary = await getDictionary(locale)
-  const t = dictionary.Schedule;
+  const t = await getTranslations("Schedule");
   
   const classes = await getClasses();
 
@@ -68,16 +66,16 @@ export default async function SchedulePage({params}: {params: Promise<{locale: L
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
         <section className="mb-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-            {t.heading}
+            {t("heading")}
           </h1>
           <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-            {t.description}
+            {t("description")}
           </p>
         </section>
 
          {/* Weekly Schedule Table */}
         <section className="mb-8">
-          <WeeklyScheduleTable t={t}/>
+          <WeeklyScheduleTable />
         </section>
 
         {/* Schedule Client Component */}

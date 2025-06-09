@@ -9,6 +9,8 @@ import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useUser } from "../../../context/UserContext";
+import { useTranslations } from "next-intl";
+
 
 interface ClassType {
   id: string;
@@ -32,6 +34,7 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
   const router = useRouter();
   const { user } = useUser();
   const supabase = createClient();
+  const t = useTranslations("Schedule");
   
   const daysOfWeek = Array.from({ length: 7 }, (_, i) => addDays(currentWeek, i));
 
@@ -57,15 +60,15 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
   
     if (error) {
       if (error.code === "23505") {
-        toast.error("You have already booked this class.");
+        toast.error(t("alreadyBooked"));
       } else {
-        toast.error("Booking Failed", {
+        toast.error(t("bookingFailed"), {
           description: error.message,
         });
       }
     } else {
-      toast.success("You have successfully booked this class.", {
-        description: "Your booking has been confirmed.",
+      toast.success(t("bookingSuccess"), {
+        description: t("bookingDescription"),
       });
   
       userBookings.push(classId); // Add to local state
@@ -92,12 +95,12 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
       .eq("user_id", user.id);
       
     if (error) {
-      toast.error("Cancellation Failed",{
+      toast.error(t("cancellationFailed"),{
         description: error.message,
       });
     } else {
-      toast.success("Success!",{
-        description: "You have successfully cancelled this booking.",
+      toast.success(t("success"),{
+        description: t("cancellationSuccess"),
       });
       // Remove the cancelled class from the local userBookings state
       const index = userBookings.indexOf(classId);
@@ -128,7 +131,7 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
         {daysOfWeek.map((date) => (
           <div key={date.toString()} className="space-y-4">
             <div className="text-center">
-              <p className="font-medium">{format(date, "EEE")}</p>
+              <p className="font-medium">{t(`shortDays.${format(date, "EEE")}`)}</p>
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 {format(date, "MMM d")}
               </p>
@@ -161,7 +164,7 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
                           onClick={() => handleCancelBooking(cls.id)}
                           disabled={isBooking === cls.id}
                         >
-                          {isBooking === cls.id ? "Cancelling..." : "Cancel Booking"}
+                          {isBooking === cls.id ? t("cancelling") : t("cancelBooking")}
                         </Button>
                       ) : (
                         <Button 
@@ -171,7 +174,7 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
                           onClick={() => handleBookClass(cls.id)}
                           disabled={!canBook || isBooking === cls.id}
                         >
-                          {isBooking === cls.id ? "Booking..." : isFull ? "Class Full" : "Book Now"}
+                          {isBooking === cls.id ? t("booking") : isFull ? t("classFull") : t("bookNow")}
                         </Button>
                       )}
                     </CardContent>
@@ -181,7 +184,7 @@ export function ScheduleCalendar({ classes, userBookings }: ScheduleCalendarProp
               
             {classes.filter((cls) => isSameDay(parseISO(cls.date), date)).length === 0 && (
               <div className="py-8 text-center text-sm text-gray-500 dark:text-gray-400">
-                No classes scheduled
+                {t("noClassesSchedule")}
               </div>
             )}
           </div>

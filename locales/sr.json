@@ -46,6 +46,29 @@
       "Friday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
       "Saturday": ["10:00-11:00"],
       "Sunday": []
+    },
+    "bookNow": "Rezerviši",
+    "booking": "Rezervišem...",
+    "cancelBooking": "Otkaži rezervaciju",
+    "cancelling": "Otkazujem...",
+    "classFull": "Popunjeno",
+    "noClassesSchedule": "Nema zakazanih časova",
+    "trainer": "Trener",
+    "success": "Uspešno!",
+    "cancelSuccess": "Uspešno ste otkazali rezervaciju.",
+    "bookingSuccess": "Uspešno ste rezervisali čas.",
+    "bookingDescription": "Vaša rezervacija je potvrđena.",
+    "alreadyBooked": "Već ste rezervisali ovaj čas.",
+    "bookingFailed": "Rezervacija neuspešna",
+    "cancellationFailed": "Otkazivanje neuspešno",
+    "shortDays": {
+      "Mon": "Pon",
+      "Tue": "Uto",
+      "Wed": "Sre",
+      "Thu": "Čet",
+      "Fri": "Pet",
+      "Sat": "Sub",
+      "Sun": "Ned"
     }
   },
   "About": {
