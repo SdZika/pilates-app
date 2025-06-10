@@ -4,12 +4,13 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
 import { getAllClassAttendees } from "../admin/page";
-import { trainers } from "@/constants/trainers";
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation'; // ✅ Use localized Link
 
 export default async function HomePage() {
   const t = await getTranslations("HomePage");
+  const tAbout = await getTranslations("About");
+  const  tAboutTrainersList = tAbout.raw("trainersList")
   
   const supabase = await createClient();
   const {
@@ -102,7 +103,7 @@ export default async function HomePage() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-            {trainers.slice(0, 4).map((trainer, index) => (
+            {tAboutTrainersList.slice(0, 4).map((trainer: {id: string; name: string; image: string; role: string; bio: string;}, index: number) => (
               <div
                 key={index}
                 className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow flex flex-col items-center text-center"
@@ -110,8 +111,8 @@ export default async function HomePage() {
                 <div className="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center text-white mb-3">
                   <User className="h-8 w-8" />
                 </div>
-                <h4 className="font-medium text-gray-900 dark:text-gray-100">{trainer.name['en']}</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{trainer.role['en']}</p>
+                <h4 className="font-medium text-gray-900 dark:text-gray-100">{trainer.name}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{trainer.role}</p>
                 <Link href={`/about#trainer-${trainer.id}`}>
                   <Button variant="outline" size="sm" className="mt-3">
                     {t("viewProfile")}

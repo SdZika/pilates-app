@@ -124,11 +124,13 @@
     "studio": [
       {
         "title": "Vrhunsku Oprema",
-        "desc": "Naš studio poseduje pilates tornjeve, stolice i drugu specijalizovanu opremu za unapređenje vaše prakse."
+        "desc": "Naš studio poseduje pilates tornjeve, stolice i drugu specijalizovanu opremu za unapređenje vaše prakse.",
+        "image": "/facility.webp"
       },
       {
         "title": "Mirno Okruženje",
-        "desc": "Naš prostor je dizajniran za spokoj i pruža idealnu atmosferu za fokusiranje na praksu i put ka zdravlju."
+        "desc": "Naš prostor je dizajniran za spokoj i pruža idealnu atmosferu za fokusiranje na praksu i put ka zdravlju.",
+        "image": "/equipment.webp"
       }
     ],
     "storyTitle": "Naša Priča",
