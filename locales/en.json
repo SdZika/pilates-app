@@ -155,5 +155,75 @@
       "contact": "Contact",
       "myBookings": "My Bookings"
     }
+  },
+  "ContactPage": {
+    "title": "Contact Pilates Smederevo",
+    "description": "Have questions or want to book a session? Reach out to us and our team will get back to you as soon as possible.",
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "Your email address",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "Your phone number",
+      "subject": "Subject",
+      "subjectPlaceholder": "Select a subject",
+      "subjectOptions": {
+        "general": "General Inquiry",
+        "classes": "Class Information",
+        "private": "Private Sessions",
+        "pricing": "Pricing",
+        "careers": "Careers"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help you...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "error": "There was a problem submitting your message. Please try again."
+    },
+    "contactInfo": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Business Hours",
+      "hoursText": "Monday - Friday: 6am - 9pm\nSaturday - Sunday: 8am - 6pm",
+      "follow": "Follow Us",
+      "instagram": "Instagram",
+      "facebook": "Facebook"
+    },
+    "locations": {
+      "title": "Our Locations",
+      "address": "Address",
+      "studioName": "Pilates Smederevo",
+      "studioAddress": "Djure Danicica 6, Smederevo (Teretana Zlatan Gym - Sportska hala)",
+      "studioHours": "Mon-Fri: 7am-8pm, Sat-Sun: 9am-5pm"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        {
+          "question": "Do I need to bring my own equipment?",
+          "answer": "No, we provide all the necessary equipment for our classes. Just bring comfortable clothing, water, and a positive attitude!"
+        },
+        {
+          "question": "How do I book a class?",
+          "answer": "You can book classes through our online booking system, mobile app, or by calling our studio directly. We recommend booking at least 24 hours in advance as classes tend to fill up quickly."
+        },
+        {
+          "question": "What's your cancellation policy?",
+          "answer": "We require a 12-hour notice for class cancellations to avoid being charged. For private sessions, we require a 24-hour notice."
+        },
+        {
+          "question": "Is Pilates suitable for beginners?",
+          "answer": "Absolutely! Pilates is adaptable to all fitness levels. We offer specific beginner classes and our instructors can modify exercises to suit your needs and experience level."
+        }
+      ]
+    },
+    "successDialog": {
+      "title": "Message Sent Successfully!",
+      "description": "Thank you for reaching out. We've received your message and will get back to you as soon as possible.",
+      "button": "OK"
+    }
   }
 }

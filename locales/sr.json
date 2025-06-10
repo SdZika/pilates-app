@@ -155,5 +155,75 @@
       "contact": "Kontakt",
       "myBookings": "Moje Rezervacije"
     }
+  },
+  "ContactPage": {
+    "title": "Kontaktirajte Pilates Smederevo",
+    "description": "Imate pitanja ili želite da rezervišete termin? Javite nam se i naš tim će vam odgovoriti u najkraćem mogućem roku.",
+    "form": {
+      "title": "Pošaljite nam poruku",
+      "name": "Ime",
+      "namePlaceholder": "Vaše ime",
+      "email": "Email",
+      "emailPlaceholder": "Vaša email adresa",
+      "phone": "Telefon (opciono)",
+      "phonePlaceholder": "Vaš broj telefona",
+      "subject": "Tema",
+      "subjectPlaceholder": "Izaberite temu",
+      "subjectOptions": {
+        "general": "Opšti upit",
+        "classes": "Informacije o časovima",
+        "private": "Privatni časovi",
+        "pricing": "Cene",
+        "careers": "Poslovi"
+      },
+      "message": "Poruka",
+      "messagePlaceholder": "Recite nam kako vam možemo pomoći...",
+      "submit": "Pošalji poruku",
+      "submitting": "Šaljem...",
+      "error": "Došlo je do problema pri slanju poruke. Molimo pokušajte ponovo."
+    },
+    "contactInfo": {
+      "title": "Kontakt informacije",
+      "email": "Email",
+      "phone": "Telefon",
+      "hours": "Radno vreme",
+      "hoursText": "Ponedeljak - Petak: 6-21h\nSubota - Nedelja: 8-18h",
+      "follow": "Pratite nas",
+      "instagram": "Instagram",
+      "facebook": "Facebook"
+    },
+    "locations": {
+      "title": "Naše lokacije",
+      "address": "Adresa",
+      "studioName": "Pilates Smederevo",
+      "studioAddress": "Đure Daničića 6, Smederevo (Teretana Zlatan Gym - Sportska hala)",
+      "studioHours": "Pon-Pet: 7-20h, Sub-Ned: 9-17h"
+    },
+    "faq": {
+      "title": "Često postavljana pitanja",
+      "questions": [
+        {
+          "question": "Da li trebam doneti svoju opremu?",
+          "answer": "Ne, mi obezbeđujemo svu potrebnu opremu za naše časove. Dovoljno je da ponesete udobnu odeću, vodu i pozitivno raspoloženje!"
+        },
+        {
+          "question": "Kako mogu rezervisati čas?",
+          "answer": "Možete rezervisati časove putem našeg online sistema za rezervacije, mobilne aplikacije ili direktnim pozivom u studio. Preporučujemo da rezervišete bar 24 sata unapred jer se časovi brzo popune."
+        },
+        {
+          "question": "Kakva je vaša politika otkazivanja?",
+          "answer": "Za otkazivanje grupnih časova potrebno je najaviti najmanje 12 sati unapred kako ne biste bili naplaćeni. Za privatne časove potrebno je najaviti 24 sata unapred."
+        },
+        {
+          "question": "Da li je pilates pogodan za početnike?",
+          "answer": "Apsolutno! Pilates je prilagodljiv svim nivoima fizičke spremnosti. Nudimo posebne časove za početnike i naši instruktori mogu modifikovati vežbe prema vašim potrebama i nivou iskustva."
+        }
+      ]
+    },
+    "successDialog": {
+      "title": "Poruka uspešno poslata!",
+      "description": "Hvala vam što ste nas kontaktirali. Primili smo vašu poruku i odgovorićemo vam u najkraćem mogućem roku.",
+      "button": "U redu"
+    }
   }
 }
