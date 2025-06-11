@@ -225,5 +225,52 @@
       "description": "Thank you for reaching out. We've received your message and will get back to you as soon as possible.",
       "button": "OK"
     }
+  },
+  "Login": {
+    "title": "Welcome Back",
+    "description": "Sign in to your account to book your pilates classes",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "signingIn": "Signing in...",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "error": "Failed to sign in. Please try again."
+  },
+    "ResetPassword": {
+    "title": "Reset Password",
+    "description": "Enter your email to receive a password reset link.",
+    "email": "Email",
+    "sendLink": "Send Reset Link",
+    "sending": "Sending...",
+    "rememberPassword": "Remember your password?",
+    "signIn": "Sign in",
+    "successMessage": "Reset email sent. Please check your inbox.",
+    "error": "Something went wrong"
+  },
+   "Signup": {
+    "title": "Create an Account",
+    "description": "Sign up to book pilates classes and track your progress",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "John Smith",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "password": "Password",
+    "passwordHint": "Password must be at least 8 characters",
+    "createAccount": "Create Account",
+    "creatingAccount": "Creating account...",
+    "existingAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "error": "An error occurred during sign up."
+  },
+  "UpdatePassword": {
+    "title": "Set New Password",
+    "newPassword": "New Password",
+    "updateButton": "Update Password",
+    "updating": "Updating...",
+    "success": "Password updated! Redirecting to login...",
+    "error": "Failed to update password"
   }
 }

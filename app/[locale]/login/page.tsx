@@ -12,9 +12,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useUser } from "@/context/UserContext"; 
+import { useTranslations } from "next-intl";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -23,6 +23,7 @@ export default function Login() {
   const [error, setError] = useState<string | null>(null);
   const { refreshUser } = useUser();
   const router = useRouter();
+  const t = useTranslations("Login");
   
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -41,7 +42,7 @@ export default function Login() {
   
       if (!response.ok) {
         const message =
-          data?.message || data?.error || "Failed to sign in. Please try again.";
+          data?.message || data?.error || t("error");
         throw new Error(message);
       }
   
@@ -72,20 +73,20 @@ export default function Login() {
     <div className="flex items-center justify-center min-h-screen px-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-2xl text-center">Welcome Back</CardTitle>
+          <CardTitle className="text-2xl text-center">{t("title")}</CardTitle>
           <CardDescription className="text-center">
-            Sign in to your account to book your pilates classes
+            {t("description")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin}>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t("email")}</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder={t("emailPlaceholder")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -93,12 +94,12 @@ export default function Login() {
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">{t("password")}</Label>
                   <Link
                     href="/reset-password"
                     className="text-sm text-pink-600 hover:text-pink-800 dark:text-pink-400 dark:hover:text-pink-300"
                   >
-                    Forgot password?
+                    {t("forgotPassword")}
                   </Link>
                 </div>
                 <Input
@@ -113,19 +114,19 @@ export default function Login() {
                 <div className="text-sm text-red-500 mt-2">{error}</div>
               )}
               <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Signing in..." : "Sign In"}
+                {isLoading ? t("signingIn") : t("signIn")}
               </Button>
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col items-center">
           <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-            Don&apos;t have an account?{" "}
+            {t("noAccount")}{" "}
             <Link
               href="/signup"
               className="text-pink-600 hover:text-pink-800 dark:text-pink-400 dark:hover:text-pink-300 font-medium"
             >
-              Sign up
+              {t("signUp")}
             </Link>
           </div>
         </CardFooter>

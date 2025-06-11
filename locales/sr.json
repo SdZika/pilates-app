@@ -225,5 +225,52 @@
       "description": "Hvala vam što ste nas kontaktirali. Primili smo vašu poruku i odgovorićemo vam u najkraćem mogućem roku.",
       "button": "U redu"
     }
+  },
+  "Login": {
+    "title": "Dobrodošli nazad",
+    "description": "Prijavite se na svoj nalog da biste rezervisali pilates časove",
+    "email": "Email",
+    "emailPlaceholder": "vaš@email.com",
+    "password": "Lozinka",
+    "forgotPassword": "Zaboravili ste lozinku?",
+    "signIn": "Prijavi se",
+    "signingIn": "Prijavljivanje...",
+    "noAccount": "Nemate nalog?",
+    "signUp": "Registrujte se",
+    "error": "Neuspešna prijava. Molimo pokušajte ponovo."
+  },
+    "ResetPassword": {
+    "title": "Resetovanje lozinke",
+    "description": "Unesite vaš email da biste dobili link za resetovanje lozinke.",
+    "email": "Email",
+    "sendLink": "Pošalji link za reset",
+    "sending": "Slanje...",
+    "rememberPassword": "Sećate se lozinke?",
+    "signIn": "Prijavite se",
+    "successMessage": "Email za resetovanje je poslat. Proverite vaš inbox.",
+    "error": "Došlo je do greške"
+  },
+    "Signup": {
+    "title": "Kreirajte nalog",
+    "description": "Registrujte se da biste rezervisali pilates časove i pratili svoj napredak",
+    "fullName": "Puno ime",
+    "fullNamePlaceholder": "Petar Petrović",
+    "email": "Email",
+    "emailPlaceholder": "vaš@email.com",
+    "password": "Lozinka",
+    "passwordHint": "Lozinka mora imati najmanje 8 karaktera",
+    "createAccount": "Kreiraj nalog",
+    "creatingAccount": "Kreiranje naloga...",
+    "existingAccount": "Već imate nalog?",
+    "signIn": "Prijavite se",
+    "error": "Došlo je do greške prilikom registracije."
+  },
+    "UpdatePassword": {
+    "title": "Postavi novu lozinku",
+    "newPassword": "Nova lozinka",
+    "updateButton": "Ažuriraj lozinku",
+    "updating": "Ažuriranje...",
+    "success": "Lozinka ažurirana! Preusmeravanje na prijavu...",
+    "error": "Neuspešno ažuriranje lozinke"
   }
 }

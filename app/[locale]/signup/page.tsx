@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { Link, useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -17,6 +17,7 @@ export default function Signup() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const t = useTranslations("Signup");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -38,7 +39,7 @@ export default function Signup() {
       });
       router.push("/login?registered=true");
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred during sign up.");
+      setError(error instanceof Error ? error.message : t("error"));
     } finally {
       setIsLoading(false);
     }
@@ -48,40 +49,40 @@ export default function Signup() {
     <div className="flex items-center justify-center min-h-screen px-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-2xl text-center">Create an Account</CardTitle>
+          <CardTitle className="text-2xl text-center">{t("title")}</CardTitle>
           <CardDescription className="text-center">
-            Sign up to book pilates classes and track your progress
+            {t("description")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSignup}>
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="fullName">Full Name</Label>
+                <Label htmlFor="fullName">{t("fullName")}</Label>
                 <Input
                   id="fullName"
                   name="fullName"
                   type="text"
-                  placeholder="John Smith"
+                  placeholder={t("fullNamePlaceholder")}
                   value={formData.fullName}
                   onChange={handleInputChange}
                   required
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t("email")}</Label>
                 <Input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder={t("emailPlaceholder")}
                   value={formData.email}
                   onChange={handleInputChange}
                   required
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t("password")}</Label>
                 <Input
                   id="password"
                   name="password"
@@ -91,7 +92,7 @@ export default function Signup() {
                   required
                 />
                 <p className="text-xs text-gray-500">
-                  Password must be at least 8 characters
+                  {t("passwordHint")}
                 </p>
               </div>
               {error && (
@@ -102,19 +103,19 @@ export default function Signup() {
                 className="w-full"
                 disabled={isLoading}
               >
-                {isLoading ? "Creating account..." : "Create Account"}
+                {isLoading ? t("creatingAccount") : t("createAccount")}
               </Button>
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col items-center">
           <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-            Already have an account?{" "}
+            {t("existingAccount")}{" "}
             <Link
               href="/login"
               className="text-pink-600 hover:text-pink-800 dark:text-pink-400 dark:hover:text-pink-300 font-medium"
             >
-              Sign in
+              {t("signIn")}
             </Link>
           </div>
         </CardFooter>

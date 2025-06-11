@@ -1,7 +1,6 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
-import { usePathname, useRouter } from "next/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useState, useEffect } from "react";
 import { Menu, } from "lucide-react"; // X
 import { Button } from "@/components/ui/button";
@@ -10,7 +9,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/context/UserContext";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 export function Navbar() {
 
