@@ -14,14 +14,13 @@ import { useTranslations } from 'next-intl';
 export function Navbar() {
 
   const t = useTranslations("Navbar")
-  const { user, loading, refreshUser } = useUser();
+  const { user, loading, refreshUser, isAdmin } = useUser();
 
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
 
- 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -41,7 +40,7 @@ export function Navbar() {
     routes.push({ name: t("myBookings"), path: "/my-bookings" });
   }
 
-  if (user?.role === 'admin') {
+  if (isAdmin) {
     routes.push({ name: "Admin", path: "/admin" });
   }
 

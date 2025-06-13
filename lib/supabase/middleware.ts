@@ -20,20 +20,21 @@ export async function updateSession(request: NextRequest) {
   );
 
   const { data: { user } } = await supabase.auth.getUser();
-  const path = request.nextUrl.pathname;
+  const pathname = request.nextUrl.pathname;
+
+  // Get locale from URL
+  const locale = pathname.split('/')[1]; // assumes locale is first segment
 
   const protectedRoutes = ['/my-bookings', '/admin'];
   const adminRoutes = ['/admin'];
 
-  // Redirect unauthenticated users trying to access protected routes
-  if (protectedRoutes.some(route => path.startsWith(route)) && !user) {
+  if (protectedRoutes.some(route => pathname.includes(route)) && !user) {
     const loginUrl = request.nextUrl.clone();
-    loginUrl.pathname = '/login';
+    loginUrl.pathname = `/${locale}/login`;
     return NextResponse.redirect(loginUrl);
   }
 
-  // Admin role check
-  if (adminRoutes.some(route => path.startsWith(route)) && user) {
+  if (adminRoutes.some(route => pathname.includes(route)) && user) {
     const { data: profile } = await supabase
       .from('profiles')
       .select('role')
@@ -42,7 +43,7 @@ export async function updateSession(request: NextRequest) {
 
     if (profile?.role !== 'admin') {
       const homeUrl = request.nextUrl.clone();
-      homeUrl.pathname = '/';
+      homeUrl.pathname = `/${locale}/`;
       return NextResponse.redirect(homeUrl);
     }
   }
