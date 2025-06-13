@@ -2,7 +2,8 @@ import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatDistanceToNow } from "date-fns";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server"
 
 type Message = {
   id: string;
@@ -31,6 +32,7 @@ async function getMessages(): Promise<Message[]> {
 
 export default async function MessagesPage() {
   const messages = await getMessages();
+  const t = await getTranslations("MessagesPage");
 
   async function markAsRead(id: string) {
     "use server";
@@ -38,12 +40,19 @@ export default async function MessagesPage() {
     await supabase.from("messages").update({ read: true }).eq("id", id);
   }
 
+   const formatTime = (date: Date) => {
+    const distance = formatDistanceToNow(date, { addSuffix: false });
+    return distance.includes("less than a minute") 
+      ? t("justNow")
+      : t("timeAgo", { time: distance });
+  };
+
   return (
     <div className="container mx-auto px-4 py-24 max-w-4xl">
-      <h1 className="text-3xl md:text-4xl font-bold mb-8">User Messages</h1>
+      <h1 className="text-3xl md:text-4xl font-bold mb-8">{t("title")}</h1>
 
       {messages.length === 0 ? (
-        <p className="text-gray-500 dark:text-gray-400">No messages yet.</p>
+        <p className="text-gray-500 dark:text-gray-400">{t("noMessages")}</p>
       ) : (
         <div className="space-y-6">
           {messages.map((msg) => (
@@ -53,12 +62,12 @@ export default async function MessagesPage() {
                   <div>
                     <CardTitle className="text-lg">{msg.full_name}</CardTitle>
                     <CardDescription className="text-sm text-muted-foreground">
-                      {msg.email} · {formatDistanceToNow(new Date(msg.created_at), { addSuffix: true })}
+                      {msg.email} · {formatTime(new Date(msg.created_at))}
                     </CardDescription>
                   </div>
                   {!msg.read && (
                     <form action={markAsRead.bind(null, msg.id)}>
-                      <Button variant="outline" size="sm">Mark as Read</Button>
+                      <Button variant="outline" size="sm">{t("markAsRead")}</Button>
                     </form>
                   )}
                 </div>
@@ -73,7 +82,7 @@ export default async function MessagesPage() {
 
       <div className="mt-12">
         <Button asChild variant="ghost">
-          <Link href="/admin">← Back to Dashboard</Link>
+          <Link href="/admin">{t("backToDashboard")}</Link>
         </Button>
       </div>
     </div>

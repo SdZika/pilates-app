@@ -272,5 +272,113 @@
     "updating": "Updating...",
     "success": "Password updated! Redirecting to login...",
     "error": "Failed to update password"
+  },
+  "MyBookingsPage": {
+    "title": "My Bookings",
+    "noBookings": {
+      "title": "You haven't booked any classes yet!",
+      "browse": "Browse Classes"
+    },
+    "upcoming": {
+      "title": "Upcoming Classes",
+      "none": "No upcoming bookings"
+    },
+    "past": {
+      "title": "Past Classes"
+    },
+    "bookingCard": {
+      "instructor": "Instructor: {name}",
+      "unknownInstructor": "Unknown"
+    }
+  },
+  "CancelBookingButton": {
+    "cancel": "Cancel",
+    "cancelling": "Cancelling...",
+    "toast": {
+      "success": "Success",
+      "successDescription": "Your booking has been cancelled.",
+      "error": "Error"
+    }
+  },
+  "AdminPage": {
+    "title": "Admin Dashboard",
+    "stats": {
+      "upcomingClasses": "Upcoming Classes",
+      "totalScheduled": "Total classes scheduled",
+      "pastClasses": "Past Classes",
+      "totalCompleted": "Total classes completed",
+      "messages": "Messages",
+      "unreadMessages": "Unread contact messages",
+      "viewMessages": "View Messages"
+    },
+    "tabs": {
+      "classes": "Upcoming Classes",
+      "addClass": "Add New Class"
+    },
+    "classCard": {
+      "attendees": "Attendees:",
+      "noBookings": "No bookings yet",
+      "createNew": "Create a new class to get started",
+      "noUpcoming": "No upcoming classes"
+    },
+    "addClassForm": {
+      "title": "Create New Class",
+      "description": "Add a new pilates class to the schedule"
+    }
+  },
+  "AddClassForm": {
+    "form": {
+      "date": {
+        "label": "Date",
+        "placeholder": "Pick a date"
+      },
+      "time": {
+        "label": "Time"
+      },
+      "maxCapacity": {
+        "label": "Max Capacity"
+      },
+      "description": {
+        "label": "Class Description",
+        "placeholder": "Enter class description..."
+      },
+      "submit": {
+        "creating": "Creating Class...",
+        "default": "Create Class"
+      }
+    },
+    "toast": {
+      "error": {
+        "title": "Error",
+        "requiredFields": "Please fill in all required fields"
+      },
+      "success": {
+        "title": "Success",
+        "description": "New class has been created."
+      }
+    }
+  },
+  "DeleteClassButton": {
+    "trigger": "Delete Class",
+    "alert": {
+      "title": "Are you absolutely sure?",
+      "description": "This action cannot be undone. This will permanently delete the class and all associated bookings.",
+      "cancel": "Cancel",
+      "confirm": {
+        "deleting": "Deleting...",
+        "default": "Delete Class"
+      }
+    },
+    "toast": {
+      "success": "Class has been deleted."
+    }
+  },
+  "MessagesPage": {
+    "title": "User Messages",
+    "noMessages": "No messages yet.",
+    "markAsRead": "Mark as Read",
+    "backToDashboard": "← Back to Dashboard",
+    "timeAgo": "{time} ago",
+    "justNow": "just now"
   }
 }

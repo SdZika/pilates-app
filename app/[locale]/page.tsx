@@ -3,7 +3,7 @@ import { Calendar, Clock, User, ChevronRight } from 'lucide-react';
 // import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
-import { getAllClassAttendees } from "../admin/page";
+import { getAllClassAttendees } from "./admin/page";
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation'; // ✅ Use localized Link
 

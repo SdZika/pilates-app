@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
 import {
   AlertDialog,
@@ -16,11 +16,13 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useTranslations } from "next-intl";
 
 export function DeleteClassButton({ classId }: { classId: string }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const supabase = createClient();
+  const t = useTranslations('DeleteClassButton');
 
   const handleDelete = async () => {
     setIsLoading(true);
@@ -30,10 +32,10 @@ export function DeleteClassButton({ classId }: { classId: string }) {
       .delete()
       .eq("id", classId);
       
-    if (error) {
+     if (error) {
       toast.error(error.message);
     } else {
-      toast.success("Class has been deleted.");
+      toast.success(t('toast.success'));
       router.refresh();
     }
     
@@ -48,25 +50,24 @@ export function DeleteClassButton({ classId }: { classId: string }) {
           size="sm"
           className="text-red-500 border-red-200 hover:bg-red-50 dark:border-red-800 dark:hover:bg-red-950"
         >
-          Delete Class
+          {t('trigger')}
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>{t('alert.title')}</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete the class
-            and all associated bookings.
+            {t('alert.description')}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>{t('alert.cancel')}</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDelete}
             disabled={isLoading}
             className="bg-red-500 hover:bg-red-600"
           >
-            {isLoading ? "Deleting..." : "Delete Class"}
+            {isLoading ? t('alert.confirm.deleting') : t('alert.confirm.default')}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

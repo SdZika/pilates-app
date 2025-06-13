@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
@@ -17,6 +17,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export default function AddClassForm() {
   const [date, setDate] = useState<Date>();
@@ -26,13 +27,14 @@ export default function AddClassForm() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const supabase = createClient();
+  const t = useTranslations('AddClassForm');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!date || !time || !description) {
-      toast.error("Error",{
-        description: "Please fill in all required fields",
+     if (!date || !time || !description) {
+      toast.error(t('toast.error.title'), {
+        description: t('toast.error.requiredFields'),
       });
       return;
     }
@@ -56,12 +58,12 @@ export default function AddClassForm() {
       ]);
       
     if (error) {
-      toast.error("Error",{
+      toast.error(t('toast.error.title'), {
         description: error.message,
       });
     } else {
-      toast.success("Success",{
-        description: "New class has been created.",
+      toast.success(t('toast.success.title'), {
+        description: t('toast.success.description'),
       });
       
       // Reset form
@@ -80,7 +82,7 @@ export default function AddClassForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="date">Date</Label>
+          <Label htmlFor="date">{t('form.date.label')}</Label>
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -91,7 +93,7 @@ export default function AddClassForm() {
                 )}
               >
                 <CalendarIcon className="mr-2 h-4 w-4" />
-                {date ? format(date, "PPP") : <span>Pick a date</span>}
+                {date ? format(date, "PPP") : <span>{t('form.date.placeholder')}</span>}
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0" align="start">
@@ -106,7 +108,7 @@ export default function AddClassForm() {
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="time">Time</Label>
+          <Label htmlFor="time">{t('form.time.label')}</Label>
           <Input
             id="time"
             type="time"
@@ -118,7 +120,7 @@ export default function AddClassForm() {
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="maxCapacity">Max Capacity</Label>
+        <Label htmlFor="maxCapacity">{t('form.maxCapacity.label')}</Label>
         <Input
           id="maxCapacity"
           type="number"
@@ -131,18 +133,18 @@ export default function AddClassForm() {
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="description">Class Description</Label>
+        <Label htmlFor="description">{t('form.description.label')}</Label>
         <Textarea
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Enter class description..."
+          placeholder={t('form.description.placeholder')}
           required
         />
       </div>
       
       <Button type="submit" className="w-full" disabled={isLoading}>
-        {isLoading ? "Creating Class..." : "Create Class"}
+        {isLoading ? t('form.submit.creating') : t('form.submit.default')}
       </Button>
     </form>
   );

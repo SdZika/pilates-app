@@ -272,5 +272,113 @@
     "updating": "Ažuriranje...",
     "success": "Lozinka ažurirana! Preusmeravanje na prijavu...",
     "error": "Neuspešno ažuriranje lozinke"
+  },
+  "MyBookingsPage": {
+    "title": "Moje Rezervacije",
+    "noBookings": {
+      "title": "Još uvek niste rezervisali nijedan termin!",
+      "browse": "Pogledaj Termine"
+    },
+    "upcoming": {
+      "title": "Predstojeći Termini",
+      "none": "Nema predstojećih rezervacija"
+    },
+    "past": {
+      "title": "Prošli Termini"
+    },
+    "bookingCard": {
+      "instructor": "Instruktor: {name}",
+      "unknownInstructor": "Nepoznato"
+    }
+  },
+  "CancelBookingButton": {
+    "cancel": "Otkaži",
+    "cancelling": "Otkazivanje...",
+    "toast": {
+      "success": "Uspešno",
+      "successDescription": "Vaša rezervacija je otkazana.",
+      "error": "Greška"
+    }
+  },
+  "AdminPage": {
+    "title": "Administratorska Kontrolna Tabla",
+    "stats": {
+      "upcomingClasses": "Predstojeći Termini",
+      "totalScheduled": "Ukupno zakazanih termina",
+      "pastClasses": "Prošli Termini",
+      "totalCompleted": "Ukupno održanih termina",
+      "messages": "Poruke",
+      "unreadMessages": "Nepročitane kontakt poruke",
+      "viewMessages": "Pogledaj Poruke"
+    },
+    "tabs": {
+      "classes": "Predstojeći Termini",
+      "addClass": "Dodaj Novi Termin"
+    },
+    "classCard": {
+      "attendees": "Prisutni:",
+      "noBookings": "Još nema rezervacija",
+      "createNew": "Kreirajte novi termin da počnete",
+      "noUpcoming": "Nema predstojećih termina"
+    },
+    "addClassForm": {
+      "title": "Kreiraj Novi Termin",
+      "description": "Dodajte novi pilates termin u raspored"
+    }
+  },
+  "AddClassForm": {
+    "form": {
+      "date": {
+        "label": "Datum",
+        "placeholder": "Izaberite datum"
+      },
+      "time": {
+        "label": "Vreme"
+      },
+      "maxCapacity": {
+        "label": "Maksimalni kapacitet"
+      },
+      "description": {
+        "label": "Opis časa",
+        "placeholder": "Unesite opis časa..."
+      },
+      "submit": {
+        "creating": "Kreiranje časa...",
+        "default": "Kreiraj Čas"
+      }
+    },
+    "toast": {
+      "error": {
+        "title": "Greška",
+        "requiredFields": "Molimo popunite sva obavezna polja"
+      },
+      "success": {
+        "title": "Uspešno",
+        "description": "Novi čas je kreiran."
+      }
+    }
+  },
+  "DeleteClassButton": {
+    "trigger": "Obriši Čas",
+    "alert": {
+      "title": "Da li ste potpuno sigurni?",
+      "description": "Ova radnja se ne može poništiti. Ovo će trajno obrisati čas i sve povezane rezervacije.",
+      "cancel": "Otkaži",
+      "confirm": {
+        "deleting": "Brisanje...",
+        "default": "Obriši Čas"
+      }
+    },
+    "toast": {
+      "success": "Čas je obrisan."
+    }
+  },
+    "MessagesPage": {
+    "title": "Poruke korisnika",
+    "noMessages": "Još uvek nema poruka.",
+    "markAsRead": "Označi kao pročitano",
+    "backToDashboard": "← Nazad na kontrolnu tablu",
+    "timeAgo": "pre {time}",
+    "justNow": "upravo sada"
   }
 }

@@ -4,10 +4,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { format, parseISO } from "date-fns";
 import { CalendarIcon, UserIcon } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import AddClassForm from "./add-class-form";
 import { DeleteClassButton } from "./delete-class-button";
+import { getTranslations } from 'next-intl/server';
 
 export const dynamic = "force-dynamic";
 
@@ -149,19 +150,20 @@ export default async function AdminPage() {
   const { upcoming, past } = await getClasses();
   const classesWithAttendees = await getAllClassAttendees();
   const unreadMessageCount = await getMessageCount();
+  const t = await getTranslations('AdminPage');
   
   return (
     <div className="container mx-auto px-4 py-24">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold mb-6">
-          Admin Dashboard
+          {t('title')}
         </h1>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle>Upcoming Classes</CardTitle>
-              <CardDescription>Total classes scheduled</CardDescription>
+              <CardTitle>{t('stats.upcomingClasses')}</CardTitle>
+              <CardDescription>{t('stats.totalScheduled')}</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-4xl font-bold">{upcoming.length}</p>
@@ -170,8 +172,8 @@ export default async function AdminPage() {
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle>Past Classes</CardTitle>
-              <CardDescription>Total classes completed</CardDescription>
+              <CardTitle>{t('stats.pastClasses')}</CardTitle>
+              <CardDescription>{t('stats.totalCompleted')}</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-4xl font-bold">{past.length}</p>
@@ -180,14 +182,14 @@ export default async function AdminPage() {
           
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle>Messages</CardTitle>
-              <CardDescription>Unread contact messages</CardDescription>
+              <CardTitle>{t('stats.messages')}</CardTitle>
+              <CardDescription>{t('stats.unreadMessages')}</CardDescription>
             </CardHeader>
             <CardContent className="flex justify-between items-center">
               <p className="text-4xl font-bold">{unreadMessageCount}</p>
               {unreadMessageCount > 0 && (
                 <Button asChild size="sm">
-                  <Link href="/admin/messages">View Messages</Link>
+                  <Link href="/admin/messages">{t('stats.viewMessages')}</Link>
                 </Button>
               )}
             </CardContent>
@@ -196,8 +198,8 @@ export default async function AdminPage() {
         
         <Tabs defaultValue="classes">
           <TabsList className="mb-6">
-            <TabsTrigger value="classes">Upcoming Classes</TabsTrigger>
-            <TabsTrigger value="add-class">Add New Class</TabsTrigger>
+            <TabsTrigger value="classes">{t('tabs.classes')}</TabsTrigger>
+            <TabsTrigger value="add-class">{t('tabs.addClass')}</TabsTrigger>
           </TabsList>
           
           <TabsContent value="classes">
@@ -228,16 +230,14 @@ export default async function AdminPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <h3 className="font-medium mb-2">Attendees:</h3>
+                    <h3 className="font-medium mb-2">{t('classCard.attendees')}</h3>
                     {(!cls.attendees || cls.attendees.length === 0) ? (
-                      <p className="text-gray-500 dark:text-gray-400">No bookings yet</p>
+                      <p className="text-gray-500 dark:text-gray-400">{t('classCard.noBookings')}</p>
                     ) : (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {cls.attendees.map((attendee: Attendee) => (
                           <div key={attendee.user_id} className="text-sm p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            {/*TODO: Add link to attendee profile*/} 
-                            <p className="font-medium">{attendee?.profiles?.full_name ? attendee.profiles.full_name : "you didn't add trainer name"}</p>
-                            
+                            <p className="font-medium">{attendee?.profiles?.full_name || "you didn't add trainer name"}</p>
                           </div>
                         ))}
                       </div>
@@ -252,9 +252,9 @@ export default async function AdminPage() {
               
               {classesWithAttendees.length === 0 && (
                 <div className="text-center py-12 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <h2 className="text-xl font-medium mb-4">No upcoming classes</h2>
+                  <h2 className="text-xl font-medium mb-4">{t('classCard.noUpcoming')}</h2>
                   <p className="text-gray-500 dark:text-gray-400 mb-4">
-                    Create a new class to get started
+                    {t('classCard.createNew')}
                   </p>
                 </div>
               )}
@@ -264,9 +264,9 @@ export default async function AdminPage() {
           <TabsContent value="add-class">
             <Card>
               <CardHeader>
-                <CardTitle>Create New Class</CardTitle>
+                <CardTitle>{t('addClassForm.title')}</CardTitle>
                 <CardDescription>
-                  Add a new pilates class to the schedule
+                  {t('addClassForm.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent>

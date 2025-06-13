@@ -1,10 +1,12 @@
 import { createClient } from "@/lib/supabase/server";
 import { format, parseISO } from "date-fns";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CalendarIcon, Clock } from "lucide-react";
 import { CancelBookingButton } from "./cancel-button"; 
+import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
 export const dynamic = "force-dynamic";
 
@@ -84,27 +86,28 @@ async function getUserBookings() {
 
 export default async function MyBookingsPage() {
   const { upcoming, past } = await getUserBookings();
+  const t = await getTranslations('MyBookingsPage');
   
   return (
     <div className="container mx-auto px-4 py-24">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">
-          My Bookings
+          {t('title')}
         </h1>
         
         {upcoming.length === 0 && past.length === 0 ? (
           <div className="text-center py-12">
-            <h2 className="text-xl font-medium mb-4">You haven&#39;t booked any classes yet!</h2>
+            <h2 className="text-xl font-medium mb-4">{t('noBookings.title')}</h2>
             <Button asChild>
-              <Link href="/schedule">Browse Classes</Link>
+              <Link href="/schedule">{t('noBookings.browse')}</Link>
             </Button>
           </div>
         ) : (
           <div className="space-y-10">
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Upcoming Classes</h2>
+              <h2 className="text-2xl font-semibold mb-4">{t('upcoming.title')}</h2>
               {upcoming.length === 0 ? (
-                <p className="text-gray-500 dark:text-gray-400">No upcoming bookings</p>
+                <p className="text-gray-500 dark:text-gray-400">{t('upcoming.none')}</p>
               ) : (
                 <div className="grid gap-4">
                   {upcoming.map((booking) => (
@@ -120,7 +123,7 @@ export default async function MyBookingsPage() {
             
             {past.length > 0 && (
               <section>
-                <h2 className="text-2xl font-semibold mb-4">Past Classes</h2>
+                <h2 className="text-2xl font-semibold mb-4">{t('past.title')}</h2>
                 <div className="grid gap-4">
                   {past.map((booking) => (
                     <BookingCard
@@ -154,6 +157,8 @@ type Booking = {
 };
 
 function BookingCard({ booking, isPast }: { booking: Booking; isPast: boolean }) {
+  
+  const t = useTranslations('MyBookingsPage.bookingCard');
   const classDate = parseISO(`${booking.classes.date}T${booking.classes.time}`);
   
   return (
@@ -173,7 +178,7 @@ function BookingCard({ booking, isPast }: { booking: Booking; isPast: boolean })
               <span>{format(classDate, "h:mm a")}</span>
             </div>
             <div className="text-gray-700 dark:text-gray-300">
-              Instructor: {booking.classes.profiles[0]?.full_name || "Unknown"}
+              {t('instructor', { name: booking.classes.profiles[0]?.full_name || t('unknownInstructor') })}
             </div>
           </div>
           
