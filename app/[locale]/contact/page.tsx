@@ -22,7 +22,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { FaMapPin, FaPhone, FaEnvelope, FaClock, FaInstagram } from "react-icons/fa";
+import { MapPin, Phone, Mail, Clock, Instagram } from "react-feather";
 import { createClient } from "@/lib/supabase/client";
 import { useTranslations } from "next-intl";
 
@@ -204,7 +204,7 @@ export default function ContactPage() {
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <FaEnvelope className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
+                    <Mail className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
                     <div>
                       <p className="font-medium">Email</p>
                       <a 
@@ -217,7 +217,7 @@ export default function ContactPage() {
                   </div>
                   
                   <div className="flex items-start">
-                    <FaPhone className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
+                    <Phone className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
                     <div>
                       <p className="font-medium">{tContactInfo("phone")}</p>
                       <a 
@@ -230,7 +230,7 @@ export default function ContactPage() {
                   </div>
                   
                   <div className="flex items-start">
-                    <FaClock className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
+                    <Clock className="mr-3 h-5 w-5 text-pink-600 dark:text-pink-400 mt-0.5" />
                     <div>
                       <p className="font-medium">{tContactInfo("hours")}</p>
                       <p className="text-sm text-gray-700 dark:text-gray-300">
@@ -245,7 +245,7 @@ export default function ContactPage() {
                   <div className="flex space-x-3">
                     <a href="https://www.instagram.com/pilates_smederevo/?utm_source=qr&igsh=MTI0cWhyazVpc25sZw%3D%3D#" target="_blank" className="text-gray-600 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400">
                       <span className="sr-only">Instagram</span>
-                      <FaInstagram className="h-6 w-6" />
+                      <Instagram className="h-6 w-6" />
                     </a>
                     <a href="https://www.facebook.com/pilatesfitnes?rdid=atBzbEXiyOybAYKY&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6Biik1xc%2F#" target="_blank" className="text-gray-600 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400">
                       <span className="sr-only">Facebook</span>
@@ -283,22 +283,22 @@ export default function ContactPage() {
                   
                   <div className="space-y-3">
                     <div className="flex items-start">
-                      <FaMapPin className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
+                      <MapPin className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
                       <p className="text-sm text-gray-700 dark:text-gray-300">{tLocations("studioAddress")}</p>
                     </div>
                     
                     <div className="flex items-start">
-                      <FaPhone className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
+                      <Phone className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
                       <p className="text-sm text-gray-700 dark:text-gray-300">(+381) 064 1932-069</p>
                     </div>
                     
                     <div className="flex items-start">
-                      <FaEnvelope className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
+                      <Mail className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
                       <p className="text-sm text-gray-700 dark:text-gray-300">biljanazivkovic2411@gmail.com</p>
                     </div>
                     
                     <div className="flex items-start">
-                      <FaClock className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
+                      <Clock className="mr-3 h-4 w-4 text-pink-600 dark:text-pink-400 mt-1" />
                       <p className="text-sm text-gray-700 dark:text-gray-300">{tLocations("studioHours")}</p>
                     </div>
                   </div>

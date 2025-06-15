@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
-import { CalendarIcon } from "lucide-react";
+import { Calendar as CalendarIcon } from "react-feather";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import {

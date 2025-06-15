@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { Calendar, Clock, User, ChevronRight } from 'lucide-react';
+import { Calendar, Clock, User, ChevronRight } from 'react-feather';
 // import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";

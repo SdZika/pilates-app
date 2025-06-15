@@ -2,7 +2,7 @@
 
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useState, useEffect } from "react";
-import { Menu, } from "lucide-react"; // X
+import { Menu, } from "react-feather"; // X
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle  } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme-toggle";

@@ -3,7 +3,7 @@ import { format, parseISO } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CalendarIcon, Clock } from "lucide-react";
+import { Calendar, Clock } from "react-feather";
 import { CancelBookingButton } from "./cancel-button"; 
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
@@ -170,7 +170,7 @@ function BookingCard({ booking, isPast }: { booking: Booking; isPast: boolean })
         <div className="flex justify-between items-start">
           <div className="space-y-2">
             <div className="flex items-center text-gray-700 dark:text-gray-300">
-              <CalendarIcon className="mr-2 h-4 w-4" />
+              <Calendar className="mr-2 h-4 w-4" />
               <span>{format(classDate, "EEEE, MMMM d, yyyy")}</span>
             </div>
             <div className="flex items-center text-gray-700 dark:text-gray-300">

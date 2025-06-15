@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { format, parseISO } from "date-fns";
-import { CalendarIcon, UserIcon } from "lucide-react";
+import { Calendar, User as UserIcon } from "react-feather";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import AddClassForm from "./add-class-form";
@@ -212,7 +212,7 @@ export default async function AdminPage() {
                         <CardTitle>{cls.description}</CardTitle>
                         <CardDescription>
                           <div className="flex items-center mt-1">
-                            <CalendarIcon className="mr-1 h-4 w-4" />
+                            <Calendar className="mr-1 h-4 w-4" />
                             {cls.datetime ? (
                               <>
                                 {format(cls.datetime, "EEEE, MMMM d, yyyy")} at {format(cls.datetime, "h:mm a")}

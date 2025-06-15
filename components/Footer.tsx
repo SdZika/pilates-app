@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaInstagram, FaFacebook, FaEnvelope, FaMapPin, FaPhone } from "react-icons/fa";
+import { Instagram, Facebook, Mail, MapPin, Phone } from "react-feather";
 import { useTranslations } from "next-intl";
 import { useUser } from "@/context/UserContext";
 
@@ -43,7 +43,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
               >
-                <FaInstagram className="w-5 h-5" />
+                <Instagram className="w-5 h-5" />
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link 
@@ -52,7 +52,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
               >
-                <FaFacebook className="w-5 h-5" />
+                <Facebook className="w-5 h-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
             </div>
@@ -80,19 +80,19 @@ export function Footer() {
             <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">{t("contact")}</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
-                <FaMapPin className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
                   {t("address")}
                 </span>
               </li>
               <li className="flex items-center space-x-3">
-                <FaPhone className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
+                <Phone className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
                   {t("phone")}
                 </span>
               </li>
               <li className="flex items-center space-x-3">
-                <FaEnvelope className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
+                <Mail className="w-5 h-5 text-pink-500 dark:text-pink-400 flex-shrink-0" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm">
                   {t("email")}
                 </span>
