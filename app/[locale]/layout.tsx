@@ -1,9 +1,13 @@
+export const dynamic = 'force-static';
+
 import {setRequestLocale} from 'next-intl/server';
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { Suspense } from 'react';
+import { Spinner } from "@/components/ui/spinner";
  
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -14,7 +18,7 @@ export default async function LocaleLayout({
   params
 }: {
   children: React.ReactNode;
-  params: Promise<{locale: string}>;
+  params: Promise<{ locale: string }>;
 }) {
   // Ensure that the incoming `locale` is valid
   const {locale} = await params;
@@ -28,9 +32,13 @@ export default async function LocaleLayout({
   return (
     
         <NextIntlClientProvider locale={locale}>
-          <Navbar />
+          <Suspense fallback={<Spinner className="mx-auto my-4" />}>
+            <Navbar />
+          </Suspense>
           {children}
-          <Footer />
+          <Suspense fallback={<Spinner className="mx-auto my-4" />}>
+            <Footer />
+          </Suspense>
         </NextIntlClientProvider>
     
   );
