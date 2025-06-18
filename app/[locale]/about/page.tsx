@@ -2,6 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { getTranslations } from 'next-intl/server';
 
+export const dynamic = 'force-static';
+
 export default async function AboutPage() {
 
   const t = await getTranslations("About")

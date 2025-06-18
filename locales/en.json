@@ -180,7 +180,9 @@
       "messagePlaceholder": "Tell us how we can help you...",
       "submit": "Send Message",
       "submitting": "Sending...",
-      "error": "There was a problem submitting your message. Please try again."
+      "error": "There was a problem submitting your message. Please try again.",
+      "successTitle": "Message Sent Successfully!",
+      "successMessage": "Thank you for reaching out. We&#39;ve received your message and will get back to you as soon as possible."
     },
     "contactInfo": {
       "title": "Contact Information",

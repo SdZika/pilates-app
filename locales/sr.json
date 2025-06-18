@@ -180,7 +180,9 @@
       "messagePlaceholder": "Recite nam kako vam možemo pomoći...",
       "submit": "Pošalji poruku",
       "submitting": "Šaljem...",
-      "error": "Došlo je do problema pri slanju poruke. Molimo pokušajte ponovo."
+      "error": "Došlo je do problema pri slanju poruke. Molimo pokušajte ponovo.",
+      "successTitle": "Poruka uspešno poslata!",
+      "successMessage": "Hvala vam što ste nas kontaktirali. Primili smo vašu poruku i odgovorićemo vam u najkraćem mogućem roku."
     },
     "contactInfo": {
       "title": "Kontakt informacije",

@@ -1,85 +1,14 @@
-"use client";
 
-import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { MapPin, Phone, Mail, Clock, Instagram } from "react-feather";
-import { createClient } from "@/lib/supabase/client";
-import { useTranslations } from "next-intl";
+import { getTranslations } from 'next-intl/server';
+import { MapPin, Phone, Mail, Clock,Instagram } from "react-feather";
+import { ContactForm } from "@/components/ContactForm";
 
-export default function ContactPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [error, setError] = useState("");
+export default async function ContactPage() {
 
-  const t = useTranslations("ContactPage");
-  const tForm = useTranslations("ContactPage.form");
-  const tSubjectOptions = useTranslations('ContactPage.form.subjectOptions');
-  const tContactInfo = useTranslations("ContactPage.contactInfo");
-  const tLocations = useTranslations("ContactPage.locations");
-
-  // Contact form submission handler - connect to Supabase
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setError("");
-    
-    try {
-      // This would be your actual Supabase client initialization
-      const supabase = createClient();
-      
-      const { error } = await supabase
-        .from('messages')
-        .insert([
-          { name, email, phone, subject, message }
-        ]);
-      
-      if (error) throw error;
-     
-      
-      // For now, we'll simulate a successful submission after a delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Reset form fields
-      setName("");
-      setEmail("");
-      setPhone("");
-      setSubject("");
-      setMessage("");
-      
-      // Show confirmation dialog
-      setShowConfirmation(true);
-    } catch (err) {
-      console.error("Error submitting form:", err);
-      setError(tForm("error"));
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const t = await getTranslations("ContactPage");
+  const tContactInfo = await getTranslations("ContactPage.contactInfo");
+  const tLocations = await getTranslations("ContactPage.locations");
 
   // const studioLocations = [
   //   {
@@ -109,90 +38,7 @@ export default function ContactPage() {
           <div className="lg:col-span-2">
             <Card>
               <CardContent className="pt-6">
-              <h2 className="text-2xl font-bold mb-6">{tForm("title")}</h2>
-                
-                <form onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">{tForm("name")}</Label>
-                      <Input 
-                        id="name" 
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder={tForm("namePlaceholder")} 
-                        required 
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input 
-                        id="email" 
-                        type="email" 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder={tForm("emailPlaceholder")}  
-                        required 
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">{tForm("phone")}</Label>
-                      <Input 
-                        id="phone" 
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder={tForm("phonePlaceholder")}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">{tForm("subject")}</Label>
-                      <Select 
-                        value={subject} 
-                        onValueChange={setSubject}
-                      >
-                        <SelectTrigger id="subject">
-                          <SelectValue placeholder={tForm("subjectPlaceholder")} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="general">{tSubjectOptions("general")}</SelectItem>
-                          <SelectItem value="classes">{tSubjectOptions("classes")}</SelectItem>
-                          <SelectItem value="private">{tSubjectOptions("private")}</SelectItem>
-                          <SelectItem value="pricing">{tSubjectOptions("pricing")}</SelectItem>
-                          <SelectItem value="careers">{tSubjectOptions("careers")}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2 mb-6">
-                    <Label htmlFor="message">{tForm("message")}</Label>
-                    <Textarea 
-                      id="message" 
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder={tForm("messagePlaceholder")}
-                      rows={5} 
-                      required 
-                    />
-                  </div>
-                  
-                  {error && (
-                    <div className="text-red-500 mb-4">
-                      {error}
-                    </div>
-                  )}
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full" 
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? tForm("submitting") : tForm("submit")}
-                  </Button>
-                </form>
+                <ContactForm />
               </CardContent>
             </Card>
           </div>
@@ -325,20 +171,7 @@ export default function ContactPage() {
         </div>
       </div>
       
-      {/* Success Confirmation Dialog */}
-      <AlertDialog open={showConfirmation} onOpenChange={setShowConfirmation}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Message Sent Successfully!</AlertDialogTitle>
-            <AlertDialogDescription>
-              Thank you for reaching out. We&#39;ve received your message and will get back to you as soon as possible.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction>OK</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+     
     </div>
   );
 }
