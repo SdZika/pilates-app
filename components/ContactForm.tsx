@@ -17,7 +17,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescript
 import { createClient } from "@/lib/supabase/client";
 import { useTranslations } from "next-intl";
 
-export function ContactForm() {
+export default function ContactForm() {
   const tForm = useTranslations("ContactPage.form");
   const tSubjectOptions = useTranslations("ContactPage.form.subjectOptions");
 
