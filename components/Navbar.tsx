@@ -1,24 +1,26 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useState, useEffect } from "react";
-import { Menu, } from "lucide-react"; // X
+import { Menu, } from "react-feather"; // X
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle  } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/context/UserContext";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useTranslations } from 'next-intl';
 
 export function Navbar() {
-  const { user, loading, refreshUser } = useUser();
+
+  const t = useTranslations("Navbar")
+  const { user, loading, refreshUser, isAdmin } = useUser();
 
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
 
- 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -28,17 +30,17 @@ export function Navbar() {
   }, []);
 
   const routes = [
-    { name: "Home", path: "/" },
-    { name: "Schedule", path: "/schedule" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
+    { name: t("homePage"), path: "/" },
+    { name: t("schedule"), path: "/schedule" },
+    { name: t("about"), path: "/about" },
+    { name: t("contact"), path: "/contact" },
   ];
 
   if (user) {
-    routes.push({ name: "My Bookings", path: "/my-bookings" });
+    routes.push({ name: t("myBookings"), path: "/my-bookings" });
   }
 
-  if (user?.role === 'admin') {
+  if (isAdmin) {
     routes.push({ name: "Admin", path: "/admin" });
   }
 
@@ -56,7 +58,7 @@ export function Navbar() {
   if (loading) {
     return (
       <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm h-16 flex items-center justify-center">
-        <span className="text-sm text-muted-foreground">Loading...</span>
+        <span className="text-sm text-muted-foreground">{t("loading")}</span>
       </header>
     );
   }
@@ -77,7 +79,6 @@ export function Navbar() {
               <div className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
                 Pilates Smederevo
               </div>
-              <p>{user?.email}</p>
             </Link>
           </div>
 
@@ -100,13 +101,16 @@ export function Navbar() {
             <div className="pl-4">
               <ThemeToggle />
             </div>
+            <div className="pl-4">
+              <LanguageSwitcher />
+            </div>
             {!user ? (
               <Button asChild variant="default" size="sm">
-                <Link href="/login">Login</Link>
+                <Link href="/login">{t("login")}</Link>
               </Button>
             ) : (
               <Button variant="outline" size="sm" onClick={handleLogout}>
-                Logout
+                {t("logout")}
               </Button>
             )}
           </nav>
@@ -114,6 +118,7 @@ export function Navbar() {
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
+            <LanguageSwitcher />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -142,7 +147,7 @@ export function Navbar() {
                   {!user ? (
                     <Button asChild className="mt-4">
                       <Link href="/login" onClick={() => setIsOpen(false)}>
-                        Login
+                        {t("login")}
                       </Link>
                     </Button>
                   ) : (
@@ -151,7 +156,7 @@ export function Navbar() {
                       className="mt-4"
                       onClick={() => {setIsOpen(false); handleLogout();}}
                     >
-                        Logout
+                        {t("logout")}
                     </Button>
                   )}
                 </nav>

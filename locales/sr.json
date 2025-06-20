@@ -1,0 +1,386 @@
+{
+  "Navbar": {
+    "home": "Pilates",
+    "homePage": "Početna",
+    "schedule": "Raspored",
+    "about": "O nama",
+    "contact": "Kontakt",
+    "myBookings": "Moje rezervacije",
+    "admin": "Admin",
+    "login": "Prijava",
+    "logout": "Odjava",
+    "loading": "Učitavanje..."
+  },
+  "HomePage": {
+    "welcome": "Dobrodošli nazad",
+    "ready": "Spremni za sledeći Pilates trening?",
+    "bookClass": "Zakaži čas",
+    "myBookings": "Moje prijave",
+    "upcoming": "Predstojeći časovi",
+    "viewAll": "Prikaži sve",
+    "featured": "Istaknuti instruktori",
+    "viewProfile": "Pogledaj profil",
+    "instructor": "Instruktor"
+  },
+  "Schedule": {
+    "heading": "Raspored Časova",
+    "description": "Pregledajte dostupne časove i rezervišite svoje mesto. Maksimalni broj učesnika po času je 15.",
+    "titleTable": "Nedeljni raspored časova",
+    "day": "Dan",
+    "timeSlots": "Termini",
+    "noClasses": "Nema časova",
+    "days": {
+      "Monday": "Ponedeljak",
+      "Tuesday": "Utorak",
+      "Wednesday": "Sreda",
+      "Thursday": "Četvrtak",
+      "Friday": "Petak",
+      "Saturday": "Subota",
+      "Sunday": "Nedelja"
+    },
+       "times": {
+      "Monday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
+      "Tuesday": ["19:00-20:00", "20:00-21:00"],
+      "Wednesday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
+      "Thursday": ["19:00-20:00", "20:00-21:00"],
+      "Friday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
+      "Saturday": ["10:00-11:00"],
+      "Sunday": []
+    },
+    "bookNow": "Rezerviši",
+    "booking": "Rezervišem...",
+    "cancelBooking": "Otkaži rezervaciju",
+    "cancelling": "Otkazujem...",
+    "classFull": "Popunjeno",
+    "noClassesSchedule": "Nema zakazanih časova",
+    "trainer": "Trener",
+    "success": "Uspešno!",
+    "cancelSuccess": "Uspešno ste otkazali rezervaciju.",
+    "bookingSuccess": "Uspešno ste rezervisali čas.",
+    "bookingDescription": "Vaša rezervacija je potvrđena.",
+    "alreadyBooked": "Već ste rezervisali ovaj čas.",
+    "bookingFailed": "Rezervacija neuspešna",
+    "cancellationFailed": "Otkazivanje neuspešno",
+    "shortDays": {
+      "Mon": "Pon",
+      "Tue": "Uto",
+      "Wed": "Sre",
+      "Thu": "Čet",
+      "Fri": "Pet",
+      "Sat": "Sub",
+      "Sun": "Ned"
+    }
+  },
+  "About": {
+    "title": "O Pilates Smederevo",
+    "description": "Pilates Smederevo je premium pilates studio posvećen postizanju vaših ciljeva kroz svesne pokrete i stručnu obuku.",
+    "philosophyTitle": "Naša Filozofija",
+    "philosophy": [
+      {
+        "title": "Veza Uma i Tela",
+        "desc": "Verujemo u jačanje veze između uma i tela radi celokupnog blagostanja i poboljšanog kvaliteta života."
+      },
+      {
+        "title": "Personalizovan Pristup",
+        "desc": "Svako telo je jedinstveno, zato prilagođavamo našu obuku vašim individualnim potrebama i ciljevima."
+      },
+      {
+        "title": "Podržavajuća Zajednica",
+        "desc": "Negujemo prijateljsko okruženje u kojem se članovi osećaju podržano i inspirisano da ostvare svoj maksimum."
+      }
+    ],
+    "trainersTitle": "Upoznajte Naše Trenere",
+    "trainersList": [
+      {
+        "id": "1",
+        "image": "/biljana_zivkovic.webp",
+        "name": "Biljana Zivkovic",
+        "role": "Glavna instruktorka pilatesa",
+        "bio": "Biljana predaje pilates više od 10 godina i sertifikovana je za mat pilates. Specijalizovana je za korišćenje opreme kako bi poboljšala tradicionalno pilates iskustvo za sve nivoe kondicije."
+      },
+      {
+        "id": "2",
+        "image": "/aleksandra_sikirica.webp",
+        "name": "Aleksandra Sikirica",
+        "role": "Instruktorka pilatesa i aerobika",
+        "bio": "Aleksandra koristi svoje iskustvo iz plesa i fizikalne terapije kako bi kreirala dinamične i promišljene pilates vežbe koje jačaju trup i povećavaju fleksibilnost."
+      },
+      {
+        "id": "3",
+        "image": "/aleksandra_pavic.webp",
+        "name": "Andjela Pavic",
+        "role": "Instruktorka pilatesa i aerobika",
+        "bio": "Andjela je naša pilates instruktorka sa bogatim znanjem o korišćenju opreme za tradicionalni pilates."
+      },
+      {
+        "id": "4",
+        "image": "/bojana_milic.webp",
+        "name": "Bojana Milic",
+        "role": "Instruktorka pilatesa i aerobika",
+        "bio": "Bojana je naša pilates instruktorka sa iskustvom za sve nivoe kondicije."
+      }
+    ],
+    "studioTitle": "Naš Studio",
+    "studio": [
+      {
+        "title": "Vrhunsku Oprema",
+        "desc": "Naš studio poseduje pilates tornjeve, stolice i drugu specijalizovanu opremu za unapređenje vaše prakse.",
+        "image": "/facility.webp"
+      },
+      {
+        "title": "Mirno Okruženje",
+        "desc": "Naš prostor je dizajniran za spokoj i pruža idealnu atmosferu za fokusiranje na praksu i put ka zdravlju.",
+        "image": "/equipment.webp"
+      }
+    ],
+    "storyTitle": "Naša Priča",
+    "story": [
+      "Osnovan 2018. godine, Pilates Smederevo je započeo sa jednostavnom misijom: da stvori prostor gde ljudi svih nivoa kondicije mogu iskusiti transformativnu moć pilatesa u podržavajućem i nenametljivom okruženju.",
+      "Ono što je počelo kao mali studio sa malo opreme, izraslo je u snažnu zajednicu posvećenu svesnom pokretu i holističkom zdravlju. Naši instruktori imaju različito iskustvo iz plesa, fizikalne terapije i sporta, što doprinosi jedinstvenom pristupu pilatesu koji kombinuje tradiciju i inovaciju.",
+      "Danas se Pilates Smederevo i dalje razvija, ali naše osnovne vrednosti ostaju iste: pažnja na pravilnu formu, personalizovana obuka i posvećenost da svaki klijent otkrije svoju najjaču verziju."
+      ]
+    },
+    "Footer": {
+    "description": "Otkrijte transformativnu moć pilatesa uz naše stručne instruktore i vrhunske uslove za vežbanje.",
+    "quickLinks": "Brzi Linkovi",
+    "contact": "Kontakt",
+    "address": "Đure Daničića 6, Smederevo (Teretana Zlatan Gym - Sportska hala)",
+    "phone": "(+381) 064 1932-069",
+    "email": "biljanazivkovic2411@gmail.com",
+    "copyright": "Sva prava zadržana.",
+    "links": {
+      "home": "Početna",
+      "schedule": "Raspored",
+      "about": "O Nama",
+      "contact": "Kontakt",
+      "myBookings": "Moje Rezervacije"
+    }
+  },
+  "ContactPage": {
+    "title": "Kontaktirajte Pilates Smederevo",
+    "description": "Imate pitanja ili želite da rezervišete termin? Javite nam se i naš tim će vam odgovoriti u najkraćem mogućem roku.",
+    "form": {
+      "title": "Pošaljite nam poruku",
+      "name": "Ime",
+      "namePlaceholder": "Vaše ime",
+      "email": "Email",
+      "emailPlaceholder": "Vaša email adresa",
+      "phone": "Telefon (opciono)",
+      "phonePlaceholder": "Vaš broj telefona",
+      "subject": "Tema",
+      "subjectPlaceholder": "Izaberite temu",
+      "subjectOptions": {
+        "general": "Opšti upit",
+        "classes": "Informacije o časovima",
+        "private": "Privatni časovi",
+        "pricing": "Cene",
+        "careers": "Poslovi"
+      },
+      "message": "Poruka",
+      "messagePlaceholder": "Recite nam kako vam možemo pomoći...",
+      "submit": "Pošalji poruku",
+      "submitting": "Šaljem...",
+      "error": "Došlo je do problema pri slanju poruke. Molimo pokušajte ponovo.",
+      "successTitle": "Poruka uspešno poslata!",
+      "successMessage": "Hvala vam što ste nas kontaktirali. Primili smo vašu poruku i odgovorićemo vam u najkraćem mogućem roku."
+    },
+    "contactInfo": {
+      "title": "Kontakt informacije",
+      "email": "Email",
+      "phone": "Telefon",
+      "hours": "Radno vreme",
+      "hoursText": "Ponedeljak - Petak: 6-21h\nSubota - Nedelja: 8-18h",
+      "follow": "Pratite nas",
+      "instagram": "Instagram",
+      "facebook": "Facebook"
+    },
+    "locations": {
+      "title": "Naše lokacije",
+      "address": "Adresa",
+      "studioName": "Pilates Smederevo",
+      "studioAddress": "Đure Daničića 6, Smederevo (Teretana Zlatan Gym - Sportska hala)",
+      "studioHours": "Pon-Pet: 7-20h, Sub-Ned: 9-17h"
+    },
+    "faq": {
+      "title": "Često postavljana pitanja",
+      "questions": [
+        {
+          "question": "Da li trebam doneti svoju opremu?",
+          "answer": "Ne, mi obezbeđujemo svu potrebnu opremu za naše časove. Dovoljno je da ponesete udobnu odeću, vodu i pozitivno raspoloženje!"
+        },
+        {
+          "question": "Kako mogu rezervisati čas?",
+          "answer": "Možete rezervisati časove putem našeg online sistema za rezervacije, mobilne aplikacije ili direktnim pozivom u studio. Preporučujemo da rezervišete bar 24 sata unapred jer se časovi brzo popune."
+        },
+        {
+          "question": "Kakva je vaša politika otkazivanja?",
+          "answer": "Za otkazivanje grupnih časova potrebno je najaviti najmanje 12 sati unapred kako ne biste bili naplaćeni. Za privatne časove potrebno je najaviti 24 sata unapred."
+        },
+        {
+          "question": "Da li je pilates pogodan za početnike?",
+          "answer": "Apsolutno! Pilates je prilagodljiv svim nivoima fizičke spremnosti. Nudimo posebne časove za početnike i naši instruktori mogu modifikovati vežbe prema vašim potrebama i nivou iskustva."
+        }
+      ]
+    },
+    "successDialog": {
+      "title": "Poruka uspešno poslata!",
+      "description": "Hvala vam što ste nas kontaktirali. Primili smo vašu poruku i odgovorićemo vam u najkraćem mogućem roku.",
+      "button": "U redu"
+    }
+  },
+  "Login": {
+    "title": "Dobrodošli nazad",
+    "description": "Prijavite se na svoj nalog da biste rezervisali pilates časove",
+    "email": "Email",
+    "emailPlaceholder": "vaš@email.com",
+    "password": "Lozinka",
+    "forgotPassword": "Zaboravili ste lozinku?",
+    "signIn": "Prijavi se",
+    "signingIn": "Prijavljivanje...",
+    "noAccount": "Nemate nalog?",
+    "signUp": "Registrujte se",
+    "error": "Neuspešna prijava. Molimo pokušajte ponovo."
+  },
+    "ResetPassword": {
+    "title": "Resetovanje lozinke",
+    "description": "Unesite vaš email da biste dobili link za resetovanje lozinke.",
+    "email": "Email",
+    "sendLink": "Pošalji link za reset",
+    "sending": "Slanje...",
+    "rememberPassword": "Sećate se lozinke?",
+    "signIn": "Prijavite se",
+    "successMessage": "Email za resetovanje je poslat. Proverite vaš inbox.",
+    "error": "Došlo je do greške"
+  },
+    "Signup": {
+    "title": "Kreirajte nalog",
+    "description": "Registrujte se da biste rezervisali pilates časove i pratili svoj napredak",
+    "fullName": "Puno ime",
+    "fullNamePlaceholder": "Petar Petrović",
+    "email": "Email",
+    "emailPlaceholder": "vaš@email.com",
+    "password": "Lozinka",
+    "passwordHint": "Lozinka mora imati najmanje 8 karaktera",
+    "createAccount": "Kreiraj nalog",
+    "creatingAccount": "Kreiranje naloga...",
+    "existingAccount": "Već imate nalog?",
+    "signIn": "Prijavite se",
+    "error": "Došlo je do greške prilikom registracije."
+  },
+    "UpdatePassword": {
+    "title": "Postavi novu lozinku",
+    "newPassword": "Nova lozinka",
+    "updateButton": "Ažuriraj lozinku",
+    "updating": "Ažuriranje...",
+    "success": "Lozinka ažurirana! Preusmeravanje na prijavu...",
+    "error": "Neuspešno ažuriranje lozinke"
+  },
+  "MyBookingsPage": {
+    "title": "Moje Rezervacije",
+    "noBookings": {
+      "title": "Još uvek niste rezervisali nijedan termin!",
+      "browse": "Pogledaj Termine"
+    },
+    "upcoming": {
+      "title": "Predstojeći Termini",
+      "none": "Nema predstojećih rezervacija"
+    },
+    "past": {
+      "title": "Prošli Termini"
+    },
+    "bookingCard": {
+      "instructor": "Instruktor: {name}",
+      "unknownInstructor": "Nepoznato"
+    }
+  },
+  "CancelBookingButton": {
+    "cancel": "Otkaži",
+    "cancelling": "Otkazivanje...",
+    "toast": {
+      "success": "Uspešno",
+      "successDescription": "Vaša rezervacija je otkazana.",
+      "error": "Greška"
+    }
+  },
+  "AdminPage": {
+    "title": "Administratorska Kontrolna Tabla",
+    "stats": {
+      "upcomingClasses": "Predstojeći Termini",
+      "totalScheduled": "Ukupno zakazanih termina",
+      "pastClasses": "Prošli Termini",
+      "totalCompleted": "Ukupno održanih termina",
+      "messages": "Poruke",
+      "unreadMessages": "Nepročitane kontakt poruke",
+      "viewMessages": "Pogledaj Poruke"
+    },
+    "tabs": {
+      "classes": "Predstojeći Termini",
+      "addClass": "Dodaj Novi Termin"
+    },
+    "classCard": {
+      "attendees": "Prisutni:",
+      "noBookings": "Još nema rezervacija",
+      "createNew": "Kreirajte novi termin da počnete",
+      "noUpcoming": "Nema predstojećih termina"
+    },
+    "addClassForm": {
+      "title": "Kreiraj Novi Termin",
+      "description": "Dodajte novi pilates termin u raspored"
+    }
+  },
+  "AddClassForm": {
+    "form": {
+      "date": {
+        "label": "Datum",
+        "placeholder": "Izaberite datum"
+      },
+      "time": {
+        "label": "Vreme"
+      },
+      "maxCapacity": {
+        "label": "Maksimalni kapacitet"
+      },
+      "description": {
+        "label": "Opis časa",
+        "placeholder": "Unesite opis časa..."
+      },
+      "submit": {
+        "creating": "Kreiranje časa...",
+        "default": "Kreiraj Čas"
+      }
+    },
+    "toast": {
+      "error": {
+        "title": "Greška",
+        "requiredFields": "Molimo popunite sva obavezna polja"
+      },
+      "success": {
+        "title": "Uspešno",
+        "description": "Novi čas je kreiran."
+      }
+    }
+  },
+  "DeleteClassButton": {
+    "trigger": "Obriši Čas",
+    "alert": {
+      "title": "Da li ste potpuno sigurni?",
+      "description": "Ova radnja se ne može poništiti. Ovo će trajno obrisati čas i sve povezane rezervacije.",
+      "cancel": "Otkaži",
+      "confirm": {
+        "deleting": "Brisanje...",
+        "default": "Obriši Čas"
+      }
+    },
+    "toast": {
+      "success": "Čas je obrisan."
+    }
+  },
+    "MessagesPage": {
+    "title": "Poruke korisnika",
+    "noMessages": "Još uvek nema poruka.",
+    "markAsRead": "Označi kao pročitano",
+    "backToDashboard": "← Nazad na kontrolnu tablu",
+    "timeAgo": "pre {time}",
+    "justNow": "upravo sada"
+  }
+}
