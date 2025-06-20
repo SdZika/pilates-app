@@ -2,8 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { getTranslations } from 'next-intl/server';
 
-export const dynamic = 'force-static';
-
 export default async function AboutPage() {
 
   const t = await getTranslations("About")
@@ -27,6 +25,9 @@ export default async function AboutPage() {
               alt="PilatesFlow Studio"
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, 1024px"
+              quality={90}
+              priority
             />
           </div>
         </section>
@@ -58,6 +59,7 @@ export default async function AboutPage() {
                     alt={trainer.name}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <CardContent className="pt-6 space-y-2">
@@ -82,6 +84,7 @@ export default async function AboutPage() {
                     alt={item.title}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <CardContent className="pt-6 space-y-2">

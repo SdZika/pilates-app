@@ -79,7 +79,6 @@ export function Navbar() {
               <div className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
                 Pilates Smederevo
               </div>
-              <p>{user?.email}</p>
             </Link>
           </div>
 
