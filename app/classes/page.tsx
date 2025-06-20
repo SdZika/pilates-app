@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"; //TabsContent?
 import Image from "next/image";
-import { Calendar, Clock, Users } from "lucide-react";
+import { Calendar, Clock, Users } from "react-feather";
 
 // You would replace this with your actual Supabase client setup
 //import { createClientClient } from "@supabase/supabase-js";

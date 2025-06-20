@@ -1,67 +1,52 @@
-import { createServerClient } from '@supabase/ssr'
-import { NextResponse, type NextRequest } from 'next/server'
+import { createServerClient } from '@supabase/ssr';
+import { NextResponse, type NextRequest } from 'next/server';
 
 export async function updateSession(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({
-    request,
-  })
+  const response = NextResponse.next();
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() {
-          return request.cookies.getAll()
-        },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({
-            request,
-          })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
+        getAll: () => request.cookies.getAll(),
+        setAll: (cookiesToSet) => {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            response.cookies.set(name, value, options);
+          });
         },
       },
     }
-  )
+  );
 
-  // Do not run code between createServerClient and
-  // supabase.auth.getUser(). A simple mistake could make it very hard to debug
-  // issues with users being randomly logged out.
+  const { data: { user } } = await supabase.auth.getUser();
+  const pathname = request.nextUrl.pathname;
 
-  // IMPORTANT: DO NOT REMOVE auth.getUser()
+  // Get locale from URL
+  const locale = pathname.split('/')[1]; // assumes locale is first segment
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  const path = request.nextUrl.pathname;
   const protectedRoutes = ['/my-bookings', '/admin'];
   const adminRoutes = ['/admin'];
 
-  // Not authenticated
-  if (protectedRoutes.some(route => path.startsWith(route)) && !user) {
-    const url = request.nextUrl.clone();
-    url.pathname = '/login';
-    return NextResponse.redirect(url);
+  if (protectedRoutes.some(route => pathname.includes(route)) && !user) {
+    const loginUrl = request.nextUrl.clone();
+    loginUrl.pathname = `/${locale}/login`;
+    return NextResponse.redirect(loginUrl);
   }
 
-  // Admin access check
-  if (adminRoutes.some(route => path.startsWith(route)) && user) {
+  if (adminRoutes.some(route => pathname.includes(route)) && user) {
     const { data: profile } = await supabase
       .from('profiles')
       .select('role')
       .eq('id', user.id)
       .single();
 
-    if (!profile?.role) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/';
-      return NextResponse.redirect(url);
+    if (profile?.role !== 'admin') {
+      const homeUrl = request.nextUrl.clone();
+      homeUrl.pathname = `/${locale}/`;
+      return NextResponse.redirect(homeUrl);
     }
   }
 
-  return supabaseResponse;
+  return response;
 }

@@ -1,0 +1,386 @@
+{
+   "Navbar": {
+    "home": "Pilates",
+    "homePage": "Home",
+    "schedule": "Schedule",
+    "about": "About",
+    "contact": "Contact",
+    "myBookings": "My Bookings",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout",
+    "loading": "Loading..."
+  },
+  "HomePage": {
+    "welcome": "Welcome back",
+    "ready": "Ready for your next Pilates session?",
+    "bookClass": "Book Class",
+    "myBookings": "My Bookings",
+    "upcoming": "Upcoming Classes",
+    "viewAll": "View all",
+    "featured": "Featured Instructors",
+    "viewProfile": "View Profile",
+    "instructor": "Instructor"
+  },
+  "Schedule": {
+    "heading": "Class Schedule",
+    "description": "Browse available classes and book your spot. Each class has a maximum capacity of 15 participants.",
+    "titleTable": "Weekly Class Times",
+    "day": "Day",
+    "timeSlots": "Time Slots",
+    "noClasses": "No classes",
+    "days": {
+      "Monday": "Monday",
+      "Tuesday": "Tuesday",
+      "Wednesday": "Wednesday",
+      "Thursday": "Thursday",
+      "Friday": "Friday",
+      "Saturday": "Saturday",
+      "Sunday": "Sunday"
+    },
+    "times": {
+      "Monday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
+      "Tuesday": ["19:00-20:00", "20:00-21:00"],
+      "Wednesday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
+      "Thursday": ["19:00-20:00", "20:00-21:00"],
+      "Friday": ["09:00-10:00", "18:00-19:00", "19:00-20:00", "20:00-21:00"],
+      "Saturday": ["10:00-11:00"],
+      "Sunday": []
+    },
+    "bookNow": "Book Now",
+    "booking": "Booking...",
+    "cancelBooking": "Cancel Booking",
+    "cancelling": "Cancelling...",
+    "classFull": "Class Full",
+    "noClassesSchedule": "No classes scheduled",
+    "trainer": "Trainer",
+    "success": "Success!",
+    "cancelSuccess": "You have successfully cancelled this booking.",
+    "bookingSuccess": "You have successfully booked this class.",
+    "bookingDescription": "Your booking has been confirmed.",
+    "alreadyBooked": "You have already booked this class.",
+    "bookingFailed": "Booking Failed",
+    "cancellationFailed": "Cancellation Failed",
+    "shortDays": {
+      "Mon": "Mon",
+      "Tue": "Tue",
+      "Wed": "Wed",
+      "Thu": "Thu",
+      "Fri": "Fri",
+      "Sat": "Sat",
+      "Sun": "Sun"
+    }
+  },
+  "About": {
+    "title": "About Pilates Smederevo",
+    "description": "Pilates Smederevo is a premium Pilates studio dedicated to helping you achieve your fitness goals through mindful movement and expert instruction.",
+    "philosophyTitle": "Our Philosophy",
+    "philosophy": [
+      {
+        "title": "Mind-Body Connection",
+        "desc": "We believe in strengthening the connection between mind and body for overall wellness and improved quality of life."
+      },
+      {
+        "title": "Personalized Approach",
+        "desc": "Every body is different, which is why we tailor our instruction to meet your unique needs and goals."
+      },
+      {
+        "title": "Supportive Community",
+        "desc": "We foster a welcoming environment where members feel supported and inspired to achieve their best."
+      }
+    ],
+    "trainersTitle": "Meet Our Trainers",
+    "trainersList": [
+      {
+        "id": "1",
+        "image": "/biljana_zivkovic.webp",
+        "name": "Biljana Zivkovic",
+        "role": "Lead Pilates Instructor",
+        "bio": "Biljana has been teaching Pilates for over 10 years and is certified in mat Pilates. She specializes in using equipment to enhance the traditional Pilates experience for all fitness levels."
+      },
+      {
+        "id": "2",
+        "image": "/aleksandra_sikirica.webp",
+        "name": "Aleksandra Sikirica",
+        "role": "Pilates & Aerobic Instructor",
+        "bio": "Aleksandra brings her background in dance and physical therapy to create dynamic and mindful Pilates sequences that focus on building core strength and flexibility."
+      },
+      {
+        "id": "3",
+        "image": "/aleksandra_pavic.webp",
+        "name": "Andjela Pavic",
+        "role": "Pilates & Aerobic Instructor",
+        "bio": "Andjela is our Pilates expert with extensive knowledge in using equipment for traditional Pilates."
+      },
+      {
+        "id": "4",
+        "image": "/bojana_milic.webp",
+        "name": "Bojana Milic",
+        "role": "Pilates & Aerobic Instructor",
+        "bio": "Bojana is our Pilates instructor with experience for all fitness levels."
+      }
+    ],
+    "studioTitle": "Our Studio",
+    "studio": [
+      {
+        "title": "State-of-the-Art Equipment",
+        "desc": "Our studio features premium Pilates towers, chairs, and other specialized equipment to enhance your practice.",
+        "image": "/facility.webp"
+      },
+      {
+        "title": "Tranquil Environment",
+        "desc": "Designed with serenity in mind, our space provides the perfect atmosphere for focusing on your practice and wellness journey.",
+        "image": "/equipment.webp"
+      }
+    ],
+    "storyTitle": "Our Story",
+    "story": [
+      "Founded in 2018, Pilates Smederevo began with a simple mission: to create a space where people of all fitness levels could experience the transformative power of Pilates in a supportive, non-intimidating environment.",
+      "What started as a small studio with fewer equipment has grown into a thriving community dedicated to mindful movement and holistic wellness. Our instructors bring diverse backgrounds in dance, physical therapy, and athletics to create a unique approach to Pilates that honors traditional methods while embracing innovation.",
+      "Today, Pilates Smederevo continues to evolve, but our core values remain the same: attention to proper form, personalized instruction, and a commitment to helping each client discover their strongest self."
+    ]
+  },
+  "Footer": {
+    "description": "Discover the transformative power of Pilates with our expert instructors and state-of-the-art facilities.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact Us",
+    "address": "Djure Danicica 6, Smederevo (Zlatan Gym - Sports Hall)",
+    "phone": "(+381) 064 1932-069",
+    "email": "biljanazivkovic2411@gmail.com",
+    "copyright": "All rights reserved.",
+    "links": {
+      "home": "Home",
+      "schedule": "Schedule",
+      "about": "About",
+      "contact": "Contact",
+      "myBookings": "My Bookings"
+    }
+  },
+  "ContactPage": {
+    "title": "Contact Pilates Smederevo",
+    "description": "Have questions or want to book a session? Reach out to us and our team will get back to you as soon as possible.",
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "Your email address",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "Your phone number",
+      "subject": "Subject",
+      "subjectPlaceholder": "Select a subject",
+      "subjectOptions": {
+        "general": "General Inquiry",
+        "classes": "Class Information",
+        "private": "Private Sessions",
+        "pricing": "Pricing",
+        "careers": "Careers"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help you...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "error": "There was a problem submitting your message. Please try again.",
+      "successTitle": "Message Sent Successfully!",
+      "successMessage": "Thank you for reaching out. We&#39;ve received your message and will get back to you as soon as possible."
+    },
+    "contactInfo": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Business Hours",
+      "hoursText": "Monday - Friday: 6am - 9pm\nSaturday - Sunday: 8am - 6pm",
+      "follow": "Follow Us",
+      "instagram": "Instagram",
+      "facebook": "Facebook"
+    },
+    "locations": {
+      "title": "Our Locations",
+      "address": "Address",
+      "studioName": "Pilates Smederevo",
+      "studioAddress": "Djure Danicica 6, Smederevo (Teretana Zlatan Gym - Sportska hala)",
+      "studioHours": "Mon-Fri: 7am-8pm, Sat-Sun: 9am-5pm"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        {
+          "question": "Do I need to bring my own equipment?",
+          "answer": "No, we provide all the necessary equipment for our classes. Just bring comfortable clothing, water, and a positive attitude!"
+        },
+        {
+          "question": "How do I book a class?",
+          "answer": "You can book classes through our online booking system, mobile app, or by calling our studio directly. We recommend booking at least 24 hours in advance as classes tend to fill up quickly."
+        },
+        {
+          "question": "What's your cancellation policy?",
+          "answer": "We require a 12-hour notice for class cancellations to avoid being charged. For private sessions, we require a 24-hour notice."
+        },
+        {
+          "question": "Is Pilates suitable for beginners?",
+          "answer": "Absolutely! Pilates is adaptable to all fitness levels. We offer specific beginner classes and our instructors can modify exercises to suit your needs and experience level."
+        }
+      ]
+    },
+    "successDialog": {
+      "title": "Message Sent Successfully!",
+      "description": "Thank you for reaching out. We've received your message and will get back to you as soon as possible.",
+      "button": "OK"
+    }
+  },
+  "Login": {
+    "title": "Welcome Back",
+    "description": "Sign in to your account to book your pilates classes",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "signingIn": "Signing in...",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "error": "Failed to sign in. Please try again."
+  },
+    "ResetPassword": {
+    "title": "Reset Password",
+    "description": "Enter your email to receive a password reset link.",
+    "email": "Email",
+    "sendLink": "Send Reset Link",
+    "sending": "Sending...",
+    "rememberPassword": "Remember your password?",
+    "signIn": "Sign in",
+    "successMessage": "Reset email sent. Please check your inbox.",
+    "error": "Something went wrong"
+  },
+   "Signup": {
+    "title": "Create an Account",
+    "description": "Sign up to book pilates classes and track your progress",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "John Smith",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "password": "Password",
+    "passwordHint": "Password must be at least 8 characters",
+    "createAccount": "Create Account",
+    "creatingAccount": "Creating account...",
+    "existingAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "error": "An error occurred during sign up."
+  },
+  "UpdatePassword": {
+    "title": "Set New Password",
+    "newPassword": "New Password",
+    "updateButton": "Update Password",
+    "updating": "Updating...",
+    "success": "Password updated! Redirecting to login...",
+    "error": "Failed to update password"
+  },
+  "MyBookingsPage": {
+    "title": "My Bookings",
+    "noBookings": {
+      "title": "You haven't booked any classes yet!",
+      "browse": "Browse Classes"
+    },
+    "upcoming": {
+      "title": "Upcoming Classes",
+      "none": "No upcoming bookings"
+    },
+    "past": {
+      "title": "Past Classes"
+    },
+    "bookingCard": {
+      "instructor": "Instructor: {name}",
+      "unknownInstructor": "Unknown"
+    }
+  },
+  "CancelBookingButton": {
+    "cancel": "Cancel",
+    "cancelling": "Cancelling...",
+    "toast": {
+      "success": "Success",
+      "successDescription": "Your booking has been cancelled.",
+      "error": "Error"
+    }
+  },
+  "AdminPage": {
+    "title": "Admin Dashboard",
+    "stats": {
+      "upcomingClasses": "Upcoming Classes",
+      "totalScheduled": "Total classes scheduled",
+      "pastClasses": "Past Classes",
+      "totalCompleted": "Total classes completed",
+      "messages": "Messages",
+      "unreadMessages": "Unread contact messages",
+      "viewMessages": "View Messages"
+    },
+    "tabs": {
+      "classes": "Upcoming Classes",
+      "addClass": "Add New Class"
+    },
+    "classCard": {
+      "attendees": "Attendees:",
+      "noBookings": "No bookings yet",
+      "createNew": "Create a new class to get started",
+      "noUpcoming": "No upcoming classes"
+    },
+    "addClassForm": {
+      "title": "Create New Class",
+      "description": "Add a new pilates class to the schedule"
+    }
+  },
+  "AddClassForm": {
+    "form": {
+      "date": {
+        "label": "Date",
+        "placeholder": "Pick a date"
+      },
+      "time": {
+        "label": "Time"
+      },
+      "maxCapacity": {
+        "label": "Max Capacity"
+      },
+      "description": {
+        "label": "Class Description",
+        "placeholder": "Enter class description..."
+      },
+      "submit": {
+        "creating": "Creating Class...",
+        "default": "Create Class"
+      }
+    },
+    "toast": {
+      "error": {
+        "title": "Error",
+        "requiredFields": "Please fill in all required fields"
+      },
+      "success": {
+        "title": "Success",
+        "description": "New class has been created."
+      }
+    }
+  },
+  "DeleteClassButton": {
+    "trigger": "Delete Class",
+    "alert": {
+      "title": "Are you absolutely sure?",
+      "description": "This action cannot be undone. This will permanently delete the class and all associated bookings.",
+      "cancel": "Cancel",
+      "confirm": {
+        "deleting": "Deleting...",
+        "default": "Delete Class"
+      }
+    },
+    "toast": {
+      "success": "Class has been deleted."
+    }
+  },
+  "MessagesPage": {
+    "title": "User Messages",
+    "noMessages": "No messages yet.",
+    "markAsRead": "Mark as Read",
+    "backToDashboard": "← Back to Dashboard",
+    "timeAgo": "{time} ago",
+    "justNow": "just now"
+  }
+}
