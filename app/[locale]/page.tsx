@@ -6,6 +6,11 @@ import { createClient } from "@/lib/supabase/server";
 import { getAllClassAttendees } from "./admin/page";
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation'; // ✅ Use localized Link
+import dynamic from "next/dynamic";
+
+const HeroCarousel = dynamic(() => import('@/components/HeroCarousel'), {
+  ssr: false, // this prevents server-side rendering
+});
 
 export default async function HomePage() {
   const t = await getTranslations("HomePage");
@@ -22,6 +27,7 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-gray-950 pt-20">
+      <HeroCarousel />
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
         {/* Welcome Section */}
         <section className="mb-8">

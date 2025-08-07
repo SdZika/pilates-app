@@ -20,7 +20,24 @@
     "viewAll": "View all",
     "featured": "Featured Instructors",
     "viewProfile": "View Profile",
-    "instructor": "Instructor"
+    "instructor": "Instructor",
+    "carousel": [
+      {
+        "title": "Strength & Flexibility",
+        "description": "Build your strength and improve flexibility with guided Pilates sessions.",
+        "image": "/images/carousel/strength.jpg"
+      },
+      {
+        "title": "Mindful Movement",
+        "description": "Experience the power of mindful movement and breath alignment.",
+        "image": "/images/carousel/mindful.jpg"
+      },
+      {
+        "title": "Balance Your Body",
+        "description": "Achieve physical balance and control with professional instructors.",
+        "image": "/images/carousel/balance.jpg"
+      }
+    ]
   },
   "Schedule": {
     "heading": "Class Schedule",

@@ -20,7 +20,24 @@
     "viewAll": "Prikaži sve",
     "featured": "Istaknuti instruktori",
     "viewProfile": "Pogledaj profil",
-    "instructor": "Instruktor"
+    "instructor": "Instruktor",
+    "carousel": [
+      {
+        "title": "Snaga i fleksibilnost",
+        "description": "Izgradite snagu i poboljšajte fleksibilnost uz vođene Pilates sesije.",
+        "image": "/images/carousel/strength.jpg"
+      },
+      {
+        "title": "Svesni pokreti",
+        "description": "Iskusite moć svesnog pokreta i usklađenog disanja.",
+        "image": "/images/carousel/mindful.jpg"
+      },
+      {
+        "title": "Ravnoteža tela",
+        "description": "Postignite fizičku ravnotežu i kontrolu uz profesionalne instruktore.",
+        "image": "/images/carousel/balance.jpg"
+      }
+    ]
   },
   "Schedule": {
     "heading": "Raspored Časova",
