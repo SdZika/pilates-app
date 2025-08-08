@@ -9,7 +9,7 @@ import { Link } from '@/i18n/navigation'; // ✅ Use localized Link
 import dynamic from "next/dynamic";
 
 const HeroCarousel = dynamic(() => import('@/components/HeroCarousel'), {
-  ssr: false, // this prevents server-side rendering
+  
 });
 
 export default async function HomePage() {
@@ -22,13 +22,13 @@ export default async function HomePage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const upcoming = await getAllClassAttendees();
-  const upcomingThree = upcoming.slice(0, 3);
+  //const upcoming = await getAllClassAttendees();
+  //const upcomingThree = upcoming.slice(0, 3);
 
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-gray-950 pt-20">
       <HeroCarousel />
-      <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
         {/* Welcome Section */}
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-1 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
@@ -38,6 +38,7 @@ export default async function HomePage() {
         </section>
 
         {/* Quick Actions */}
+        
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
           <Button
             asChild
@@ -61,7 +62,7 @@ export default async function HomePage() {
         </section>
 
         {/* Upcoming Classes */}
-        <section className="mb-8">
+        {/*<section className="mb-8">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
               {t("upcoming")}
@@ -94,7 +95,7 @@ export default async function HomePage() {
               </div>
             ))}
           </div>
-        </section>
+        </section>*/}
 
         {/* Featured Instructors */}
         <section className="mb-8">

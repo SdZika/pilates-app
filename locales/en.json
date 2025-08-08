@@ -12,7 +12,7 @@
     "loading": "Loading..."
   },
   "HomePage": {
-    "welcome": "Welcome back",
+    "welcome": "Welcome",
     "ready": "Ready for your next Pilates session?",
     "bookClass": "Book Class",
     "myBookings": "My Bookings",
@@ -25,17 +25,17 @@
       {
         "title": "Strength & Flexibility",
         "description": "Build your strength and improve flexibility with guided Pilates sessions.",
-        "image": "/images/carousel/strength.jpg"
+        "image": "/carousel1.webp"
       },
       {
         "title": "Mindful Movement",
         "description": "Experience the power of mindful movement and breath alignment.",
-        "image": "/images/carousel/mindful.jpg"
+        "image": "/carousel2.webp"
       },
       {
         "title": "Balance Your Body",
         "description": "Achieve physical balance and control with professional instructors.",
-        "image": "/images/carousel/balance.jpg"
+        "image": "/carousel3.webp"
       }
     ]
   },

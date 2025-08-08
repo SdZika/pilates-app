@@ -12,7 +12,7 @@
     "loading": "Učitavanje..."
   },
   "HomePage": {
-    "welcome": "Dobrodošli nazad",
+    "welcome": "Dobrodošli",
     "ready": "Spremni za sledeći Pilates trening?",
     "bookClass": "Zakaži čas",
     "myBookings": "Moje prijave",
@@ -25,17 +25,17 @@
       {
         "title": "Snaga i fleksibilnost",
         "description": "Izgradite snagu i poboljšajte fleksibilnost uz vođene Pilates sesije.",
-        "image": "/images/carousel/strength.jpg"
+        "image": "/carousel1.webp"
       },
       {
         "title": "Svesni pokreti",
         "description": "Iskusite moć svesnog pokreta i usklađenog disanja.",
-        "image": "/images/carousel/mindful.jpg"
+        "image": "/carousel2.webp"
       },
       {
         "title": "Ravnoteža tela",
         "description": "Postignite fizičku ravnotežu i kontrolu uz profesionalne instruktore.",
-        "image": "/images/carousel/balance.jpg"
+        "image": "/carousel3.webp"
       }
     ]
   },
