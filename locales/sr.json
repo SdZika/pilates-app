@@ -24,16 +24,19 @@
     "instructor": "Instruktor",
     "carousel": [
       {
+        "learnMore": "Saznajte više o nama",
         "title": "Snaga i fleksibilnost",
         "description": "Izgradite snagu i poboljšajte fleksibilnost uz vođene Pilates sesije.",
         "image": "/carousel1.webp"
       },
       {
+        "learnMore": "Saznajte više o nama",
         "title": "Svesni pokreti",
         "description": "Iskusite moć svesnog pokreta i usklađenog disanja.",
         "image": "/carousel2.webp"
       },
       {
+        "learnMore": "Saznajte više o nama",
         "title": "Ravnoteža tela",
         "description": "Postignite fizičku ravnotežu i kontrolu uz profesionalne instruktore.",
         "image": "/carousel3.webp"

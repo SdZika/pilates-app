@@ -24,16 +24,19 @@
     "instructor": "Instructor",
     "carousel": [
       {
+        "learnMore": "Learn more about us",
         "title": "Strength & Flexibility",
         "description": "Build your strength and improve flexibility with guided Pilates sessions.",
         "image": "/carousel1.webp"
       },
       {
+        "learnMore": "Learn more about us",
         "title": "Mindful Movement",
         "description": "Experience the power of mindful movement and breath alignment.",
         "image": "/carousel2.webp"
       },
       {
+        "learnMore": "Learn more about us",
         "title": "Balance Your Body",
         "description": "Achieve physical balance and control with professional instructors.",
         "image": "/carousel3.webp"
