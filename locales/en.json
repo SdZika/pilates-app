@@ -9,7 +9,8 @@
     "admin": "Admin",
     "login": "Login",
     "logout": "Logout",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "priceList": "Price List"
   },
   "HomePage": {
     "welcome": "Welcome",
@@ -40,12 +41,12 @@
     ]
   },
   "Schedule": {
-    "heading": "Class Schedule",
-    "description": "Browse available classes and book your spot. Each class has a maximum capacity of 15 participants.",
-    "titleTable": "Weekly Class Times",
+    "heading": "Training Schedule",
+    "description": "Browse available training sessions and book your spot. Each session has a maximum capacity of 15 participants.",
+    "titleTable": "Weekly Training Times",
     "day": "Day",
     "timeSlots": "Time Slots",
-    "noClasses": "No classes",
+    "noClasses": "No training sessions available",
     "days": {
       "Monday": "Monday",
       "Tuesday": "Tuesday",
@@ -112,36 +113,29 @@
         "id": "1",
         "image": "/biljana_zivkovic.webp",
         "name": "Biljana Zivkovic",
-        "role": "Lead Pilates Instructor",
-        "bio": "Biljana has been teaching Pilates for over 10 years and is certified in mat Pilates. She specializes in using equipment to enhance the traditional Pilates experience for all fitness levels."
+        "role": "Certified Pilates and Aerobic Instructor",
+        "bio": "Biljana is a graduate professor of physical education and a certified Pilates instructor. For over a decade, she has been empowering women to strengthen their bodies, restore their confidence, and fall in love with movement through Pilates. Her sessions are defined by precision, gentle encouragement, and a constant focus on correct form."
       },
       {
         "id": "2",
         "image": "/aleksandra_sikirica.webp",
         "name": "Aleksandra Sikirica",
-        "role": "Pilates & Aerobic Instructor",
-        "bio": "Aleksandra brings her background in dance and physical therapy to create dynamic and mindful Pilates sequences that focus on building core strength and flexibility."
+        "role": "Pilates Instructor",
+        "bio": "Aleksandra is our Pilates instructor with advanced training in movement and body mechanics."
       },
       {
         "id": "3",
         "image": "/aleksandra_pavic.webp",
         "name": "Andjela Pavic",
-        "role": "Pilates & Aerobic Instructor",
-        "bio": "Andjela is our Pilates expert with extensive knowledge in using equipment for traditional Pilates."
-      },
-      {
-        "id": "4",
-        "image": "/bojana_milic.webp",
-        "name": "Bojana Milic",
-        "role": "Pilates & Aerobic Instructor",
-        "bio": "Bojana is our Pilates instructor with experience for all fitness levels."
+        "role": "Pilates Instructor",
+        "bio": "Andjela is our Pilates instructor with extensive knowledge of traditional Pilates."
       }
     ],
     "studioTitle": "Our Studio",
     "studio": [
       {
         "title": "State-of-the-Art Equipment",
-        "desc": "Our studio features premium Pilates towers, chairs, and other specialized equipment to enhance your practice.",
+        "desc": "Our studio features state-of-the-art equipment designed to enhance your Pilates practice.",
         "image": "/facility.webp"
       },
       {
@@ -152,8 +146,8 @@
     ],
     "storyTitle": "Our Story",
     "story": [
-      "Founded in 2018, Pilates Smederevo began with a simple mission: to create a space where people of all fitness levels could experience the transformative power of Pilates in a supportive, non-intimidating environment.",
-      "What started as a small studio with fewer equipment has grown into a thriving community dedicated to mindful movement and holistic wellness. Our instructors bring diverse backgrounds in dance, physical therapy, and athletics to create a unique approach to Pilates that honors traditional methods while embracing innovation.",
+      "Founded more than 10 years ago, Pilates Smederevo began with a simple mission: to create a space where people of all fitness levels could experience the transformative power of Pilates in a supportive, non-intimidating environment.",
+      "What started as a small studio with fewer equipment has grown into a thriving community dedicated to mindful movement and holistic wellness. Our instructors bring great expertise to create a unique approach to Pilates that honors traditional methods while embracing innovation.",
       "Today, Pilates Smederevo continues to evolve, but our core values remain the same: attention to proper form, personalized instruction, and a commitment to helping each client discover their strongest self."
     ]
   },
@@ -399,5 +393,22 @@
     "backToDashboard": "← Back to Dashboard",
     "timeAgo": "{time} ago",
     "justNow": "just now"
+  },
+  "PriceList": {
+    "heading": "Pilates Price List",
+    "description": "Choose the training plan that suits you best. Your first training is free — call us to reserve your spot!",
+    "trainingType": "Training Type",
+    "descriptionColumn": "Description",
+    "priceColumn": "Price",
+    "firstTraining": "First Training",
+    "firstTrainingDesc": "Your first training session is completely free.",
+    "freePrice": "Free",
+    "callToBook": "Call to book",
+    "singleTraining": "Single Training",
+    "singleTrainingDesc": "Pay per session when you attend.",
+    "eightTrainings": "8 Trainings per Month",
+    "eightTrainingsDesc": "Ideal for training twice a week.",
+    "twelveTrainings": "12 Trainings per Month",
+    "twelveTrainingsDesc": "Perfect for training three times a week."
   }
 }

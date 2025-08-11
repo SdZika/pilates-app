@@ -32,6 +32,7 @@ export function Navbar() {
   const routes = [
     { name: t("homePage"), path: "/" },
     { name: t("schedule"), path: "/schedule" },
+    { name: t("priceList"), path: "/price-list" },
     { name: t("about"), path: "/about" },
     { name: t("contact"), path: "/contact" },
   ];

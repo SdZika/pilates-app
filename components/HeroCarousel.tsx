@@ -36,7 +36,7 @@ export default function HeroCarousel() {
         priority
       />
 
-      <div className="absolute inset-0 z-20 flex items-center md:items-center text-gray-700">
+      <div className="absolute inset-0 z-20 flex items-center md:items-center text-white bg-black/50">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-md">
             {title}

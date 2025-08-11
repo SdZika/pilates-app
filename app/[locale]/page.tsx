@@ -3,7 +3,7 @@ import { Calendar, Clock, User, ChevronRight } from 'react-feather';
 // import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
-import { getAllClassAttendees } from "./admin/page";
+//import { getAllClassAttendees } from "./admin/page";
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation'; // ✅ Use localized Link
 import dynamic from "next/dynamic";
@@ -55,7 +55,7 @@ export default async function HomePage() {
             className="h-auto py-6 flex flex-col items-center justify-center gap-2 border-gray-200 dark:border-gray-800"
           >
             <Link href="/my-bookings">
-              <Clock className="h-6 w-6" />
+              <Clock className="mx-auto h-6 w-6" />
               <span className="font-medium">{t("myBookings")}</span>
             </Link>
           </Button>
