@@ -1,7 +1,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { getTranslations } from 'next-intl/server';
-import { MapPin, Phone, Mail, Clock,Instagram } from "react-feather";
+import { MapPin, Phone, Mail, Clock, Instagram } from "react-feather";
 import { Spinner } from '@/components/ui/spinner';
 import dynamic from 'next/dynamic';
 

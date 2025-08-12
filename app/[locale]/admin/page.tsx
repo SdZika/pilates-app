@@ -1,150 +1,16 @@
-import { createClient } from "@/lib/supabase/server";
 //import { cookies } from "next/headers";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { format, parseISO } from "date-fns";
+import { format} from "date-fns";
 import { Calendar, User as UserIcon } from "react-feather";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import AddClassForm from "./add-class-form";
 import { DeleteClassButton } from "./delete-class-button";
 import { getTranslations } from 'next-intl/server';
+import { getClasses, getAllClassAttendees, getMessageCount, Attendee } from "@/lib/admin-data";
 
 export const dynamic = "force-dynamic";
-
-type Attendee = {
-  user_id: string;
-  profiles: {
-    full_name: string;
-  };
-};
-
-type Class = {
-  id: string;
-  date: string;
-  time: string;
-  max_capacity: number;
-  description: string;
-  profiles: {
-    full_name: string;
-  }[] | null;
-  attendees?: Attendee[];
-  datetime?: Date;
-};
-
-type RawClass = {
-  id: string;
-  date: string;
-  time: string;
-  max_capacity: number;
-  description: string;
-  profiles: {
-    full_name: string;
-  }[] | null;
-};
-
-type CategorizedClasses = {
-  upcoming: Class[];
-  past: Class[];
-};
-
-async function getClasses(): Promise<CategorizedClasses> {
-  const supabase = await createClient();
-
-  const { data: classes, error } = await supabase
-    .from("classes")
-    .select(`
-      id,
-      date,
-      time,
-      max_capacity,
-      description,
-      profiles (
-        full_name
-      )
-    `)
-    .order("date", { ascending: true })
-    .order("time", { ascending: true });
-
-  if (error) {
-    console.error("Error fetching classes:", error);
-    return { upcoming: [], past: [] };
-  }
-
-  const now = new Date();
-
-  const categorized = {
-    upcoming: [] as Class[],
-    past: [] as Class[],
-  };
-
-  for (const cls of classes as RawClass[]) {
-    const classDateTime = parseISO(`${cls.date}T${cls.time}`);
-    const classWithDateTime: Class = {
-      ...cls,
-      datetime: classDateTime
-    };
-    if (classDateTime >= now) {
-      categorized.upcoming.push(classWithDateTime);
-    } else {
-      categorized.past.push(classWithDateTime);
-    }
-  }
-
-  return categorized;
-}
-
-
-async function getClassAttendees(classId: string): Promise<Attendee[]> {
-  const supabase = await createClient();
-  
-  const { data, error } = await supabase
-    .from("bookings")
-    .select(`
-      user_id,
-      profiles (
-        full_name
-      )
-    `)
-    .eq("class_id", classId);
-    
-  if (error) {
-    console.error("Error fetching attendees:", error);
-    return [];
-  }
-  
-  return (data || []).map(item => ({
-    user_id: item.user_id,
-    profiles: item.profiles[0]
-  })) as Attendee[];
-}
-
-export async function getAllClassAttendees() {
-  const { upcoming } = await getClasses();
-  
-  // For each upcoming class, get the attendees
-  for (const cls of upcoming) {
-    cls.attendees = await getClassAttendees(cls.id);
-  }
-  
-  return upcoming;
-}
-
-async function getMessageCount() {
-  const supabase = await createClient();
-  
-  const { count, error } = await supabase
-    .from("messages")
-    .select("*", { count: "exact", head: true })
-    .eq("read", false);
-    
-  if (error) {
-    console.error("Error counting messages:", error);
-    return 0;
-  }
-  
-  return count || 0;
-}
 
 export default async function AdminPage() {
   const { upcoming, past } = await getClasses();
