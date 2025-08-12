@@ -9,10 +9,11 @@
     "admin": "Admin",
     "login": "Prijava",
     "logout": "Odjava",
-    "loading": "Učitavanje..."
+    "loading": "Učitavanje...",
+    "priceList": "Cenovnik"
   },
   "HomePage": {
-    "welcome": "Dobrodošli nazad",
+    "welcome": "Dobrodošli",
     "ready": "Spremni za sledeći Pilates trening?",
     "bookClass": "Zakaži čas",
     "myBookings": "Moje prijave",
@@ -20,15 +21,35 @@
     "viewAll": "Prikaži sve",
     "featured": "Istaknuti instruktori",
     "viewProfile": "Pogledaj profil",
-    "instructor": "Instruktor"
+    "instructor": "Instruktor",
+    "carousel": [
+      {
+        "learnMore": "Saznajte više o nama",
+        "title": "Snaga i fleksibilnost",
+        "description": "Izgradite snagu i poboljšajte fleksibilnost uz vođene Pilates sesije.",
+        "image": "/carousel1.webp"
+      },
+      {
+        "learnMore": "Saznajte više o nama",
+        "title": "Svesni pokreti",
+        "description": "Iskusite moć svesnog pokreta i usklađenog disanja.",
+        "image": "/carousel2.webp"
+      },
+      {
+        "learnMore": "Saznajte više o nama",
+        "title": "Ravnoteža tela",
+        "description": "Postignite fizičku ravnotežu i kontrolu uz profesionalne instruktore.",
+        "image": "/carousel3.webp"
+      }
+    ]
   },
   "Schedule": {
-    "heading": "Raspored Časova",
-    "description": "Pregledajte dostupne časove i rezervišite svoje mesto. Maksimalni broj učesnika po času je 15.",
-    "titleTable": "Nedeljni raspored časova",
+    "heading": "Raspored Treninga",
+    "description": "Pregledajte dostupne treninge i rezervišite svoje mesto. Maksimalni broj učesnika po treningu je 15.",
+    "titleTable": "Nedeljni raspored treninga",
     "day": "Dan",
     "timeSlots": "Termini",
-    "noClasses": "Nema časova",
+    "noClasses": "Nema treninga",
     "days": {
       "Monday": "Ponedeljak",
       "Tuesday": "Utorak",
@@ -95,36 +116,29 @@
         "id": "1",
         "image": "/biljana_zivkovic.webp",
         "name": "Biljana Zivkovic",
-        "role": "Glavna instruktorka pilatesa",
-        "bio": "Biljana predaje pilates više od 10 godina i sertifikovana je za mat pilates. Specijalizovana je za korišćenje opreme kako bi poboljšala tradicionalno pilates iskustvo za sve nivoe kondicije."
+        "role": "Sertifikovana instruktorka pilatesa i aerobika",
+        "bio": "Biljana je diplomirani profesor fizičkog vaspitanja i sertifikovana instruktorka pilatesa. Više od deset godina pomaže ženama da kroz Pilates osnaže svoje telo, povrate samopouzdanje i zavole vežbanje. Njeni treninzi odlikuju se preciznošću, nežnom motivacijom i stalnom pažnjom na pravilno izvođenje vežbi."
       },
       {
         "id": "2",
         "image": "/aleksandra_sikirica.webp",
         "name": "Aleksandra Sikirica",
-        "role": "Instruktorka pilatesa i aerobika",
-        "bio": "Aleksandra koristi svoje iskustvo iz plesa i fizikalne terapije kako bi kreirala dinamične i promišljene pilates vežbe koje jačaju trup i povećavaju fleksibilnost."
+        "role": "Instruktorka pilatesa",
+        "bio": "Aleksandra je naša pilates instruktorka sa naprednim obukama u pokretu i mehanici tela."
       },
       {
         "id": "3",
         "image": "/aleksandra_pavic.webp",
         "name": "Andjela Pavic",
-        "role": "Instruktorka pilatesa i aerobika",
-        "bio": "Andjela je naša pilates instruktorka sa bogatim znanjem o korišćenju opreme za tradicionalni pilates."
-      },
-      {
-        "id": "4",
-        "image": "/bojana_milic.webp",
-        "name": "Bojana Milic",
-        "role": "Instruktorka pilatesa i aerobika",
-        "bio": "Bojana je naša pilates instruktorka sa iskustvom za sve nivoe kondicije."
+        "role": "Instruktorka pilatesa",
+        "bio": "Andjela je naša pilates instruktorka sa bogatim znanjem o tradicionalnom pilatesu."
       }
     ],
     "studioTitle": "Naš Studio",
     "studio": [
       {
         "title": "Vrhunsku Oprema",
-        "desc": "Naš studio poseduje pilates tornjeve, stolice i drugu specijalizovanu opremu za unapređenje vaše prakse.",
+        "desc": "Naš studio poseduje naprednu i specijalizovanu opremu za unapređenje pilates treninga.",
         "image": "/facility.webp"
       },
       {
@@ -135,8 +149,8 @@
     ],
     "storyTitle": "Naša Priča",
     "story": [
-      "Osnovan 2018. godine, Pilates Smederevo je započeo sa jednostavnom misijom: da stvori prostor gde ljudi svih nivoa kondicije mogu iskusiti transformativnu moć pilatesa u podržavajućem i nenametljivom okruženju.",
-      "Ono što je počelo kao mali studio sa malo opreme, izraslo je u snažnu zajednicu posvećenu svesnom pokretu i holističkom zdravlju. Naši instruktori imaju različito iskustvo iz plesa, fizikalne terapije i sporta, što doprinosi jedinstvenom pristupu pilatesu koji kombinuje tradiciju i inovaciju.",
+      "Osnovan pre vise od 10 godina, Pilates Smederevo je započeo sa jednostavnom misijom: da stvori prostor gde ljudi svih nivoa kondicije mogu iskusiti transformativnu moć pilatesa u podržavajućem i nenametljivom okruženju.",
+      "Ono što je počelo kao mali studio sa malo opreme, izraslo je u snažnu zajednicu posvećenu svesnom pokretu i holističkom zdravlju. Naši instruktori imaju bogato iskustvo, što doprinosi jedinstvenom pristupu pilatesu koji kombinuje tradiciju i inovaciju.",
       "Danas se Pilates Smederevo i dalje razvija, ali naše osnovne vrednosti ostaju iste: pažnja na pravilnu formu, personalizovana obuka i posvećenost da svaki klijent otkrije svoju najjaču verziju."
       ]
     },
@@ -382,5 +396,22 @@
     "backToDashboard": "← Nazad na kontrolnu tablu",
     "timeAgo": "pre {time}",
     "justNow": "upravo sada"
+  },
+  "PriceList": {
+    "heading": "Cenovnik Pilates Treninga",
+    "description": "Izaberite plan koji vam najviše odgovara. Prvi trening je besplatan — pozovite nas da rezervišete mesto!",
+    "trainingType": "Tip treninga",
+    "descriptionColumn": "Opis",
+    "priceColumn": "Cena",
+    "firstTraining": "Prvi trening",
+    "firstTrainingDesc": "Vaš prvi trening je potpuno besplatan.",
+    "freePrice": "Besplatno",
+    "callToBook": "Pozovite za rezervaciju",
+    "singleTraining": "Jedan trening",
+    "singleTrainingDesc": "Plaćanje po dolasku, po treningu.",
+    "eightTrainings": "8 Treninga mesečno",
+    "eightTrainingsDesc": "Idealno za dva treninga nedeljno.",
+    "twelveTrainings": "12 Treninga mesečno",
+    "twelveTrainingsDesc": "Savršeno za tri treninga nedeljno."
   }
 }
