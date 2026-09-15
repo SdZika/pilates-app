@@ -22,19 +22,19 @@ export default async function PriceListPage() {
       id: "single",
       title: t("singleTraining"),
       description: t("singleTrainingDesc"),
-      price: "500 RSD",
+      price: "700 RSD",
     },
     {
       id: "eight",
       title: t("eightTrainings"),
       description: t("eightTrainingsDesc"),
-      price: "2600 RSD",
+      price: "2900 RSD",
     },
     {
       id: "twelve",
       title: t("twelveTrainings"),
       description: t("twelveTrainingsDesc"),
-      price: "3000 RSD",
+      price: "3300 RSD",
     },
   ];
 
@@ -79,7 +79,10 @@ export default async function PriceListPage() {
                       <td className="px-4 py-3 text-gray-700 dark:text-gray-300">
                         {item.description}
                         {item.highlight && (
-                          <Link href="/contact" className="ml-2 inline-flex items-center gap-1 text-pink-600 dark:text-pink-400 font-medium">
+                          <Link
+                            href="/contact"
+                            className="ml-2 inline-flex items-center gap-1 text-pink-600 dark:text-pink-400 font-medium"
+                          >
                             {item.icon} {item.action}
                           </Link>
                         )}
@@ -111,7 +114,10 @@ export default async function PriceListPage() {
                     {item.price}
                   </span>
                   {item.highlight && (
-                    <Badge variant="secondary" className="flex items-center gap-1">
+                    <Badge
+                      variant="secondary"
+                      className="flex items-center gap-1"
+                    >
                       {item.icon}
                       {item.action}
                     </Badge>
